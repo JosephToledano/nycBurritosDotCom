@@ -6,7 +6,7 @@ import ReviewCard from './ReviewCard'
    
         return(
             <div className= 'burrito-rankings-box'>
-                <ReviewCard key = {props.key}
+                <ReviewCard id = {props.id}
                                neighborhood = {props.neighborhood} 
                                rating = {props.rating} 
                                price = {props.price}
@@ -14,6 +14,10 @@ import ReviewCard from './ReviewCard'
                                restaurant_name = {props.restaurant_name} 
                                updateSeen = {props.updateSeen}
                                handleUpdatePopUpClick = {props.handleUpdatePopUpClick}
+                               handleDelete = {props.handleDelete}
+                               handleNeighborhoodClick = {props.handleNeighborhoodClick}
+                               reviewsForNeighborhood = {props.reviewsForNeighborhood}
+
                                />
             </div>
         )

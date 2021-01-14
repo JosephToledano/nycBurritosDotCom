@@ -13,7 +13,7 @@ const ReviewButton = (props) => {
         handlePriceChange = {props.handlePriceChange}
         handleNeighborhoodChange = {props.handleNeighborhoodChange}
         handleFormSubmit = {props.handleFormSubmit}
-        handlePopUpClick = {props.handlePopUpClick}
+        handleReviewPopUpClick = {props.handleReviewPopUpClick}
         newReview = {props.newReview}
     />;
   } else {

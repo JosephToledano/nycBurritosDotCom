@@ -10,6 +10,6 @@ router.post('/addReview', burritoBlogController.addReviews, (req, res) => res.st
 
 router.put('/updateReview/:id', burritoBlogController.updateReviews, (req, res) => res.status(200).send('updated successfully!'))
 
-router.delete('/deleteReview/:id', burritoBlogController.deleteReviews, (req, res) => res.status(200).send('Begone thot'))
+router.delete('/deleteReview/:id', burritoBlogController.deleteReviews, (req, res) => res.status(200).send('begone'))
 
 module.exports = router;

@@ -11,10 +11,10 @@ SET row_security = off;
 CREATE TABLE public.reviews (
 	"_id" serial NOT NULL,
 	"burrito_type" varchar NOT NULL,
-	"restaurant_name" varchar,
-    "neighborhood" varchar,
-    "price" bigint,
-    "rating" bigint,
+	"restaurant_name" varchar NOT NULL,
+    "neighborhood" varchar NOT NULL,
+    "price" bigint NOT NULL,
+    "rating" bigint NOT NULL,
 	CONSTRAINT "people_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE

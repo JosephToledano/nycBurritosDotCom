@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
 const PopUpReviewForm = (props) => {
-
+  const burritoIcon = 'U+1F32F'
   return (
    
    <div>
      <div >
      <div className="popup-review-form">
-     <span  className="popup-review-form-x" onClick={props.handlePopUpClick}>&times;    </span>
+     <span  className="popup-review-form-x" onClick={props.handleReviewPopUpClick}>&times;    </span>
         <form onSubmit={props.handleFormSubmit}>
             <div className ='burrito-form'>
             <label className="burrito-form-label">
@@ -32,7 +32,7 @@ const PopUpReviewForm = (props) => {
             </label>
             </div>
             <div className ="form-submit-button">
-            <input id = 'form-submit-button' type="submit" value="Send Itt" />
+            <input id = 'form-submit-button' type="submit" value= " Send It " />
             </div>
         </form>
      </div>

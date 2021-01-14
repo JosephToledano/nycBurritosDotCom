@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import MainText from './components/MainText.js';
-import Header from './components/Header.js'
+import Nav from './components/Nav.js'
 import ReviewCardList from "./components/ReviewCardList";
 import ReviewButton from "./components/ReviewButton.js";
 import fetch from 'isomorphic-fetch';
-
-
+import BurritoTypeDropdown from "./components/dropdown-filters/BurritoTypeDropdown.js";
+import NeighborhoodTypeDropdown from "./components/dropdown-filters/NeighborhoodTypeDropdown.js";
 
 
 export default class App extends React.Component {
@@ -23,8 +23,12 @@ export default class App extends React.Component {
         "rating": 0
         },
       reviews: [],
+      reviewsForNeighborhood: [],
+      reviewsForBurritoType: [],
       reviewSeen: false,
-      updateSeen: false
+      updateSeen: false,
+      burritoTypeDropdownItem: null,
+      neighborhoodTypeDropdownItem: null
     }
       this.handleReviewPopUpClick = this.handleReviewPopUpClick.bind(this);
       this.handleUpdatePopUpClick = this.handleUpdatePopUpClick.bind(this);
@@ -36,7 +40,14 @@ export default class App extends React.Component {
       this.handleRatingChange = this.handleRatingChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.handleReviewUpdate = this.handleReviewUpdate.bind(this);
-      // this.handleDropDownSubmit = this.handleDropDownSubmit.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
+      // handlePopUpClick = {this.handlePopUpClick};
+
+
+      this.handleNeighborhoodClick = this.handleNeighborhoodClick.bind(this);
+      this.handleBurritoTypeDropdownChange = this.handleBurritoTypeDropdownChange.bind(this);
+      this.handleNeighborhoodTypeDropdownChange = this.handleNeighborhoodTypeDropdownChange.bind(this);
+
   }
 
   componentDidMount(){
@@ -64,7 +75,7 @@ export default class App extends React.Component {
       body: JSON.stringify({ 
             id: this.state.newReview.id,
             burrito_type: this.state.newReview.burrito_type,
-            restaurant_type: this.state.newReview.restaurant_type,
+            restaurant_name: this.state.newReview.restaurant_name,
             neighborhood: this.state.newReview.neighborhood,
             price: this.state.newReview.price,
             rating: this.state.newReview.rating
@@ -74,6 +85,8 @@ export default class App extends React.Component {
           let newRatingToAdd = this.state.newReview;
           let newReviewsArr = this.state.reviews;
           newReviewsArr.unshift(newRatingToAdd)
+          let topReview = 0
+          newReviewsArr.list.sort((a, b) => (Number(a.rating) > Number(b.rating) ? 1 : -1))
           this.setState({
             reviews : newReviewsArr,
           })
@@ -81,12 +94,13 @@ export default class App extends React.Component {
           this.setState({
             newReview: {
               "id": 0,
-              "restuarant": "",
+              "restaurant_name": "",
               "burrito_type": "",
               "price": 0,
               "neighborhood": "",
               "rating": 0
           }})
+          location.reload();
           })
           .catch((err) => {console.log(err)})
   }
@@ -122,7 +136,7 @@ handleReviewUpdate = (event) => {
         this.setState({
           newReview: {
             "id": 0,
-            "restuarant": "",
+            "restaurant_name": "",
             "burrito_type": "",
             "price": 0,
             "neighborhood": "",
@@ -132,30 +146,22 @@ handleReviewUpdate = (event) => {
         .catch((err) => {console.log(err)})
 }
 
-handleReviewDelete = (event) => {
-  newReview.preventDefault();
-  fetch(`api/deleteReview/{event.target.id}`, {
-    method: 'DELETE',
-    headers: {
-    'Content-Type': 'Application/JSON'
-    },
-    body: JSON.stringify({ 
-          id: this.state.newReview.id,
+handleDelete = (event) => {
+  console.log('this is the event target', event.target.id)
+  const deletedId = event.target.id;
+  console.log('this is the id', deletedId)
+  if(confirm("Do you really want to rob the world of this review")){
+    fetch(`/api/deleteReview/${deletedId}`, {
+      method: 'DELETE',
+     body: JSON.stringify({ 
+          _id: deletedId
         })
-  })
-  .then((res) => {
-        let newReviewsArr = this.state.reviews;
-        newReviewsArr.forEach(review => {
-          if (review.id === reviewUpdate.id){
-            review = reviewUpdate;
-          }
-        })
-        this.setState({
-          reviews : newReviewsArr,
-        })
-        })
-        .catch((err) => {console.log(err)})
+  });
+    location.reload();
 }
+  };
+  // newReview.preventDefault();
+  
   
 handleReviewPopUpClick = () => {
   if (this.state.reviewSeen === false){
@@ -179,6 +185,25 @@ handleUpdatePopUpClick = () => {
       }
     console.log('wtf')
     }
+
+handleNeighborhoodClick = (event) => {
+  let neighborhoodReviews = this.state.reviews;
+  neighborhoodReviews = neighborhoodReviews.filter(review => review.neighborhood == event.target.id)
+  console.log('this is the list: ', neighborhoodReviews)
+  this.setState({reviewsForNeighborhood: this.state.reviewsForNeighborhood.concat(neighborhoodReviews)})
+  console.log('this is the updated state: ', this.state.reviewsForNeighborhood)
+}
+
+//handlers for dropdown filters
+handleBurritoTypeDropdownChange(event) {
+  console.log(event.target.value)
+  this.setState({burritoTypeDropdownItem: event.target.value})
+}
+
+handleNeighborhoodTypeDropdownChange(event) {
+  console.log(event.target.value)
+  this.setState({neighborhoodTypeDropdownItem: event.target.value})
+}
 
 //handlers for different fields in burrito submission fields
 handleBurritoTypeChange(event) {
@@ -222,7 +247,17 @@ handleRatingChange(event) {
 render() {
     return (
       <div className='main-page'>
-       <Header />
+       <Nav />
+       <div className = "dropdown-menus">
+          <BurritoTypeDropdown reviews = {this.state.reviews} handleBurritoTypeDropdownChange = {this.handleBurritoTypeDropdownChange} handleDropDownSubmit = {this.handleDropDownSubmit} 
+          burritoTypeDropdownItem = {this.state.burritoTypeDropdownItem} neighborhoodTypeDropdownItem = {this.state.neighborhoodTypeDropdownItem}/>
+          {/* <BurritoTypeDropdown/> */}
+          <NeighborhoodTypeDropdown reviews = {this.state.reviews} 
+                                    handleNeighborhoodTypeDropdownChange = {this.handleNeighborhoodTypeDropdownChange} 
+                                     neighborhoodTypeDropdownItem = {this.state.neighborhoodTypeDropdownItem}
+                                     burritoTypeDropdownItem = {this.state.burritoTypeDropdownItem}
+                                     />
+       </div>
        <ReviewButton 
         reviewSeen = {this.state.reviewSeen} 
         handleReviewPopUpClick = {this.handleReviewPopUpClick}
@@ -237,7 +272,7 @@ render() {
     <div className= "main-container">
     <MainText />
 
-    <ReviewCardList  handleUpdatePopUpClick = {this.handleUpdatePopUpClick} updateSeen = {this.state.updateSeen} reviews = {this.state.reviews} newReview = {this.state.newReview}/>
+    <ReviewCardList handleDelete ={this.handleDelete} burritoTypeDropdownItem = {this.state.burritoTypeDropdownItem} neighborhoodTypeDropdownItem = {this.state.neighborhoodTypeDropdownItem} reviewsForNeighborhood = {this.state.reviewsForNeighborhood} handleNeighborhoodClick = {this.handleNeighborhoodClick} handleDelete ={this.handleDelete} handleUpdatePopUpClick = {this.handleUpdatePopUpClick} updateSeen = {this.state.updateSeen} reviews = {this.state.reviews} newReview = {this.state.newReview}/>
     </div>
     </div>
     )

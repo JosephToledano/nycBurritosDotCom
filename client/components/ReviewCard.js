@@ -1,10 +1,10 @@
 import React from 'react'
 import UpdatePopUpForm from './UpdatePopUpForm'
 import '../index.css';
+import { Link } from 'react-router-dom';
 
 
 const ReviewCard = (props) => {
-
     const clickedUpdate = props.updateSeen;
     let form;
     if (clickedUpdate) {
@@ -37,7 +37,7 @@ const ReviewCard = (props) => {
 
             <div className="burrito-profile-section">
               <div className = "burrito-profile-label">
-                <h3>Restuarant</h3>
+                <h3>Restaurant</h3>
               </div>
               <div className = 'burrito-profile'>
                <p className="burrito-profile-text"> {props.restaurant_name}</p>
@@ -50,7 +50,12 @@ const ReviewCard = (props) => {
                </div>
 
              <div className = 'burrito-profile'>
-               <p className="burrito-profile-text"> {props.neighborhood}</p>
+             {/* <Link to={{
+                 pathname: '../Neighborhoods',
+                 state: {review: 'props.reviewsForNeighborhood'}                   
+                 }} >     */}
+             <p id ={props.neighborhood} className="burrito-profile-text" onClick ={props.handleNeighborhoodClick}> {props.neighborhood}</p>
+             {/* </Link> */}
              </div>
           </div>
       </div>
@@ -61,20 +66,20 @@ const ReviewCard = (props) => {
               </div> */}
 
             <div className = 'burrito-profile-header'>
-                <h4 className= 'average-score-header'>Average Rating</h4>
+                <h4 className= 'average-score-header'>Rating</h4>
                 <h6 className ='average-score-text'>{props.rating}</h6>
             </div>
 
             <div className = 'burrito-profile-header'>
-              <h4 className= 'price-header'>Average Price</h4>
+              <h4 className= 'price-header'>Price</h4>
                 <h6 className ='price-header-text'>{props.price}</h6>
             </div>
               <div className="delete-review">
-                <h5 className ="deleteReview">X</h5>
+                <p id = {props.id} className ="deleteReview" onClick = {props.handleDelete}>X</p>
               </div>
-              <div className="update-review">
+              {/* <div className="update-review">
                 <button onClick = {props.handleUpdatePopUpClick} className ="updateReview"> Update </button>
-              </div>
+              </div> */}
         </div>
         {form}
     </div>

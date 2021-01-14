@@ -7,8 +7,8 @@ const UpdatePopUpForm = (props) => {
    <div>
      <div >
      <div className="popup-review-form">
-     <span  className="popup-review-form-x" onClick={props.handlePopUpClick}>&times;    </span>
-        <form onSubmit={props.handleFormSubmit}>
+     <span  className="popup-review-form-x" onClick={props.handleUpdatePopUpForm}>&times;    </span>
+        <form onSubmit={props.handleReviewUpdate}>
             <div className ='burrito-form'>
             <label className="burrito-form-label">
                 Burrito Type:
