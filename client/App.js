@@ -106,7 +106,6 @@ export default class App extends React.Component {
   }
 
 handleReviewUpdate = (event) => {
-  newReview.preventDefault();
   fetch(`api/updateReview/{event.target.id}`, {
     method: 'PUT',
     headers: {
