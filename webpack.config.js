@@ -1,37 +1,36 @@
-const path = require('path');
-
+const path = require("path");
 
 module.exports = {
-  entry: './client/index.js',
+  entry: "./client/index.js",
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "build"),
+    filename: "bundle.js",
   },
   mode: process.env.NODE_ENV,
   //process.env.NODE_ENV,
   devServer: {
-    publicPath: '/build/',
+    publicPath: "/build/",
     proxy: {
-        '/api': 'http://localhost:3001/',
-    }
+      "/api": "http://localhost:3001/",
+    },
   },
   module: {
     rules: [
-      { 
-        test: /\.jsx?$/,
+      {
+        test: /\.js?$/,
         exclude: /node_modules/,
         use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env', '@babel/preset-react']
-            }
-        }
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
       },
       {
         rules: [
           {
             test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
+            use: ["style-loader", "css-loader"],
           },
         ],
       },
@@ -41,22 +40,21 @@ module.exports = {
             test: /\.(png|jpe?g|gif)$/i,
             use: [
               {
-                loader: 'file-loader',
+                loader: "file-loader",
               },
             ],
           },
-        ]
+        ],
       },
     ],
   },
-//   plugins: [
+  //   plugins: [
 
-//     new HtmlWebpackPlugin({
-//         template: 'src/index.html'
-//     })
-// ]
+  //     new HtmlWebpackPlugin({
+  //         template: 'src/index.html'
+  //     })
+  // ]
 };
 
-
-//script: 
+//script:
 //"dev": "(node server/server.js) & NODE_ENV=development webpack-dev-server --open",

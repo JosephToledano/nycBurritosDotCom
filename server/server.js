@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 const apiRouter = require("./routes/api");
 const bodyParser = require("body-parser");
@@ -14,6 +14,11 @@ app.use(express.json());
 app.use("/build", express.static(path.join(__dirname, "../build")));
 // serve index.html on the route '/'
 app.use("/api", apiRouter);
+
+// Send homepage - Optional?
+app.get("/*", (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, "../index.html"));
+});
 
 app.use((err, req, res, next) => {
   const defaultErr = {
