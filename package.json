@@ -2,6 +2,9 @@
   "name": "soloproject",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "Index.js",
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
