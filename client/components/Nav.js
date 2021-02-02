@@ -19,7 +19,7 @@ const Nav = (props) => {
         {/* </Link>   */}
         <div className="headerLinks">
           {/* <Link to={'./About'}> */}
-          <h3 className="NavLink">About</h3>
+          {/* <h3 className="NavLink">About</h3> */}
           {/* </Link> */}
           {/* <Link to={'./Blog'}>
                 <h3 className ="NavLink">
