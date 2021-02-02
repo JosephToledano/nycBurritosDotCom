@@ -11,8 +11,9 @@ import { BrowserRouter } from "react-router-dom";
 // import styles from './scss/Index.css';
 
 render(
-  <BrowserRouter>
-    <PageRouter />
-  </BrowserRouter>,
+  //   <BrowserRouter>
+  //     <PageRouter />
+  //   </BrowserRouter>,
+  <App />,
   document.getElementById("root")
 );
