@@ -1,30 +1,46 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./client/Index.js",
+  entry: "./client/Index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
+    publicPath: "/",
+  },
+  resolve: {
+    // changed from extensions: [".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   mode: process.env.NODE_ENV,
   //process.env.NODE_ENV,
   devServer: {
     publicPath: "/build/",
+    historyApiFallback: true,
     proxy: {
       "/api": "http://localhost:3001/",
+      "/login/": "http://localhost:3001/",
+      "/signup/": "http://localhost:3001/",
     },
   },
   module: {
     rules: [
       {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+        rules: [
+          // changed from { test: /\.jsx?$/, use: { loader: 'babel-loader' }, exclude: /node_modules/ },
+          {
+            test: /\.(t|j)sx?$/,
+            use: { loader: "ts-loader" },
+            exclude: /node_modules/,
           },
-        },
+
+          // addition - add source-map support
+          {
+            enforce: "pre",
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: "source-map-loader",
+          },
+        ],
       },
       {
         rules: [
@@ -48,12 +64,12 @@ module.exports = {
       },
     ],
   },
-  //   plugins: [
-
-  //     new HtmlWebpackPlugin({
-  //         template: 'src/index.html'
-  //     })
-  // ]
+  // externals: {
+  //   'react': "React",
+  //   "react-dom": "ReactDOM",
+  // },
+  // addition - add source-map support
+  devtool: "source-map",
 };
 
 //script:

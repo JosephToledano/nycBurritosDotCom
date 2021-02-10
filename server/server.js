@@ -5,8 +5,12 @@ const path = require("path");
 const port = process.env.PORT || 3001;
 
 const apiRouter = require("./routes/api");
+const signUpRouter = require("./routes/signup");
+const loginRouter = require("./routes/login");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -14,6 +18,8 @@ app.use(express.json());
 app.use("/build", express.static(path.join(__dirname, "../build")));
 // serve index.html on the route '/'
 app.use("/api", apiRouter);
+app.use("/signup", signUpRouter);
+app.use("/login", loginRouter);
 
 // Send homepage - Optional?
 app.get("/*", (req, res) => {
@@ -29,9 +35,4 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
-});
-
-// Listener
-app.listen(port, () => {
-  console.log(`Port is listening to ${port}`);
 });

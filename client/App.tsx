@@ -1,15 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
 import "./index.css";
 import MainText from "./components/MainText.js";
 import Nav from "./components/Nav.js";
 import ReviewCardList from "./components/ReviewCardList";
 import ReviewButton from "./components/ReviewButton.js";
-import fetch from "isomorphic-fetch";
+import LoginBox from "./components/LoginBox";
+// import fetch from "isomorphic-fetch";
 import BurritoTypeDropdown from "./components/dropdown-filters/BurritoTypeDropdown.js";
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/NeighborhoodTypeDropdown.js";
 
-export default class App extends React.Component {
+interface AppState {
+  newReview: any;
+  reviews: any;
+  reviewsForNeighborhood: any;
+  reviewsForBurritoType: any;
+  reviewSeen: boolean;
+  updateSeen: boolean;
+  burritoTypeDropdownItem: string;
+  neighborhoodTypeDropdownItem: string;
+  isLoggedIn: boolean;
+  currentUser: string;
+}
+
+class App extends React.Component<any, AppState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,6 +41,8 @@ export default class App extends React.Component {
       updateSeen: false,
       burritoTypeDropdownItem: null,
       neighborhoodTypeDropdownItem: null,
+      isLoggedIn: false,
+      currentUser: "",
     };
     this.handleReviewPopUpClick = this.handleReviewPopUpClick.bind(this);
     this.handleUpdatePopUpClick = this.handleUpdatePopUpClick.bind(this);
@@ -38,6 +53,8 @@ export default class App extends React.Component {
     this.handleRestaurantNameChange = this.handleRestaurantNameChange.bind(
       this
     );
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleReviewUpdate = this.handleReviewUpdate.bind(this);
@@ -64,6 +81,56 @@ export default class App extends React.Component {
         let currentReviews = this.state.reviews;
         response.forEach((review) => currentReviews.push(review));
         this.setState({ reviews: currentReviews });
+      })
+      .catch((err) => console.log(err));
+  }
+  // event handler for when user hits log in button
+  handleLogin(username, password) {
+    console.log("these are the username and password", username, password);
+    fetch("login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/JSON",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        console.log("this is the data: ", data);
+        this.setState((prevState) => {
+          const newState = { ...prevState };
+          newState.currentUser = data.username;
+          newState.isLoggedIn = true;
+          return newState;
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  // event handler for when user hits log in button
+  handleSignUp(username, password) {
+    fetch("signup/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/JSON",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+        this.setState((prevState) => {
+          const newState = { ...prevState };
+          newState.currentUser = data.username;
+          newState.isLoggedIn = true;
+          return newState;
+        });
       })
       .catch((err) => console.log(err));
   }
@@ -262,14 +329,16 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="main-page">
-        <Nav />
+        <Nav handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
         <div className="dropdown-menus">
+          <div>
+            <p>The current user is: {this.state.currentUser}</p>
+          </div>
           <BurritoTypeDropdown
             reviews={this.state.reviews}
             handleBurritoTypeDropdownChange={
               this.handleBurritoTypeDropdownChange
             }
-            handleDropDownSubmit={this.handleDropDownSubmit}
             burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
             neighborhoodTypeDropdownItem={
               this.state.neighborhoodTypeDropdownItem
@@ -309,7 +378,6 @@ export default class App extends React.Component {
             }
             reviewsForNeighborhood={this.state.reviewsForNeighborhood}
             handleNeighborhoodClick={this.handleNeighborhoodClick}
-            handleDelete={this.handleDelete}
             handleUpdatePopUpClick={this.handleUpdatePopUpClick}
             updateSeen={this.state.updateSeen}
             reviews={this.state.reviews}
@@ -320,3 +388,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;
