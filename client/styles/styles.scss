@@ -96,7 +96,7 @@
   margin-left: 30%;
 }
 #review-button {
-  margin-top: 30%;
+  // margin-top: 30%;
   margin-left: 10%;
   border: none;
   border-radius: 20px;
@@ -269,8 +269,34 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-left: 20%;
 }
+
+.FeedContainerText{
+  font-family: "Permanent Marker", cursive;
+  margin-left: 10%;
+
+}
+.carousel-borough-name{
+  font-family: "Permanent Marker", cursive;
+  margin: 1%;
+}
+.top10BurritosText{
+  font-family: "Permanent Marker", cursive;
+  margin-left: 10%;
+
+}
+
+.homepageCarouselHeader{
+  font-family: "Permanent Marker", cursive;
+  margin-left: 10%;
+
+}
+
+.carousel-feed-section{
+  display: flex;
+  flex-direction: column;
+}
+
 #form-field {
   display: flex;
   border: black 1px solid;
@@ -327,8 +353,8 @@
   margin-left: 90%;
 }
 .dropdown-menu {
-  float: right;
   font-family: "Permanent Marker", cursive;
+  margin-top: 30%;
 }
 #dropdown-submit-button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -336,14 +362,17 @@
   background-color: #add8e6;
   color: white;
 }
-.dropdown-menus {
-  float: right;
+.carousel-dropdown-menus{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  margin-right: 2%;
-  margin-top: 30%;
+  
+}
+.dropdown-menus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Permanent Marker", cursive;
 }
 .dropdown-select {
   background-color: white;
@@ -362,4 +391,7 @@
 }
 .burrito-profile-label {
   margin-left: 10px;
+}
+feed-dropdown{
+  margin: 0;
 }

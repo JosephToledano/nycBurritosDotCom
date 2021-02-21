@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Neighborhoods from '../pages/Neighborhoods'
-import BurritoTypeDropdown from './dropdown-filters/BurritoTypeDropdown'
-import NeighborhoodTypeDropdown from './dropdown-filters/NeighborhoodTypeDropdown'
+import CarouselBurritoDropdown from './dropdown-filters/Carousels/CarouselBurritoDropdown'
+import CarouselNeighborhoodDropdown from './dropdown-filters/Carousels/CarouselNeighborhoodDropdown'
 import Carousel from './Carousel'
 
 const NeighborhoodFeed = ({
@@ -56,10 +56,10 @@ for (let borough in boroughs){
   if (borough === 'Brooklyn') {
   return boroughs[borough].map((review, index) => {
       return (
-        <div>
+        <div className="carousel-feed-section">
           <p className="carousel-borough-name">Brooklyn</p>
           <div className="dropdown-menus">
-            <BurritoTypeDropdown
+            <CarouselBurritoDropdown
               reviews={boroughs[borough]}
               handleBurritoTypeDropdownChange={
                 handleBurritoTypeDropdownChange
@@ -70,7 +70,7 @@ for (let borough in boroughs){
               }
             />
             {/* <BurritoTypeDropdown/> */}
-            <NeighborhoodTypeDropdown
+            <CarouselNeighborhoodDropdown
               reviews={boroughs[borough]}
               handleNeighborhoodTypeDropdownChange={
                 handleNeighborhoodTypeDropdownChange
@@ -101,10 +101,10 @@ for (let borough in boroughs){
     return boroughs[borough].map((review, index) => {
       console.log('this is the review', review)
         return (
-          <div>
+          <div className="carousel-feed-section">
             <p className="carousel-borough-name">Manhatten</p>
             <div className="dropdown-menus">
-            <BurritoTypeDropdown
+            <CarouselBurritoDropdown
               reviews={boroughs[borough]}
               handleBurritoTypeDropdownChange={
                 handleBurritoTypeDropdownChange
@@ -115,7 +115,7 @@ for (let borough in boroughs){
               }
             />
             {/* <BurritoTypeDropdown/> */}
-            <NeighborhoodTypeDropdown
+            <CarouselNeighborhoodDropdown
               reviews={boroughs[borough]}
               handleNeighborhoodTypeDropdownChange={
                 handleNeighborhoodTypeDropdownChange
@@ -145,10 +145,10 @@ for (let borough in boroughs){
     if (borough === 'The_Bronx') {
       return boroughs[borough].map((review, index) => {
           return (
-            <div>
+            <div className="carousel-feed-section">
               <p className="carousel-borough-name">The Bronx</p>
               <div className="dropdown-menus">
-            <BurritoTypeDropdown
+            <CarouselBurritoDropdown
               reviews={boroughs[borough]}
               handleBurritoTypeDropdownChange={
                 handleBurritoTypeDropdownChange
@@ -159,7 +159,7 @@ for (let borough in boroughs){
               }
             />
             {/* <BurritoTypeDropdown/> */}
-            <NeighborhoodTypeDropdown
+            <CarouselNeighborhoodDropdown
               reviews={boroughs[borough]}
               handleNeighborhoodTypeDropdownChange={
                 handleNeighborhoodTypeDropdownChange
@@ -189,10 +189,10 @@ for (let borough in boroughs){
       if (borough === 'Queens') {
         return  boroughs[borough].map((review, index) => {
             return (
-              <div>
+              <div className="carousel-feed-section">
                 <p className="carousel-borough-name">Queens</p>
                 <div className="dropdown-menus">
-            <BurritoTypeDropdown
+            <CarouselBurritoDropdown
               reviews={boroughs[borough]}
               handleBurritoTypeDropdownChange={
                 handleBurritoTypeDropdownChange
@@ -203,7 +203,7 @@ for (let borough in boroughs){
               }
             />
             {/* <BurritoTypeDropdown/> */}
-            <NeighborhoodTypeDropdown
+            <CarouselNeighborhoodDropdown
               reviews={boroughs[borough]}
               handleNeighborhoodTypeDropdownChange={
                 handleNeighborhoodTypeDropdownChange
@@ -233,10 +233,10 @@ for (let borough in boroughs){
         if (borough === 'Staten Island') {
           return boroughs[borough].map((review, index) => {
               return (
-                <div>
+                <div className="carousel-feed-section">
                   <p className="carousel-borough-name">Staten Island</p>
                   <div className="dropdown-menus">
-            <BurritoTypeDropdown
+            <CarouselBurritoDropdown
               reviews={boroughs[borough]}
               handleBurritoTypeDropdownChange={
                 handleBurritoTypeDropdownChange
@@ -247,7 +247,7 @@ for (let borough in boroughs){
               }
             />
             {/* <BurritoTypeDropdown/> */}
-            <NeighborhoodTypeDropdown
+            <CarouselNeighborhoodDropdown
               reviews={boroughs[borough]}
               handleNeighborhoodTypeDropdownChange={
                 handleNeighborhoodTypeDropdownChange

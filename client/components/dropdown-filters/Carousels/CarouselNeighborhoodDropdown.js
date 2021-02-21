@@ -1,19 +1,19 @@
 import React from 'react'
 
- const BurritoTypeDropdown = (props) => {
+ const CarouselNeighborhoodDropdown = (props) => {
 
   let allChoices = <option key = '0' value="All">All</option>
   
     return (
-      <div className="dropdown-menu">
+      <div className="carousel-dropdown-menu">
         <form >
           <label>
-              Filter by type of burrito:
-            <select className ="dropdown-select" value={props.burritoTypeDropdownItem} onChange={props.handleBurritoTypeDropdownChange}>
+              Filter by neighborhood:
+            <select className ="dropdown-select" value={props.neighborhoodTypeDropdownItem} onChange={props.handleNeighborhoodTypeDropdownChange}>
               {allChoices}
               {props.reviews.map((review) => (
                 // console.log(review)
-                  <option key = {review.id} value={review.burrito_type}>{review.burrito_type}</option>
+                  <option key = {review._id} value={review.neighborhood}>{review.neighborhood}</option>
                 ))}
             </select>
           </label>
@@ -23,4 +23,5 @@ import React from 'react'
     );
   }
 
-  export default BurritoTypeDropdown
+  export default CarouselNeighborhoodDropdown;
+

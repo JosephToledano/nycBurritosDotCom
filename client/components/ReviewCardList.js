@@ -15,6 +15,7 @@ const ReviewCardList = (props) => {
           return (
             <ReviewCardBox
               // dropdownItem = {props.dropdownItem}
+              key={review._id}
               id={review._id}
               neighborhood={review.neighborhood}
               rating={review.rating}
@@ -37,6 +38,7 @@ const ReviewCardList = (props) => {
           return (
             <ReviewCardBox
               // dropdownItem = {props.dropdownItem}
+              key={review._id}
               id={review._id}
               neighborhood={review.neighborhood}
               rating={review.rating}
@@ -59,6 +61,7 @@ const ReviewCardList = (props) => {
           return (
             <ReviewCardBox
               // dropdownItem = {props.dropdownItem}
+              key={review._id}
               id={review._id}
               neighborhood={review.neighborhood}
               rating={review.rating}
@@ -82,6 +85,7 @@ const ReviewCardList = (props) => {
           return (
             <ReviewCardBox
               // dropdownItem = {props.dropdownItem}
+              key={review._id}
               id={review._id}
               neighborhood={review.neighborhood}
               rating={review.rating}

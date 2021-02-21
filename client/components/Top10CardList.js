@@ -28,8 +28,8 @@ const Top10CardList = ({
 const topReviews = getTopReviews(reviews)
  
 return(
-  <><p>Top 10 Burritos in NYC</p>
-    <div>
+  <div className="top10BurritosSection">
+  <p className="top10BurritosText">Top 10 Burritos in NYC</p>
     <Carousel
       handleDelete={handleDelete}
       burritoTypeDropdownItem={burritoTypeDropdownItem}
@@ -41,7 +41,7 @@ return(
       reviews={topReviews}
       newReview={newReview} />
       </div>
-      </>
+     
 )
 }
 

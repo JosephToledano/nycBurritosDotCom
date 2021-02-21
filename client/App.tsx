@@ -7,8 +7,8 @@ import ReviewButton from "./components/ReviewButton.js";
 import LoginBox from "./components/LoginBox";
 import ReviewCardCarousel from "./components/Carousel";
 // import fetch from "isomorphic-fetch";
-import BurritoTypeDropdown from "./components/dropdown-filters/BurritoTypeDropdown.js";
-import NeighborhoodTypeDropdown from "./components/dropdown-filters/NeighborhoodTypeDropdown.js";
+import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown.js";
+import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown.js";
 import NeighborhoodFeed from './components/NeighborhoodFeed'
 import Carousel from "./components/Carousel";
 import Top10CardList from './components/Top10CardList.js'

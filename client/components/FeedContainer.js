@@ -6,7 +6,7 @@ const FeedContainer = (props) => {
 console.log(props)
 return(
   <>
-  <h2>Here are the feeds</h2>
+  <h2 className="FeedContainerText">Rankings by Borough</h2>
   <NeighborhoodFeed 
           handleDelete={props.handleDelete}
           burritoTypeDropdownItem={props.burritoTypeDropdownItem}
