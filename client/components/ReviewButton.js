@@ -1,32 +1,36 @@
-import React from 'react'
-import PopUpReviewForm from "./PopUpReviewForm"; 
+import React from "react";
+import PopUpReviewForm from "./PopUpReviewForm";
 
 const ReviewButton = (props) => {
-  
   const clickedReview = props.reviewSeen;
   let form;
   if (clickedReview) {
-    form = <PopUpReviewForm 
-        handleBurritoTypeChange = {props.handleBurritoTypeChange} 
-        handleRatingChange = {props.handleRatingChange}
-        handleRestaurantNameChange = {props.handleRestaurantNameChange}
-        handlePriceChange = {props.handlePriceChange}
-        handleNeighborhoodChange = {props.handleNeighborhoodChange}
-        handleFormSubmit = {props.handleFormSubmit}
-        handleReviewPopUpClick = {props.handleReviewPopUpClick}
-        newReview = {props.newReview}
-    />;
+    form = (
+      <PopUpReviewForm
+        handleBurritoTypeChange={props.handleBurritoTypeChange}
+        handleRatingChange={props.handleRatingChange}
+        handleRestaurantNameChange={props.handleRestaurantNameChange}
+        handlePriceChange={props.handlePriceChange}
+        handleNeighborhoodChange={props.handleNeighborhoodChange}
+        handleFormSubmit={props.handleFormSubmit}
+        handleBoroughChange={props.handleBoroughChange}
+        handleReviewPopUpClick={props.handleReviewPopUpClick}
+        newReview={props.newReview}
+      />
+    );
   } else {
-    form = null
+    form = null;
   }
   return (
-   <div>
-    <div className="review-button-section">
-      <button id = 'review-button'  onClick= {props.handleReviewPopUpClick}>Submit a Review</button>
+    <div>
+      <div className="review-button-section">
+        <button id="review-button" onClick={props.handleReviewPopUpClick}>
+          Submit a Review
+        </button>
+      </div>
+      {form}
     </div>
-    {form}
-   </div>
   );
- }
+};
 
- export default ReviewButton;
+export default ReviewButton;

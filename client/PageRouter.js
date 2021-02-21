@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import "./index.css";
+// import "./index.css";
 import App from "./App";
 import Restaurants from "./pages/Restaurants.js";
 import Neighborhoods from "./pages/Neighborhoods.js";

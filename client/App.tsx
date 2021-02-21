@@ -1,13 +1,17 @@
 import * as React from "react";
-import "./index.css";
+// import "./index.css";
 import MainText from "./components/MainText.js";
 import Nav from "./components/Nav.js";
 import ReviewCardList from "./components/ReviewCardList";
 import ReviewButton from "./components/ReviewButton.js";
 import LoginBox from "./components/LoginBox";
+import ReviewCardCarousel from "./components/Carousel";
 // import fetch from "isomorphic-fetch";
 import BurritoTypeDropdown from "./components/dropdown-filters/BurritoTypeDropdown.js";
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/NeighborhoodTypeDropdown.js";
+import NeighborhoodFeed from './components/NeighborhoodFeed'
+import Carousel from "./components/Carousel";
+import FeedContainer from "./components/FeedContainer.js";
 
 interface AppState {
   newReview: any;
@@ -20,6 +24,7 @@ interface AppState {
   neighborhoodTypeDropdownItem: string;
   isLoggedIn: boolean;
   currentUser: string;
+  currentUserId: number;
 }
 
 class App extends React.Component<any, AppState> {
@@ -31,6 +36,7 @@ class App extends React.Component<any, AppState> {
         burrito_type: "",
         restaurant_name: "",
         neighborhood: "",
+        borough: "",
         price: 0,
         rating: 0,
       },
@@ -41,6 +47,7 @@ class App extends React.Component<any, AppState> {
       updateSeen: false,
       burritoTypeDropdownItem: null,
       neighborhoodTypeDropdownItem: null,
+      currentUserId: -1,
       isLoggedIn: false,
       currentUser: "",
     };
@@ -50,6 +57,7 @@ class App extends React.Component<any, AppState> {
     this.handleBurritoTypeChange = this.handleBurritoTypeChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
     this.handleNeighborhoodChange = this.handleNeighborhoodChange.bind(this);
+    this.handleBoroughChange = this.handleBoroughChange.bind(this);
     this.handleRestaurantNameChange = this.handleRestaurantNameChange.bind(
       this
     );
@@ -58,6 +66,7 @@ class App extends React.Component<any, AppState> {
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleReviewUpdate = this.handleReviewUpdate.bind(this);
+    this.googleLogin = this.googleLogin.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     // handlePopUpClick = {this.handlePopUpClick};
 
@@ -72,7 +81,7 @@ class App extends React.Component<any, AppState> {
 
   componentDidMount() {
     console.log(this.state.reviews);
-    fetch("api/")
+    fetch("/api")
       .then((data) => {
         return data.json();
       })
@@ -84,6 +93,7 @@ class App extends React.Component<any, AppState> {
       })
       .catch((err) => console.log(err));
   }
+
   // event handler for when user hits log in button
   handleLogin(username, password) {
     console.log("these are the username and password", username, password);
@@ -104,6 +114,7 @@ class App extends React.Component<any, AppState> {
           const newState = { ...prevState };
           newState.currentUser = data.username;
           newState.isLoggedIn = true;
+          newState.currentUserId = data.user_id;
           return newState;
         });
       })
@@ -111,7 +122,7 @@ class App extends React.Component<any, AppState> {
   }
 
   // event handler for when user hits log in button
-  handleSignUp(username, password) {
+  handleSignUp(username, password): void {
     fetch("signup/", {
       method: "POST",
       headers: {
@@ -128,6 +139,7 @@ class App extends React.Component<any, AppState> {
         this.setState((prevState) => {
           const newState = { ...prevState };
           newState.currentUser = data.username;
+          newState.currentUserId = data.user_id;
           newState.isLoggedIn = true;
           return newState;
         });
@@ -135,23 +147,31 @@ class App extends React.Component<any, AppState> {
       .catch((err) => console.log(err));
   }
 
-  handleFormSubmit = (newReview) => {
+  handleFormSubmit = (newReview): void => {
     newReview.preventDefault();
+    // if (this.state.currentUserId === -1) {
+    //   alert("Please login to submit a review");
+    //   return;
+    // }
     fetch("api/addReview", {
       method: "POST",
       headers: {
         "Content-Type": "Application/JSON",
       },
       body: JSON.stringify({
+        user_id: this.state.currentUserId,
         id: this.state.newReview.id,
         burrito_type: this.state.newReview.burrito_type,
         restaurant_name: this.state.newReview.restaurant_name,
+        borough: this.state.newReview.borough,
         neighborhood: this.state.newReview.neighborhood,
         price: this.state.newReview.price,
         rating: this.state.newReview.rating,
       }),
     })
       .then((res) => {
+        console.log("this is the res" + res);
+
         let newRatingToAdd = this.state.newReview;
         let newReviewsArr = this.state.reviews;
         newReviewsArr.unshift(newRatingToAdd);
@@ -170,17 +190,17 @@ class App extends React.Component<any, AppState> {
             burrito_type: "",
             price: 0,
             neighborhood: "",
+            borough: "",
             rating: 0,
           },
         });
-        location.reload();
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  handleReviewUpdate = (event) => {
+  handleReviewUpdate = (event): void => {
     fetch(`api/updateReview/{event.target.id}`, {
       method: "PUT",
       headers: {
@@ -191,6 +211,7 @@ class App extends React.Component<any, AppState> {
         burrito_type: this.state.newReview.burrito_type,
         restaurant_type: this.state.newReview.restaurant_type,
         neighborhood: this.state.newReview.neighborhood,
+        borough: this.state.newReview.borough,
         price: this.state.newReview.price,
         rating: this.state.newReview.rating,
       }),
@@ -214,6 +235,7 @@ class App extends React.Component<any, AppState> {
             burrito_type: "",
             price: 0,
             neighborhood: "",
+            borough: "",
             rating: 0,
           },
         });
@@ -223,7 +245,7 @@ class App extends React.Component<any, AppState> {
       });
   };
 
-  handleDelete = (event) => {
+  handleDelete = (event): void => {
     console.log("this is the event target", event.target.id);
     const deletedId = event.target.id;
     console.log("this is the id", deletedId);
@@ -239,7 +261,7 @@ class App extends React.Component<any, AppState> {
   };
   // newReview.preventDefault();
 
-  handleReviewPopUpClick = () => {
+  handleReviewPopUpClick = (): void => {
     if (this.state.reviewSeen === false) {
       this.setState({ reviewSeen: true });
       console.log("you clicked me");
@@ -250,7 +272,7 @@ class App extends React.Component<any, AppState> {
     }
     console.log("wtf");
   };
-  handleUpdatePopUpClick = () => {
+  handleUpdatePopUpClick = (): void => {
     if (this.state.updateSeen === false) {
       this.setState({ updateSeen: true });
       console.log("you clicked me");
@@ -312,6 +334,13 @@ class App extends React.Component<any, AppState> {
     this.setState({ newReview: updatedReviewList });
   }
 
+  handleBoroughChange(event) {
+    console.log(event);
+    let updatedReviewList = this.state.newReview;
+    updatedReviewList.borough = event.target.value;
+    this.setState({ newReview: updatedReviewList });
+  }
+
   handlePriceChange(event) {
     console.log(event);
     let updatedReviewList = this.state.newReview;
@@ -326,51 +355,92 @@ class App extends React.Component<any, AppState> {
     this.setState({ newReview: updatedReviewList });
   }
 
+  googleLogin() {
+    fetch("/google", {
+      method: "GET",
+      headers: {
+        "Content-Type": "Application/JSON",
+      },
+    });
+  }
+
   render() {
     return (
-      <div className="main-page">
-        <Nav handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
-        <div className="dropdown-menus">
-          <div>
-            <p>The current user is: {this.state.currentUser}</p>
+      <>
+        <React.Fragment>
+          <Nav
+            handleLogin={this.handleLogin}
+            handleSignUp={this.handleSignUp}
+            currentUser={this.state.currentUser}
+            googleLogin={this.googleLogin}
+          />
+          <MainText />
+          <div className="dropdown-menus">
+            <BurritoTypeDropdown
+              reviews={this.state.reviews}
+              handleBurritoTypeDropdownChange={
+                this.handleBurritoTypeDropdownChange
+              }
+              burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
+              neighborhoodTypeDropdownItem={
+                this.state.neighborhoodTypeDropdownItem
+              }
+            />
+            {/* <BurritoTypeDropdown/> */}
+            <NeighborhoodTypeDropdown
+              reviews={this.state.reviews}
+              handleNeighborhoodTypeDropdownChange={
+                this.handleNeighborhoodTypeDropdownChange
+              }
+              neighborhoodTypeDropdownItem={
+                this.state.neighborhoodTypeDropdownItem
+              }
+              burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
+            />
           </div>
-          <BurritoTypeDropdown
-            reviews={this.state.reviews}
-            handleBurritoTypeDropdownChange={
-              this.handleBurritoTypeDropdownChange
-            }
-            burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
-            neighborhoodTypeDropdownItem={
-              this.state.neighborhoodTypeDropdownItem
-            }
+          <ReviewButton
+            reviewSeen={this.state.reviewSeen}
+            handleReviewPopUpClick={this.handleReviewPopUpClick}
+            handleBurritoTypeChange={this.handleBurritoTypeChange}
+            handleRatingChange={this.handleRatingChange}
+            handleRestaurantNameChange={this.handleRestaurantNameChange}
+            handlePriceChange={this.handlePriceChange}
+            handleNeighborhoodChange={this.handleNeighborhoodChange}
+            handleBoroughChange={this.handleBoroughChange}
+            handleFormSubmit={this.handleFormSubmit}
+            newReview={this.state.newReview}
           />
-          {/* <BurritoTypeDropdown/> */}
-          <NeighborhoodTypeDropdown
-            reviews={this.state.reviews}
-            handleNeighborhoodTypeDropdownChange={
-              this.handleNeighborhoodTypeDropdownChange
-            }
-            neighborhoodTypeDropdownItem={
-              this.state.neighborhoodTypeDropdownItem
-            }
-            burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
-          />
-        </div>
-        <ReviewButton
-          reviewSeen={this.state.reviewSeen}
-          handleReviewPopUpClick={this.handleReviewPopUpClick}
-          handleBurritoTypeChange={this.handleBurritoTypeChange}
-          handleRatingChange={this.handleRatingChange}
-          handleRestaurantNameChange={this.handleRestaurantNameChange}
-          handlePriceChange={this.handlePriceChange}
-          handleNeighborhoodChange={this.handleNeighborhoodChange}
-          handleFormSubmit={this.handleFormSubmit}
+        </React.Fragment>
+        <Carousel
+          handleDelete={this.handleDelete}
+          burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
+          neighborhoodTypeDropdownItem={this.state.neighborhoodTypeDropdownItem}
+          reviewsForNeighborhood={this.state.reviewsForNeighborhood}
+          handleNeighborhoodClick={this.handleNeighborhoodClick}
+          handleUpdatePopUpClick={this.handleUpdatePopUpClick}
+          updateSeen={this.state.updateSeen}
+          reviews={this.state.reviews}
           newReview={this.state.newReview}
         />
-        <div className="main-container">
-          <MainText />
-
-          <ReviewCardList
+         <FeedContainer
+          handleDelete={this.handleDelete}
+          burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
+          neighborhoodTypeDropdownItem={this.state.neighborhoodTypeDropdownItem}
+          reviewsForNeighborhood={this.state.reviewsForNeighborhood}
+          handleNeighborhoodClick={this.handleNeighborhoodClick}
+          handleUpdatePopUpClick={this.handleUpdatePopUpClick}
+          updateSeen={this.state.updateSeen}
+          reviews={this.state.reviews}
+          newReview={this.state.newReview}
+          handleBurritoTypeDropdownChange={
+            this.handleBurritoTypeDropdownChange
+          }
+          handleNeighborhoodTypeDropdownChange={
+            this.handleNeighborhoodTypeDropdownChange
+          }
+        />
+        
+        {/* <ReviewCardList
             handleDelete={this.handleDelete}
             burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
             neighborhoodTypeDropdownItem={
@@ -382,9 +452,8 @@ class App extends React.Component<any, AppState> {
             updateSeen={this.state.updateSeen}
             reviews={this.state.reviews}
             newReview={this.state.newReview}
-          />
-        </div>
-      </div>
+          /> */}
+      </>
     );
   }
 }

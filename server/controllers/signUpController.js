@@ -15,7 +15,7 @@ signUpController.addUser = (req, res, next) => {
       return next(error);
     }
     console.log("this is the response", response);
-    res.locals.id = response.rows[0]._id;
+    res.locals.user_id = response.rows[0]._id;
     res.locals.username = response.rows[0].username;
     res.locals.password = response.rows[0].password;
     return next();

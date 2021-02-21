@@ -1,44 +1,97 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-const PopUpReviewForm = (props) => {
-  const burritoIcon = 'U+1F32F'
+const PopUpReviewForm = ({
+  handleReviewPopUpClick,
+  newReview,
+  handleBurritoTypeChange,
+  handleRestaurantNameChange,
+  handleFormSubmit,
+  handleNeighborhoodChange,
+  handleBoroughChange,
+  handlePriceChange,
+  handleRatingChange,
+} = props) => {
   return (
-   
-   <div>
-     <div >
-     <div className="popup-review-form">
-     <span  className="popup-review-form-x" onClick={props.handleReviewPopUpClick}>&times;    </span>
-        <form onSubmit={props.handleFormSubmit}>
-            <div className ='burrito-form'>
-            <label className="burrito-form-label">
+    <div>
+      <div>
+        <div className="popup-review-form">
+          <span
+            className="popup-review-form-x"
+            onClick={handleReviewPopUpClick}
+          >
+            &times;{" "}
+          </span>
+          <form onSubmit={handleFormSubmit}>
+            <div className="burrito-form">
+              <label className="burrito-form-label">
                 Burrito Type:
-                <input id = 'form-field' type="text" value= {props.newReview.burrito_type}  placeholder='Super Carne Asada' onChange={props.handleBurritoTypeChange}/>
-            </label>
-            <label className="burrito-form-label">
+                <input
+                  id="form-field"
+                  type="text"
+                  value={newReview.burrito_type}
+                  placeholder="Super Carne Asada"
+                  onChange={handleBurritoTypeChange}
+                />
+              </label>
+              <label className="burrito-form-label">
                 Restaurant:
-                <input id = 'form-field' type="text" value= {props.newReview.restaurant_name}  placeholder='The Cantina' onChange={props.handleRestaurantNameChange}/>
-            </label>
-            <label className="burrito-form-label">
+                <input
+                  id="form-field"
+                  type="text"
+                  value={newReview.restaurant_name}
+                  placeholder="The Cantina"
+                  onChange={handleRestaurantNameChange}
+                />
+              </label>
+              <label className="burrito-form-label">
                 Neighborhood:
-                <input  id = 'form-field' type="text" value= {props.newReview.neighborhood} placeholder='Mos Eisley' onChange= {props.handleNeighborhoodChange} />
-            </label>
-            <label className="burrito-form-label">
+                <input
+                  id="form-field"
+                  type="text"
+                  value={newReview.neighborhood}
+                  placeholder="Mos Eisley"
+                  onChange={handleNeighborhoodChange}
+                />
+              </label>
+              <label className="burrito-form-label">
+                Borough:
+                <input
+                  id="form-field"
+                  type="text"
+                  value={newReview.borough}
+                  placeholder="Mos Eisley"
+                  onChange={handleBoroughChange}
+                />
+              </label>
+              <label className="burrito-form-label">
                 Price:
-                <input id = 'form-field' type="text" value= {props.newReview.price}  placeholder='100 million dollars' onChange={props.handlePriceChange} />
-            </label>
-            <label className="burrito-form-label">
+                <input
+                  id="form-field"
+                  type="text"
+                  value={newReview.price}
+                  placeholder="100 million dollars"
+                  onChange={handlePriceChange}
+                />
+              </label>
+              <label className="burrito-form-label">
                 Rating (Out of 10):
-                <input id = 'form-field' type="text" value= {props.newReview.rating} placeholder='up to 11' onChange={props.handleRatingChange} />
-            </label>
+                <input
+                  id="form-field"
+                  type="text"
+                  value={newReview.rating}
+                  placeholder="up to 11"
+                  onChange={handleRatingChange}
+                />
+              </label>
             </div>
-            <div className ="form-submit-button">
-            <input id = 'form-submit-button' type="submit" value= " Send It " />
+            <div className="form-submit-button">
+              <input id="form-submit-button" type="submit" value=" Send It " />
             </div>
-        </form>
-     </div>
+          </form>
+        </div>
+      </div>
     </div>
-   </div>
   );
- }
+};
 
- export default PopUpReviewForm;
+export default PopUpReviewForm;

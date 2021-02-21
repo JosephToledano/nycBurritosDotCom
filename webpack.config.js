@@ -17,9 +17,10 @@ module.exports = {
     publicPath: "/build/",
     historyApiFallback: true,
     proxy: {
+      "/google": "http://localhost:3001/",
       "/api": "http://localhost:3001/",
-      "/login/": "http://localhost:3001/",
-      "/signup/": "http://localhost:3001/",
+      "/login": "http://localhost:3001/",
+      "/signup": "http://localhost:3001/",
     },
   },
   module: {
@@ -53,12 +54,8 @@ module.exports = {
       {
         rules: [
           {
-            test: /\.(png|jpe?g|gif)$/i,
-            use: [
-              {
-                loader: "file-loader",
-              },
-            ],
+            test: /\.s[ac]ss$/i,
+            use: ["style-loader", "css-loader", "sass-loader"],
           },
         ],
       },

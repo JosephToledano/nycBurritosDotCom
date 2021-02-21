@@ -1,28 +1,37 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
-const LoginBox = ({ handleSignUp, handleLogin } = props) => {
+import SignupBox from "./SignupBox";
+const LoginBox = ({ handleSignUp, handleLogin, googleLogin } = props) => {
   const [userName, setUserName] = useState("username");
   const [password, setPassword] = useState("password");
+  const [showingSignUp, setSignUpVisible] = useState(false);
   const [clicked, setClick] = useState(false);
   const [closed, setClose] = useState(false);
 
-  if (clicked && closed === false) {
+  if (clicked && closed === false && showingSignUp === false) {
     return (
       <React.Fragment>
-        <div
-          className="close"
-          onClick={(e) => {
-            closed === false
-              ? setClose((closed = true))
-              : setClose((closed = false));
-          }}
-        >
-          X
-        </div>
-        <div className="LoginForm">
+        <div className="loginBox">
           <div className="loginForm">
-            <p className="loginHere">Login Here</p>
+            <div
+              id="close"
+              onClick={(e) => {
+                closed === false
+                  ? setClose((closed = true))
+                  : setClose((closed = false));
+              }}
+            >
+              X
+            </div>
+            <p className="loginText">Login Here</p>
+            <p
+              className="signUpText"
+              onClick={(e) => setSignUpVisible((showingSignUp = true))}
+            >
+              Don't have an account yet? Sign up here!
+            </p>
+
             <label>
               <input
                 type="text"
@@ -50,11 +59,28 @@ const LoginBox = ({ handleSignUp, handleLogin } = props) => {
         </div>
       </React.Fragment>
     );
+  } else if (showingSignUp === true) {
+    return (
+      <React.Fragment>
+        <div
+          id="close"
+          onClick={(e) => {
+            showingSignUp === false
+              ? setSignUpVisible((showingSignUp = true))
+              : setSignUpVisible((showingSignUp = false));
+          }}
+        >
+          X
+        </div>
+        <SignupBox handleSignUp={handleSignUp} />;
+      </React.Fragment>
+    );
   } else {
     return (
       <>
         <React.Fragment>
           <h4
+            className="loginHere"
             onClick={(e) => {
               if (clicked === false) {
                 setClick((clicked = true));
@@ -64,7 +90,7 @@ const LoginBox = ({ handleSignUp, handleLogin } = props) => {
               }
             }}
           >
-            Login here
+            Login
           </h4>
         </React.Fragment>
       </>
