@@ -2,6 +2,8 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 // const { clientID, clientSecret } = require("../settings");
 const db = require("../db/burritoBlogModels");
+const { clientID, clientSecret } = require("../../settings.js");
+
 
 const googleController = {};
 
@@ -19,9 +21,8 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "882541225451-5r08e73d6ar39drlkqjalk3oa9lqeukq.apps.googleusercontent.com",
-      clientSecret: "thor62giuJGQ-BiXZdFZXSrW",
+      clientID: clientID,
+      clientSecret: clientSecret,
       callbackURL: "http://localhost:3001/google/callback",
     },
 

@@ -11,6 +11,7 @@ import BurritoTypeDropdown from "./components/dropdown-filters/BurritoTypeDropdo
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/NeighborhoodTypeDropdown.js";
 import NeighborhoodFeed from './components/NeighborhoodFeed'
 import Carousel from "./components/Carousel";
+import Top10CardList from './components/Top10CardList.js'
 import FeedContainer from "./components/FeedContainer.js";
 
 interface AppState {
@@ -411,6 +412,24 @@ class App extends React.Component<any, AppState> {
             newReview={this.state.newReview}
           />
         </React.Fragment>
+        <Top10CardList
+          handleDelete={this.handleDelete}
+          burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
+          neighborhoodTypeDropdownItem={this.state.neighborhoodTypeDropdownItem}
+          reviewsForNeighborhood={this.state.reviewsForNeighborhood}
+          handleNeighborhoodClick={this.handleNeighborhoodClick}
+          handleUpdatePopUpClick={this.handleUpdatePopUpClick}
+          updateSeen={this.state.updateSeen}
+          reviews={this.state.reviews}
+          newReview={this.state.newReview}
+          handleBurritoTypeDropdownChange={
+            this.handleBurritoTypeDropdownChange
+          }
+          handleNeighborhoodTypeDropdownChange={
+            this.handleNeighborhoodTypeDropdownChange
+          }
+        />
+        <p className ="homepageCarouselHeader">All Reviews</p>
         <Carousel
           handleDelete={this.handleDelete}
           burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
