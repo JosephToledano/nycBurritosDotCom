@@ -9,9 +9,9 @@ const SignupBox = ({ handleSignUp, handleLogin, signUpClicked } = props) => {
 
   return (
     <React.Fragment>
-      <div className="LoginForm">
         <div className="loginForm">
-          <p className="loginHereText">Sign up</p>
+          <form>
+          <p className="signUpText"> 🌯 Sign up 🌯</p>
           <label>
             <input
               type="text"
@@ -32,13 +32,13 @@ const SignupBox = ({ handleSignUp, handleLogin, signUpClicked } = props) => {
           </label>
           <input
             type="submit"
-            className="submitButton"
+            className="signUpButton"
             onClick={() => {
               handleSignUp(userName, password);
             }}
           />
+          </form>
         </div>
-      </div>
     </React.Fragment>
   );
 

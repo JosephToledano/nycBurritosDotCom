@@ -26,6 +26,7 @@ interface AppState {
   isLoggedIn: boolean;
   currentUser: string;
   currentUserId: number;
+  failedLogin: boolean;
 }
 
 class App extends React.Component<any, AppState> {
@@ -51,6 +52,7 @@ class App extends React.Component<any, AppState> {
       currentUserId: -1,
       isLoggedIn: false,
       currentUser: "",
+      failedLogin: false
     };
     this.handleReviewPopUpClick = this.handleReviewPopUpClick.bind(this);
     this.handleUpdatePopUpClick = this.handleUpdatePopUpClick.bind(this);
@@ -111,6 +113,15 @@ class App extends React.Component<any, AppState> {
       .then((data) => data.json())
       .then((data) => {
         console.log("this is the data: ", data);
+        if (!data.username){
+          this.setState({
+            failedLogin: true
+          })
+        } else if(this.state.failedLogin){
+          this.setState({
+            failedLogin: false
+          })
+        }
         this.setState((prevState) => {
           const newState = { ...prevState };
           newState.currentUser = data.username;
@@ -374,8 +385,21 @@ class App extends React.Component<any, AppState> {
             handleSignUp={this.handleSignUp}
             currentUser={this.state.currentUser}
             googleLogin={this.googleLogin}
+            failedLogin={this.state.failedLogin}
           />
           <MainText />
+          <ReviewButton
+            reviewSeen={this.state.reviewSeen}
+            handleReviewPopUpClick={this.handleReviewPopUpClick}
+            handleBurritoTypeChange={this.handleBurritoTypeChange}
+            handleRatingChange={this.handleRatingChange}
+            handleRestaurantNameChange={this.handleRestaurantNameChange}
+            handlePriceChange={this.handlePriceChange}
+            handleNeighborhoodChange={this.handleNeighborhoodChange}
+            handleBoroughChange={this.handleBoroughChange}
+            handleFormSubmit={this.handleFormSubmit}
+            newReview={this.state.newReview}
+          />
           <div className="dropdown-menus">
             <BurritoTypeDropdown
               reviews={this.state.reviews}
@@ -399,18 +423,6 @@ class App extends React.Component<any, AppState> {
               burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
             />
           </div>
-          <ReviewButton
-            reviewSeen={this.state.reviewSeen}
-            handleReviewPopUpClick={this.handleReviewPopUpClick}
-            handleBurritoTypeChange={this.handleBurritoTypeChange}
-            handleRatingChange={this.handleRatingChange}
-            handleRestaurantNameChange={this.handleRestaurantNameChange}
-            handlePriceChange={this.handlePriceChange}
-            handleNeighborhoodChange={this.handleNeighborhoodChange}
-            handleBoroughChange={this.handleBoroughChange}
-            handleFormSubmit={this.handleFormSubmit}
-            newReview={this.state.newReview}
-          />
         </React.Fragment>
         <Top10CardList
           handleDelete={this.handleDelete}

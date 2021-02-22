@@ -96,7 +96,7 @@
   margin-left: 30%;
 }
 #review-button {
-  // margin-top: 30%;
+  margin-top: 30%;
   margin-left: 10%;
   border: none;
   border-radius: 20px;
@@ -157,8 +157,7 @@
   margin: auto;
   // margin-bottom: 10%;
   padding: 1rem;
-
-  position: absolute;
+  position: fixed;
 }
 
 .loggedInUser {
@@ -174,6 +173,15 @@
   // margin-bottom: 5%;
 }
 
+.signUpTextFail{
+  font-family: "Permanent Marker", cursive;
+  font-weight: bolder;
+  font-size: 1rem;
+  text-align: center;
+  color: red;
+  // margin-bottom: 5%;
+}
+
 .submitButton {
   align-items: center;
   border-radius: 20px;
@@ -182,6 +190,28 @@
   cursor: pointer;
   font-family: "Permanent Marker", cursive;
   padding: 0.5rem;
+}
+.signUpButton {
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 5%;
+  background-color: lightblue;
+  cursor: pointer;
+  margin-left: 25%;
+  font-family: "Permanent Marker", cursive;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+}
+.loginButton {
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 5%;
+  background-color: lightblue;
+  cursor: pointer;
+  margin-left: 0%;
+  font-family: "Permanent Marker", cursive;
+  padding: 0.4rem 1rem 0.4rem 1rem;
 }
 
 .rankings-box-feed {
@@ -354,7 +384,7 @@
 }
 .dropdown-menu {
   font-family: "Permanent Marker", cursive;
-  margin-top: 30%;
+  // margin-top: 30%;
 }
 #dropdown-submit-button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -371,6 +401,7 @@
 .dropdown-menus {
   display: flex;
   flex-direction: row;
+  margin-left: 60%;
   align-items: center;
   font-family: "Permanent Marker", cursive;
 }

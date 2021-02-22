@@ -5,7 +5,7 @@ import React from 'react'
   let allChoices = <option key = '0' value="All">All</option>
   
     return (
-      <div className="dropdown-menu">
+      <div>
         <form >
           <label>
               Filter by type of burrito:

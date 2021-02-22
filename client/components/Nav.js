@@ -8,6 +8,7 @@ const Nav = ({
   handleSignUp,
   currentUser,
   googleLogin,
+  failedLogin
 } = props) => {
   const [loginClicked, setLoginClick] = useState(false);
   const [signUpClicked, setSignUpClick] = useState(false);
@@ -23,14 +24,10 @@ const Nav = ({
           <Link to={"/"}>
             <h3 className="NavLink">Home</h3>
           </Link>
-          <div className="Login">
-            <LoginBox
-              loginClicked={setLoginClick}
-              handleSignUp={handleSignUp}
-              handleLogin={handleLogin}
-              googleLogin={googleLogin}
-            />
-          </div>
+          <Link to={"./Blog"}>
+              <h3 className="NavLink">Blog</h3>
+            </Link>
+         
 
           <Link to={"/"}>
             <img
@@ -42,9 +39,16 @@ const Nav = ({
             <Link to={"./About"}>
               <h3 className="NavLink">About</h3>
             </Link>
-            <Link to={"./Blog"}>
-              <h3 className="NavLink">Blog</h3>
-            </Link>
+            <div className="Login">
+            <LoginBox
+              loginClicked={setLoginClick}
+              handleSignUp={handleSignUp}
+              handleLogin={handleLogin}
+              googleLogin={googleLogin}
+              failedLogin={failedLogin}
+            />
+          </div>
+           
 
             {/* <Link to={"./Login"}>
             <h3 className="NavLink">Login</h3>

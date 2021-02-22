@@ -5,7 +5,7 @@ export default function NeighborhoodTypeDropdown(props){
   let allChoices = <option key = '0' value="All">All</option>
   
     return (
-      <div className="dropdown-menu">
+      <div>
         <form >
           <label>
               Filter by neighborhood:
