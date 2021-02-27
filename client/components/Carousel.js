@@ -34,18 +34,18 @@ const Carousel = ({
   );
 
   const ImageSlide = ({ url }) => {
-    console.log('this is the reviews from carousel', reviews)
+    console.log("this is the reviews from carousel", reviews);
     // const styles = {
     //   backgroundImage: `url(${url})`,
     //   backgroundSize: "cover",
     //   backgroundPosition: "center",
     // };
-    return <div className="image-slide"> </div>;
+    return <div className='image-slide'> </div>;
   };
 
   return (
-    <div className="carousel">
-      <Arrow direction="left" clickFunction={previousSlide} glyph="&#9664;" />
+    <div className='carousel'>
+      <Arrow direction='left' clickFunction={previousSlide} glyph='&#9664;' />
       <ReviewCardList
         reviews={reviews.slice(currentImageIndex, currentImageIndex + 4)}
         handleDelete={handleDelete}
@@ -55,7 +55,12 @@ const Carousel = ({
         updateSee={updateSeen}
         newReview={newReview}
       />
-      <Arrow className ={Arrow} direction="right" clickFunction={nextSlide} glyph="&#9654;" />
+      <Arrow
+        className={Arrow}
+        direction='right'
+        clickFunction={nextSlide}
+        glyph='&#9654;'
+      />
     </div>
   );
 };

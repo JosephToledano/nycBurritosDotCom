@@ -2,7 +2,7 @@ import React from "react";
 import BoroughFeed from "./BoroughFeed";
 
 const FeedContainer = (props) => {
-  console.log(props);
+  console.log("these are the reviews", props.reviews);
   return (
     <>
       <h2 className='FeedContainerText'>Rankings by Borough</h2>
