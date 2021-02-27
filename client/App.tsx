@@ -9,9 +9,9 @@ import ReviewCardCarousel from "./components/Carousel";
 // import fetch from "isomorphic-fetch";
 import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown.js";
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown.js";
-import NeighborhoodFeed from './components/NeighborhoodFeed'
+import BoroughFeed from "./components/BoroughFeed";
 import Carousel from "./components/Carousel";
-import Top10CardList from './components/Top10CardList.js'
+import Top10CardList from "./components/Top10CardList.js";
 import FeedContainer from "./components/FeedContainer.js";
 
 interface AppState {
@@ -37,6 +37,7 @@ class App extends React.Component<any, AppState> {
         id: 0,
         burrito_type: "",
         restaurant_name: "",
+        restaurant_image_url: "",
         neighborhood: "",
         borough: "",
         price: 0,
@@ -52,7 +53,7 @@ class App extends React.Component<any, AppState> {
       currentUserId: -1,
       isLoggedIn: false,
       currentUser: "",
-      failedLogin: false
+      failedLogin: false,
     };
     this.handleReviewPopUpClick = this.handleReviewPopUpClick.bind(this);
     this.handleUpdatePopUpClick = this.handleUpdatePopUpClick.bind(this);
@@ -113,14 +114,14 @@ class App extends React.Component<any, AppState> {
       .then((data) => data.json())
       .then((data) => {
         console.log("this is the data: ", data);
-        if (!data.username){
+        if (!data.username) {
           this.setState({
-            failedLogin: true
-          })
-        } else if(this.state.failedLogin){
+            failedLogin: true,
+          });
+        } else if (this.state.failedLogin) {
           this.setState({
-            failedLogin: false
-          })
+            failedLogin: false,
+          });
         }
         this.setState((prevState) => {
           const newState = { ...prevState };
@@ -182,8 +183,7 @@ class App extends React.Component<any, AppState> {
       }),
     })
       .then((res) => {
-        console.log("this is the res" + res);
-
+        console.log("this is the res", res);
         let newRatingToAdd = this.state.newReview;
         let newReviewsArr = this.state.reviews;
         newReviewsArr.unshift(newRatingToAdd);
@@ -199,6 +199,7 @@ class App extends React.Component<any, AppState> {
           newReview: {
             id: 0,
             restaurant_name: "",
+            restaurant_image_url: "",
             burrito_type: "",
             price: 0,
             neighborhood: "",
@@ -222,6 +223,7 @@ class App extends React.Component<any, AppState> {
         id: this.state.newReview.id,
         burrito_type: this.state.newReview.burrito_type,
         restaurant_type: this.state.newReview.restaurant_type,
+        restaurant_image_url: this.state.newReview.restaurant_image_url,
         neighborhood: this.state.newReview.neighborhood,
         borough: this.state.newReview.borough,
         price: this.state.newReview.price,
@@ -229,6 +231,7 @@ class App extends React.Component<any, AppState> {
       }),
     })
       .then((res) => {
+        let parsed = res.json();
         let reviewUpdate = this.state.newReview;
         let newReviewsArr = this.state.reviews;
         newReviewsArr.forEach((review) => {
@@ -246,6 +249,7 @@ class App extends React.Component<any, AppState> {
             restaurant_name: "",
             burrito_type: "",
             price: 0,
+            restaurant_image_url: "",
             neighborhood: "",
             borough: "",
             rating: 0,
@@ -400,7 +404,7 @@ class App extends React.Component<any, AppState> {
             handleFormSubmit={this.handleFormSubmit}
             newReview={this.state.newReview}
           />
-          <div className="dropdown-menus">
+          <div className='dropdown-menus'>
             <BurritoTypeDropdown
               reviews={this.state.reviews}
               handleBurritoTypeDropdownChange={
@@ -434,14 +438,12 @@ class App extends React.Component<any, AppState> {
           updateSeen={this.state.updateSeen}
           reviews={this.state.reviews}
           newReview={this.state.newReview}
-          handleBurritoTypeDropdownChange={
-            this.handleBurritoTypeDropdownChange
-          }
+          handleBurritoTypeDropdownChange={this.handleBurritoTypeDropdownChange}
           handleNeighborhoodTypeDropdownChange={
             this.handleNeighborhoodTypeDropdownChange
           }
         />
-        <p className ="homepageCarouselHeader">All Reviews</p>
+        <p className='homepageCarouselHeader'>All Reviews</p>
         <Carousel
           handleDelete={this.handleDelete}
           burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
@@ -453,7 +455,7 @@ class App extends React.Component<any, AppState> {
           reviews={this.state.reviews}
           newReview={this.state.newReview}
         />
-         <FeedContainer
+        <FeedContainer
           handleDelete={this.handleDelete}
           burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}
           neighborhoodTypeDropdownItem={this.state.neighborhoodTypeDropdownItem}
@@ -463,14 +465,12 @@ class App extends React.Component<any, AppState> {
           updateSeen={this.state.updateSeen}
           reviews={this.state.reviews}
           newReview={this.state.newReview}
-          handleBurritoTypeDropdownChange={
-            this.handleBurritoTypeDropdownChange
-          }
+          handleBurritoTypeDropdownChange={this.handleBurritoTypeDropdownChange}
           handleNeighborhoodTypeDropdownChange={
             this.handleNeighborhoodTypeDropdownChange
           }
         />
-        
+
         {/* <ReviewCardList
             handleDelete={this.handleDelete}
             burritoTypeDropdownItem={this.state.burritoTypeDropdownItem}

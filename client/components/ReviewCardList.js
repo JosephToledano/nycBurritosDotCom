@@ -3,7 +3,7 @@ import ReviewCardBox from "./ReviewCardBox";
 
 const ReviewCardList = (props) => {
   return (
-    <div className="rankings-box-feed">
+    <div className='rankings-box-feed'>
       {props.reviews.map((review) => {
         console.log(review.neighborhood);
         console.log(props.neighborhoodTypeDropdownItem);
@@ -23,6 +23,7 @@ const ReviewCardList = (props) => {
               burrito_type={review.burrito_type}
               borough={review.borough}
               restaurant_name={review.restaurant_name}
+              restaurant_image_url={review.restaurant_image_url}
               updateSeen={props.updateSeen}
               handleUpdatePopUpClick={props.handleUpdatePopUpClick}
               handleDelete={props.handleDelete}
@@ -45,6 +46,7 @@ const ReviewCardList = (props) => {
               price={review.price}
               burrito_type={review.burrito_type}
               restaurant_name={review.restaurant_name}
+              restaurant_image_url={review.restaurant_image_url}
               borough={review.borough}
               updateSeen={props.updateSeen}
               handleUpdatePopUpClick={props.handleUpdatePopUpClick}
@@ -69,6 +71,7 @@ const ReviewCardList = (props) => {
               burrito_type={review.burrito_type}
               borough={review.borough}
               restaurant_name={review.restaurant_name}
+              restaurant_image_url={review.restaurant_image_url}
               updateSeen={props.updateSeen}
               handleUpdatePopUpClick={props.handleUpdatePopUpClick}
               handleDelete={props.handleDelete}
@@ -93,6 +96,7 @@ const ReviewCardList = (props) => {
               burrito_type={review.burrito_type}
               borough={review.borough}
               restaurant_name={review.restaurant_name}
+              restaurant_image_url={review.restaurant_image_url}
               updateSeen={props.updateSeen}
               handleUpdatePopUpClick={props.handleUpdatePopUpClick}
               handleDelete={props.handleDelete}

@@ -6,6 +6,7 @@ const cors = require("cors");
 const port = process.env.PORT || 3001;
 const googleRouter = require("./routes/google");
 const apiRouter = require("./routes/api");
+const yelpRouter = require("./routes/yelp");
 const signUpRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 const bodyParser = require("body-parser");
@@ -25,6 +26,7 @@ app.use("/api", apiRouter);
 app.use("/signup", signUpRouter);
 app.use("/login", loginRouter);
 app.use("/google", googleRouter);
+app.use("/yelp", yelpRouter);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

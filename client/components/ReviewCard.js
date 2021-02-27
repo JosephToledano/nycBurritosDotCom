@@ -23,25 +23,27 @@ const ReviewCard = (props) => {
   }
 
   return (
-    <div className="burrito-card">
-      <div className="burrito-card-ratingAndReviews">
-        <p className="burrito-card-text">Rating: {props.rating}</p>
-        <p className="burrito-card-text">Reviews: {props.reviews}</p>
+    <div className='burrito-card'>
+      <div className='burrito-card-ratingAndReviews'>
+        <p className='burrito-card-text'>Rating: {props.rating}</p>
+        <p className='burrito-card-text'>Reviews: {props.reviews}</p>
       </div>
-      <div className="burrito-card-image-container">
-        <img
-            className="burrito-card-pic"
-            src="https://s.hdnux.com/photos/01/01/30/64/17140993/3/rawImage.jpg"
-        />
-        <div className ="burrito_type-card-image-text">
-          <p className="burrito-card-restaurant-text"> {props.restaurant_name}</p>
+      <div className='burrito-card-image-container'>
+        <img className='burrito-card-pic' src={props.restaurant_image_url} />
+        <div className='burrito_type-card-image-text'>
+          <p className='burrito-card-restaurant-text'>
+            {" "}
+            {props.restaurant_name}
+          </p>
         </div>
       </div>
-      <p className="burrito-card-type-text">Burrito Type: {props.burrito_type}</p>
-      <p className="burrito-card-text">Neighborhood: {props.neighborhood}</p>
-      <p className="burrito-card-text">Borough: {props.borough}</p>
+      <p className='burrito-card-type-text'>
+        Burrito Type: {props.burrito_type}
+      </p>
+      <p className='burrito-card-text'>Neighborhood: {props.neighborhood}</p>
+      <p className='burrito-card-text'>Borough: {props.borough}</p>
 
-      <button className="burrito-card-button">Contact</button>
+      <button className='burrito-card-button'>Contact</button>
     </div>
 
     // <div className="burrito-profile-card">

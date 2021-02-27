@@ -15,7 +15,7 @@ loginController.verifyUser = (req, res, next) => {
       return next(error);
     }
     console.log("this is the response", response);
-    if (response.rows[0].username.length > 0) {
+    if (response.rows.length && response.rows[0].username.length > 0) {
       res.locals.user_id = response.rows[0]._id;
       res.locals.status = "Go ahead";
       res.locals.username = response.rows[0].username;

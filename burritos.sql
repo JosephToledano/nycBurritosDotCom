@@ -27,6 +27,7 @@ CREATE TABLE public.reviews (
 	"restaurant_name" varchar,
   "neighborhood" varchar,
   "borough" varchar,
+  "image_src" varchar,
   "price" bigint,
   "rating" bigint,
    PRIMARY KEY ("_id"),

@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
-.main-page {
-  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+// body {
+//   background-color: white;
+//   background-image: -webkit-linear-gradient(150deg, #dac5bc 65%, #0039a6 35%);
+// }
 .main-header {
-  background-color: #0c2340;
+  background-color: #2e0c53;
   opacity: 90%;
   display: flex;
   flex-direction: row;
@@ -25,7 +26,7 @@
   align-items: center;
 }
 .aboutHeaderText {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Open Sans", sans-serif;
   font-size: 45px;
 }
 .AboutText {
@@ -35,7 +36,7 @@
   align-items: center;
 }
 #aboutText {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Open Sans", sans-serif;
   font-size: 25px;
 }
 .BlogSection {
@@ -45,7 +46,7 @@
   align-items: center;
 }
 .blogHeaderText {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Open Sans", sans-serif;
   font-size: 45px;
 }
 .blogPost {
@@ -55,11 +56,11 @@
   align-items: center;
 }
 .blogPostHeaderText {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Open Sans", sans-serif;
   font-size: 30px;
 }
 #blogPostText {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
   width: 60%;
 }
@@ -77,15 +78,13 @@
 }
 .NavLink {
   color: whitesmoke;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   // margin: 5%;
   margin-left: 30px;
 }
 .main-text {
-  margin-top: 10%;
-  margin-bottom: 2%;
-  font-size: 20px;
-  font-family: "Permanent Marker", cursive;
+  margin-top: 4%;
+  font-family: "open sans", sans-serif;
   line-height: 0px;
   display: flex;
   align-items: center;
@@ -93,8 +92,25 @@
   flex-direction: column;
   font-size: 30px;
   position: absolute;
-  margin-left: 30%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
 }
+.top10BurritosText {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.homepageCarouselHeader {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.FeedContainerText {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 #review-button {
   margin-top: 30%;
   margin-left: 10%;
@@ -103,7 +119,7 @@
   padding: 10px;
   width: 10%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   background-color: #0c2340;
   position: relative;
 
@@ -125,7 +141,7 @@
 .loginHere {
   color: whitesmoke;
   margin-right: 10%;
-  font-family: "Permanent Marker";
+  font-family: "open sans", sans-serif;
 }
 #close {
   color: black;
@@ -141,7 +157,7 @@
   justify-content: center;
   // margin-top: 3%;
   text-align: center;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   padding: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
@@ -161,20 +177,20 @@
 }
 
 .loggedInUser {
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   color: white;
 }
 
 .signUpText {
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   font-weight: bolder;
   font-size: 1rem;
   text-align: center;
   // margin-bottom: 5%;
 }
 
-.signUpTextFail{
-  font-family: "Permanent Marker", cursive;
+.signUpTextFail {
+  font-family: "open sans", sans-serif;
   font-weight: bolder;
   font-size: 1rem;
   text-align: center;
@@ -188,7 +204,7 @@
   margin-top: 5%;
   background-color: lightblue;
   cursor: pointer;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   padding: 0.5rem;
 }
 .signUpButton {
@@ -199,7 +215,7 @@
   background-color: lightblue;
   cursor: pointer;
   margin-left: 25%;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   padding: 0.4rem 1rem 0.4rem 1rem;
 }
 .loginButton {
@@ -210,7 +226,7 @@
   background-color: lightblue;
   cursor: pointer;
   margin-left: 0%;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   padding: 0.4rem 1rem 0.4rem 1rem;
 }
 
@@ -221,7 +237,7 @@
   align-items: center;
 }
 .burrito-rankings-box {
-  background-color: #fcf198;
+  background-color: #0039a6;
   padding: 10px 10px 10px 10px;
   border: 0px solid black;
   margin: 5%;
@@ -231,7 +247,7 @@
   width: 40%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-.burrito-card-pic{
+.burrito-card-pic {
   width: 100%;
 }
 .burrito-card {
@@ -243,24 +259,26 @@
 .burrito-card-text {
   padding-right: 30px;
   font-size: 15px;
-  color: black;
+  color: #fccc0a;
   padding-left: 30px;
-  font-family: "Permanent Marker", cursive;
+  font-weight: bold;
+  font-family: "open-sans", sans-serif;
 }
 .burrito-card-type-text {
   text-align: center;
   padding-right: 30px;
   font-size: 15px;
-  color: black;
+  color: #ff6319;
   padding-left: 30px;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
 }
 .burrito-card-restaurant-text {
-  font-size: 20px;
-  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  color: #0039a6;
   align-items: center;
   text-align: center;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
 }
 .burrito-card-button {
   align-items: center;
@@ -269,20 +287,20 @@
   margin-bottom: 5%;
   padding: 5px 35px 5px 35px;
   border: none;
-  background-color: white;
+  background-color: whitesmoke;
   cursor: pointer;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
 }
 
-.burrito-card-ratingAndReviews{
+.burrito-card-ratingAndReviews {
   display: flex;
   flex-direction: row;
-  border: 4px solid black;
+  margin-top: 5%;
+  border: 4px dotted whitesmoke;
   margin-bottom: 5%;
 }
-.burrito-card-image-container{
+.burrito-card-image-container {
   position: relative;
 }
 .burrito_type-card-image-text {
@@ -291,8 +309,8 @@
   right: 20px;
   border-radius: 2em;
   margin-right: 20%;
-  margin-bottom: 9% ;
- // padding-left: px;
+  margin-bottom: 9%;
+  // padding-left: px;
   // padding-right: 20px;
 }
 
@@ -317,14 +335,14 @@
   width: 30%;
   border-radius: 10px;
   margin-bottom: 20px;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
 }
 .burrito-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -339,28 +357,26 @@
   align-items: center;
 }
 
-.FeedContainerText{
-  font-family: "Permanent Marker", cursive;
+.FeedContainerText {
+  font-family: "open sans", sans-serif;
   margin-left: 10%;
-
 }
-.carousel-borough-name{
-  font-family: "Permanent Marker", cursive;
-  margin: 1%;
-}
-.top10BurritosText{
-  font-family: "Permanent Marker", cursive;
+.carousel-borough-name {
+  font-family: "open sans", sans-serif;
+  font-size: 1.5rem;
   margin-left: 10%;
-
 }
-
-.homepageCarouselHeader{
-  font-family: "Permanent Marker", cursive;
+.top10BurritosText {
+  font-family: "open sans", sans-serif;
   margin-left: 10%;
-
 }
 
-.carousel-feed-section{
+.homepageCarouselHeader {
+  font-family: "open sans", sans-serif;
+  margin-left: 10%;
+}
+
+.carousel-feed-section {
   display: flex;
   flex-direction: column;
 }
@@ -374,7 +390,7 @@
   margin-top: 3%;
   padding: 5px;
   text-align: center;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
 }
 #form-submit-button {
   align-items: center;
@@ -384,7 +400,7 @@
   padding: 5px 35px 5px 35px;
   background-color: white;
   cursor: pointer;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   &:hover {
     align-items: center;
     border-radius: 20px;
@@ -395,13 +411,13 @@
     color: white;
     border: 1px solid white;
     cursor: pointer;
-    font-family: "Permanent Marker", cursive;
+    font-family: "open sans", sans-serif;
   }
 }
 .profile-contents {
   display: flex;
   flex-direction: row;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   justify-content: space-between;
 }
 .popup-review-form {
@@ -421,32 +437,31 @@
   margin-left: 90%;
 }
 .dropdown-menu {
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   // margin-top: 30%;
 }
 #dropdown-submit-button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   background-color: #add8e6;
   color: white;
 }
-.carousel-dropdown-menus{
+.carousel-dropdown-menus {
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 }
 .dropdown-menus {
   display: flex;
   flex-direction: row;
   margin-left: 50%;
   align-items: center;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
 }
 .dropdown-select {
   background-color: white;
   border: none;
-  font-family: "Permanent Marker", cursive;
+  font-family: "open sans", sans-serif;
   border-radius: 10%;
   margin-left: 5%;
   width: 80%;
@@ -461,6 +476,6 @@
 .burrito-profile-label {
   margin-left: 10px;
 }
-feed-dropdown{
+feed-dropdown {
   margin: 0;
 }

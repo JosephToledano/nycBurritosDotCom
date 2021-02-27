@@ -3,7 +3,7 @@ import ReviewCard from "./ReviewCard";
 
 const ReviewCardBox = (props) => {
   return (
-    <div className="burrito-rankings-box">
+    <div className='burrito-rankings-box'>
       <ReviewCard
         id={props.id}
         neighborhood={props.neighborhood}
@@ -12,6 +12,7 @@ const ReviewCardBox = (props) => {
         price={props.price}
         burrito_type={props.burrito_type}
         restaurant_name={props.restaurant_name}
+        restaurant_image_url={props.restaurant_image_url}
         updateSeen={props.updateSeen}
         handleUpdatePopUpClick={props.handleUpdatePopUpClick}
         handleDelete={props.handleDelete}

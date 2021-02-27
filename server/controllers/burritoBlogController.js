@@ -1,4 +1,5 @@
 const db = require("../db/burritoBlogModels.js");
+const yelpKey = require("../../settings.js");
 
 const burritoBlogController = {};
 
@@ -14,10 +15,28 @@ burritoBlogController.getReviews = (req, res, next) => {
   });
 };
 //Create
-burritoBlogController.addReviews = (req, res, next) => {
+burritoBlogController.addReviews = async (req, res, next) => {
+  const yelp = require("yelp-fusion");
+  const client = yelp.client(yelpKey);
+  let restaurant_image_url;
+
+  await client
+    .search({
+      term: req.body.restaurant_name,
+      location: `${req.body.borough}, ny`,
+    })
+    .then((response) => {
+      console.log("this is the response body", response.jsonBody.businesses[0]);
+      restaurant_image_url = response.jsonBody.businesses[0].image_url;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
+  console.log("this is the restaurant image url", restaurant_image_url);
   const sql = {
     text:
-      "INSERT INTO reviews ( user_id, burrito_type,restaurant_name, neighborhood, borough, price, rating) VALUES($1, $2, $3, $4, $5, $6, $7)",
+      "INSERT INTO reviews ( user_id, burrito_type,restaurant_name, neighborhood, borough, price, rating, restaurant_image_url) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
     values: [
       req.body.user_id,
       req.body.burrito_type,
@@ -26,6 +45,7 @@ burritoBlogController.addReviews = (req, res, next) => {
       req.body.borough,
       req.body.price,
       req.body.rating,
+      restaurant_image_url,
     ],
   };
 
@@ -34,7 +54,7 @@ burritoBlogController.addReviews = (req, res, next) => {
       console.log(error);
       return next(error);
     }
-   
+    res.locals.imageUrl = restaurant_image_url;
     return next();
   });
 };
