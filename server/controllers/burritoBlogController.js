@@ -17,7 +17,9 @@ burritoBlogController.getReviews = (req, res, next) => {
 //Create
 burritoBlogController.addReviews = async (req, res, next) => {
   const yelp = require("yelp-fusion");
-  const client = yelp.client(yelpKey);
+  const client = yelp.client(
+    "0nguY6g4ca_BorOfDlpJkb1NewDimVd6vCySnsmVUXlbakZUv2NHrIOPdOcM9gfJL86BChy4jyZ2OEmQDDxcv-en2qwUw2aJx2XmibM-oqPCl9lXGgnOXdVWOrT5X3Yx"
+  );
   let restaurant_image_url;
 
   await client
