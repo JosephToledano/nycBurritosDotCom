@@ -4,13 +4,25 @@ import App from "./App";
 import PageRouter from "./PageRouter.js";
 import "./styles/styles.scss";
 import { BrowserRouter } from "react-router-dom";
+import {
+  RecoilRoot,
+  atom,
+  atomFamily,
+  selector,
+  selectorFamily,
+  useRecoilState,
+  useSetRecoilState,
+  useRecoilValue,
+} from "recoil";
 
 // uncomment so that webpack can bundle styles
 // import styles from './scss/Index.css';
 ReactDOM.render(
-  <BrowserRouter>
-    <PageRouter />
-  </BrowserRouter>,
+  <RecoilRoot>
+    <BrowserRouter>
+      <PageRouter />
+    </BrowserRouter>
+  </RecoilRoot>,
   // <App />,
 
   document.getElementById("root")
