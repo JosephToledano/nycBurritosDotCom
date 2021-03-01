@@ -3,13 +3,22 @@ import ReviewCardList from "./ReviewCardList";
 
 const Carousel = ({
   reviews,
-  handleDelete,
-  burritoTypeDropdownItem,
   neighborhoodTypeDropdownItem,
+  burritoTypeDropdownItem,
+  handleDelete,
   handleNeighborhoodClick,
+  reviewsForNeighborhood,
+  handleUpdatePopUpClick,
   updateSeen,
   newReview,
-} = props) => {
+  handleRatingChange,
+  handlePopUpClick,
+  handleFormSubmit,
+  handleBurritoTypeChange,
+  handleRestaurantNameChange,
+  handleNeighborhoodChange,
+  handlePriceChange,
+}) => {
   const [currentImageIndex, setImageIndex] = useState(0);
 
   const previousSlide = () => {
@@ -17,14 +26,16 @@ const Carousel = ({
     const shouldResetIndex = currentImageIndex === 0;
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
 
-    setImageIndex((currentImageIndex = index));
+    setImageIndex(index);
   };
+
+  console.log("these are the reviews from Carousel", reviews);
 
   const nextSlide = () => {
     const lastIndex = reviews.length - 1;
     const shouldResetIndex = currentImageIndex === lastIndex;
     const index = shouldResetIndex ? 0 : currentImageIndex + 1;
-    setImageIndex((currentImageIndex = index));
+    setImageIndex(index);
   };
 
   const Arrow = ({ direction, clickFunction, glyph }) => (
@@ -34,29 +45,31 @@ const Carousel = ({
   );
 
   const ImageSlide = ({ url }) => {
-    console.log("this is the reviews from carousel", reviews);
-    // const styles = {
-    //   backgroundImage: `url(${url})`,
-    //   backgroundSize: "cover",
-    //   backgroundPosition: "center",
-    // };
     return <div className='image-slide'> </div>;
   };
-
   return (
     <div className='carousel'>
       <Arrow direction='left' clickFunction={previousSlide} glyph='&#9664;' />
       <ReviewCardList
         reviews={reviews.slice(currentImageIndex, currentImageIndex + 4)}
         handleDelete={handleDelete}
+        reviewsForNeighborhood={reviewsForNeighborhood}
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
-        updateSee={updateSeen}
+        handleUpdatePopUpClick={handleUpdatePopUpClick}
+        updateSeen={updateSeen}
         newReview={newReview}
+        handleRatingChange={handleRatingChange}
+        handlePopUpClick={handlePopUpClick}
+        handleFormSubmit={handleFormSubmit}
+        handleBurritoTypeChange={handleBurritoTypeChange}
+        handleRestaurantNameChange={handleRestaurantNameChange}
+        handleNeighborhoodChange={handleNeighborhoodChange}
+        handlePriceChange={handlePriceChange}
       />
       <Arrow
-        className={Arrow}
+        // className={Arrow}
         direction='right'
         clickFunction={nextSlide}
         glyph='&#9654;'
@@ -64,4 +77,5 @@ const Carousel = ({
     </div>
   );
 };
+
 export default Carousel;

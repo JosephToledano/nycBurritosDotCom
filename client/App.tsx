@@ -1,18 +1,18 @@
 import * as React from "react";
 // import "./index.css";
-import MainText from "./components/MainText.js";
-import Nav from "./components/Nav.js";
+import MainText from "./components/MainText";
+import Nav from "./components/Nav";
 import ReviewCardList from "./components/ReviewCardList";
-import ReviewButton from "./components/ReviewButton.js";
+import ReviewButton from "./components/ReviewButton";
 import LoginBox from "./components/LoginBox";
 import ReviewCardCarousel from "./components/Carousel";
 // import fetch from "isomorphic-fetch";
-import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown.js";
-import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown.js";
+import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown";
+import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown";
 import BoroughFeed from "./components/BoroughFeed";
 import Carousel from "./components/Carousel";
-import Top10CardList from "./components/Top10CardList.js";
-import FeedContainer from "./components/FeedContainer.js";
+import Top10CardList from "./components/Top10CardList";
+import FeedContainer from "./components/FeedContainer";
 
 interface AppState {
   newReview: any;
@@ -79,7 +79,7 @@ const App: React.FC<AppState> = () => {
         setReviews(currentReviews);
       })
       .catch((err) => console.log(err));
-  });
+  }, [reviews]);
   // event handler for when user hits log in button
   const handleLogin = (username: string, password: string): void => {
     console.log("these are the username and password", username, password);
@@ -130,7 +130,7 @@ const App: React.FC<AppState> = () => {
       .catch((err) => console.log(err));
   };
 
-  const handleFormSubmit = (e, newReview: newReview): void => {
+  const handleFormSubmit = (e: Event, newReview: newReview): void => {
     e.preventDefault();
     if (currentUserId === -1) {
       alert("Please login to submit a review");
@@ -266,8 +266,9 @@ const App: React.FC<AppState> = () => {
 
   //handlers for different fields in burrito submission fields
   const handleBurritoTypeChange = (event) => {
+    console.log("this is the new burrito", event.target.value);
     let updatedReviewList = newReview;
-    updatedReviewList.burrito_type = event.target.value;
+    updatedReviewList["burrito_type"] = event.target.value;
     setNewReview(updatedReviewList);
   };
 
@@ -353,45 +354,66 @@ const App: React.FC<AppState> = () => {
       </React.Fragment>
       <Top10CardList
         handleDelete={handleDelete}
+        reviewsForNeighborhood={reviewsForNeighborhood}
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-        reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}
         handleUpdatePopUpClick={handleUpdatePopUpClick}
         updateSeen={updateSeen}
-        reviews={reviews}
         newReview={newReview}
+        handleRatingChange={handleRatingChange}
+        handleFormSubmit={handleFormSubmit}
+        handleBurritoTypeChange={handleBurritoTypeChange}
         handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
         handleNeighborhoodTypeDropdownChange={
           handleNeighborhoodTypeDropdownChange
         }
+        handleRestaurantNameChange={handleRestaurantNameChange}
+        handleNeighborhoodChange={handleNeighborhoodChange}
+        handlePriceChange={handlePriceChange}
+        reviews={reviews}
+        handlePopUpClick={handlePriceChange}
       />
       <p className='homepageCarouselHeader'>All Reviews</p>
       <Carousel
         handleDelete={handleDelete}
+        reviewsForNeighborhood={reviewsForNeighborhood}
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-        reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}
         handleUpdatePopUpClick={handleUpdatePopUpClick}
         updateSeen={updateSeen}
-        reviews={reviews}
         newReview={newReview}
+        handleRatingChange={handleRatingChange}
+        handleFormSubmit={handleFormSubmit}
+        handleBurritoTypeChange={handleBurritoTypeChange}
+        handleRestaurantNameChange={handleRestaurantNameChange}
+        handleNeighborhoodChange={handleNeighborhoodChange}
+        handlePriceChange={handlePriceChange}
+        reviews={reviews}
+        handlePopUpClick={handlePriceChange}
       />
       <FeedContainer
         handleDelete={handleDelete}
+        reviewsForNeighborhood={reviewsForNeighborhood}
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-        reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}
         handleUpdatePopUpClick={handleUpdatePopUpClick}
         updateSeen={updateSeen}
-        reviews={reviews}
         newReview={newReview}
+        handleRatingChange={handleRatingChange}
+        handleFormSubmit={handleFormSubmit}
+        handleBurritoTypeChange={handleBurritoTypeChange}
         handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
         handleNeighborhoodTypeDropdownChange={
           handleNeighborhoodTypeDropdownChange
         }
+        handleRestaurantNameChange={handleRestaurantNameChange}
+        handleNeighborhoodChange={handleNeighborhoodChange}
+        handlePriceChange={handlePriceChange}
+        reviews={reviews}
+        handlePopUpClick={handlePriceChange}
       />
     </>
   );

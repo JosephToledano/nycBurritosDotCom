@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
-const SignupBox = ({ handleSignUp, handleLogin, signUpClicked } = props) => {
+const SignupBox = ({ handleSignUp }) => {
   const [userName, setUserName] = useState("username");
   const [password, setPassword] = useState("password");
   const [clicked, setClick] = useState(false);
@@ -9,36 +9,36 @@ const SignupBox = ({ handleSignUp, handleLogin, signUpClicked } = props) => {
 
   return (
     <React.Fragment>
-        <div className="loginForm">
-          <form>
-          <p className="signUpText"> 🌯 Sign up 🌯</p>
+      <div className='loginForm'>
+        <form>
+          <p className='signUpText'> 🌯 Sign up 🌯</p>
           <label>
             <input
-              type="text"
-              className="loginInput"
+              type='text'
+              className='loginInput'
               value={userName}
-              onChange={(e) => setUserName((userName = e.target.value))}
-              placeholder="username"
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder='username'
             />
           </label>
           <label>
             <input
-              type="password"
-              className="loginInput"
-              placeholder="password"
+              type='password'
+              className='loginInput'
+              placeholder='password'
               value={password}
-              onChange={(e) => setPassword((password = e.target.value))}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
           <input
-            type="submit"
-            className="signUpButton"
+            type='submit'
+            className='signUpButton'
             onClick={() => {
               handleSignUp(userName, password);
             }}
           />
-          </form>
-        </div>
+        </form>
+      </div>
     </React.Fragment>
   );
 
