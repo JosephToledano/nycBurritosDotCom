@@ -5,6 +5,8 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "declaration": true /* Generates corresponding '.d.ts' file. */,
+
     // "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
