@@ -9,9 +9,9 @@ const Nav = ({
   currentUser,
   googleLogin,
   failedLogin,
-}) => {
-  const [loginClicked, setLoginClick] = useState(false);
-  const [signUpClicked, setSignUpClick] = useState(false);
+}: NavProps): JSX.Element => {
+  const [loginClicked, setLoginClick] = useState<loginClicked>(false);
+  const [signUpClicked, setSignUpClick] = useState<signUpClicked>(false);
 
   if (
     currentUser.length === 0 &&

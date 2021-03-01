@@ -1,5 +1,5 @@
 import React from "react";
-import UpdatePopUpForm from "./UpdatePopUpForm";
+import UpdatePopUpForm from "../UpdatePopUpForm";
 import { Link } from "react-router-dom";
 
 const ReviewCard = ({
@@ -24,7 +24,7 @@ const ReviewCard = ({
   handlePopUpClick,
   newReview,
   id,
-}) => {
+}: ReviewCardProps): JSX.Element => {
   const clickedUpdate = updateSeen;
   let form;
   if (clickedUpdate) {

@@ -1,46 +1,21 @@
 import * as React from "react";
 // import "./index.css";
 import MainText from "./components/MainText";
-import Nav from "./components/Nav";
-import ReviewCardList from "./components/ReviewCardList";
+import Nav from "./components/Nav/Nav";
+import ReviewCardList from "./components/Feeds/ReviewCardList";
 import ReviewButton from "./components/ReviewButton";
-import LoginBox from "./components/LoginBox";
+import LoginBox from "./components/Nav/LoginBox";
 import ReviewCardCarousel from "./components/Carousel";
 // import fetch from "isomorphic-fetch";
 import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown";
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown";
-import BoroughFeed from "./components/BoroughFeed";
+import BoroughFeed from "./components/Feeds/BoroughFeed";
 import Carousel from "./components/Carousel";
-import Top10CardList from "./components/Top10CardList";
-import FeedContainer from "./components/FeedContainer";
+import Top10CardList from "./components/Feeds/Top10CardList";
+import FeedContainer from "./components/Feeds/FeedContainer";
 
-interface AppState {
-  newReview: any;
-  reviews: any;
-  reviewsForNeighborhood: any;
-  reviewsForBurritoType: any;
-  reviewSeen: boolean;
-  updateSeen: boolean;
-  burritoTypeDropdownItem: string;
-  neighborhoodTypeDropdownItem: string;
-  isLoggedIn: boolean;
-  currentUser: string;
-  currentUserId: number;
-  failedLogin: boolean;
-}
-interface newReview {
-  id: number;
-  burrito_type: string;
-  restaurant_name: string;
-  restaurant_image_url: string;
-  neighborhood: string;
-  borough: string;
-  price: number;
-  rating: number;
-}
-
-const App: React.FC<AppState> = () => {
-  const [newReview, setNewReview] = React.useState({
+const App: React.FC = () => {
+  const [newReview, setNewReview] = React.useState<AppState>({
     id: 0,
     burrito_type: "",
     restaurant_name: "",
@@ -50,24 +25,31 @@ const App: React.FC<AppState> = () => {
     price: 0,
     rating: 0,
   });
-  const [reviews, setReviews] = React.useState([]);
-  const [reviewsForNeighborhood, setReviewsForNeighbohood] = React.useState([]);
-  const [reviewsForBurritoType, setReviewsForBurritoType] = React.useState([]);
-  const [reviewSeen, setReviewSeen] = React.useState(false);
-  const [updateSeen, setUpdateSeen] = React.useState(false);
-  const [burritoTypeDropdownItem, setBurritoTypeDropdownItem] = React.useState(
-    null
-  );
+  const [reviews, setReviews] = React.useState<reviews>([]);
+  const [
+    reviewsForNeighborhood,
+    setReviewsForNeighbohood,
+  ] = React.useState<reviewsForNeighborhood>([]);
+  const [
+    reviewsForBurritoType,
+    setReviewsForBurritoType,
+  ] = React.useState<reviewsForBurritoType>([]);
+  const [reviewSeen, setReviewSeen] = React.useState<reviewSeen>(false);
+  const [updateSeen, setUpdateSeen] = React.useState<updateSeen>(false);
+  const [
+    burritoTypeDropdownItem,
+    setBurritoTypeDropdownItem,
+  ] = React.useState<burritoTypeDropdownItem>(null);
   const [
     neighborhoodTypeDropdownItem,
     setNeighborhoodTypeDropdownItem,
-  ] = React.useState(null);
-  const [currentUserId, setCurrentUserId] = React.useState(-1);
-  const [currentUser, setCurrentUser] = React.useState("");
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [failedLogin, setFailedLogin] = React.useState(false);
+  ] = React.useState<neighborhoodTypeDropdownItem>(null);
+  const [currentUserId, setCurrentUserId] = React.useState<currentUserId>(-1);
+  const [currentUser, setCurrentUser] = React.useState<currentUser>("");
+  const [isLoggedIn, setIsLoggedIn] = React.useState<isLoggedIn>(false);
+  const [failedLogin, setFailedLogin] = React.useState<failedLogin>(false);
 
-  React.useEffect(() => {
+  React.useEffect((): void => {
     fetch("/api")
       .then((data) => {
         return data.json();
@@ -79,6 +61,10 @@ const App: React.FC<AppState> = () => {
         setReviews(currentReviews);
       })
       .catch((err) => console.log(err));
+  }, [reviews]);
+
+  React.useEffect((): void => {
+    setTimeout(() => setUpdateSeen(true), 0.1);
   }, [reviews]);
   // event handler for when user hits log in button
   const handleLogin = (username: string, password: string): void => {
@@ -245,7 +231,7 @@ const App: React.FC<AppState> = () => {
     updateSeen === false ? setUpdateSeen(true) : setUpdateSeen(false);
   };
 
-  const handleNeighborhoodClick = (event) => {
+  const handleNeighborhoodClick = (event): void => {
     let neighborhoodReviews = reviews;
     neighborhoodReviews = neighborhoodReviews.filter(
       (review) => review.neighborhood == event.target.id
@@ -256,47 +242,47 @@ const App: React.FC<AppState> = () => {
   };
 
   //handlers for dropdown filters
-  const handleBurritoTypeDropdownChange = (event) => {
+  const handleBurritoTypeDropdownChange = (event): void => {
     setBurritoTypeDropdownItem(event.target.value);
   };
 
-  const handleNeighborhoodTypeDropdownChange = (event) => {
+  const handleNeighborhoodTypeDropdownChange = (event): void => {
     setNeighborhoodTypeDropdownItem(event.target.value);
   };
 
   //handlers for different fields in burrito submission fields
-  const handleBurritoTypeChange = (event) => {
+  const handleBurritoTypeChange = (event): void => {
     console.log("this is the new burrito", event.target.value);
     let updatedReviewList = newReview;
     updatedReviewList["burrito_type"] = event.target.value;
     setNewReview(updatedReviewList);
   };
 
-  const handleRestaurantNameChange = (event) => {
+  const handleRestaurantNameChange = (event): void => {
     let updatedReviewList = newReview;
     updatedReviewList.restaurant_name = event.target.value;
     setNewReview(updatedReviewList);
   };
 
-  const handleNeighborhoodChange = (event) => {
+  const handleNeighborhoodChange = (event): void => {
     let updatedReviewList = newReview;
     updatedReviewList.neighborhood = event.target.value;
     setNewReview(updatedReviewList);
   };
 
-  const handleBoroughChange = (event) => {
+  const handleBoroughChange = (event: void) => {
     let updatedReviewList = newReview;
     updatedReviewList.borough = event.target.value;
     setNewReview(updatedReviewList);
   };
 
-  const handlePriceChange = (event) => {
+  const handlePriceChange = (event): void => {
     let updatedReviewList = newReview;
     updatedReviewList.price = event.target.value;
     setNewReview(updatedReviewList);
   };
 
-  const handleRatingChange = (event) => {
+  const handleRatingChange = (event): void => {
     let updatedReviewList = newReview;
     updatedReviewList.rating = event.target.value;
     setNewReview(updatedReviewList);

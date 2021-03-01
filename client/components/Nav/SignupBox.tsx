@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
-const SignupBox = ({ handleSignUp }) => {
-  const [userName, setUserName] = useState("username");
+const SignupBox = ({ handleSignUp: handleSignUp }): JSX.Element => {
+  const [userName, setUserName] = useState<currentUser>("username");
   const [password, setPassword] = useState("password");
-  const [clicked, setClick] = useState(false);
-  const [closed, setClose] = useState(false);
+  const [clicked, setClick] = useState<clicked>(false);
+  const [closed, setClose] = useState<closed>(false);
 
   return (
     <React.Fragment>
