@@ -20,8 +20,7 @@ const FeedContainer = ({
   handleRestaurantNameChange,
   handleNeighborhoodChange,
   handlePriceChange,
-}) => {
-  console.log("these are the reviews", reviews);
+}): JSX.Element => {
   return (
     <>
       <h2 className='FeedContainerText'>Rankings by Borough</h2>

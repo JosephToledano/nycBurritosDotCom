@@ -10,7 +10,7 @@ const PopUpReviewForm = ({
   handleBoroughChange,
   handlePriceChange,
   handleRatingChange,
-}) => {
+}): JSX.Element => {
   return (
     <div>
       <div>

@@ -24,7 +24,7 @@ const ReviewCard = ({
   handlePopUpClick,
   newReview,
   id,
-}: ReviewCardProps): JSX.Element => {
+}): JSX.Element => {
   const clickedUpdate = updateSeen;
   let form;
   if (clickedUpdate) {

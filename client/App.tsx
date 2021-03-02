@@ -14,8 +14,77 @@ import Carousel from "./components/Carousel";
 import Top10CardList from "./components/Feeds/Top10CardList";
 import FeedContainer from "./components/Feeds/FeedContainer";
 
+//Types and interfaces used
+interface newReview {
+  id: number;
+  burrito_type: string;
+  restaurant_name: string;
+  restaurant_image_url: string;
+  neighborhood: string;
+  borough: string;
+  price: number;
+  rating: number;
+}
+
+type failedLogin = {
+  failedLogin: boolean;
+};
+
+type reviewSeen = {
+  reviewSeen: boolean;
+};
+
+type updateSeen = {
+  updateSeen: boolean;
+};
+
+type currentUser = {
+  currentUser: string;
+};
+
+type currentUserId = {
+  currentUserId: number;
+};
+
+type neighborhoodTypeDropdownItem = {
+  neighborhoodDropdownItem: string;
+};
+
+type burritoTypeDropdownItem = {
+  burritoTypeDropdownItem: string;
+};
+
+type reviewsForBurritoType = {
+  reviewsForBurritoType: newReview[];
+};
+
+type reviewsForNeighborhood = {
+  reviewsForNeighborhood: newReview[];
+};
+
+type reviewsForBorough = {
+  reviewsForBorough: newReview[];
+};
+
+type reviews = {
+  reviews: newReview[];
+};
+
+let reviews: Array<newReview> = [
+  {
+    id: 0,
+    burrito_type: "cheese",
+    restaurant_name: "Chipotle",
+    restaurant_image_url: "string",
+    neighborhood: "string",
+    borough: "string",
+    price: 10,
+    rating: 10,
+  },
+];
+
 const App: React.FC = () => {
-  const [newReview, setNewReview] = React.useState<AppState>({
+  const [newReview, setNewReview] = React.useState<newReview>({
     id: 0,
     burrito_type: "",
     restaurant_name: "",
@@ -25,29 +94,28 @@ const App: React.FC = () => {
     price: 0,
     rating: 0,
   });
-  const [reviews, setReviews] = React.useState<reviews>([]);
-  const [
-    reviewsForNeighborhood,
-    setReviewsForNeighbohood,
-  ] = React.useState<reviewsForNeighborhood>([]);
+  const [reviews, setReviews] = React.useState<newReview[]>([]);
+  const [reviewsForNeighborhood, setReviewsForNeighbohood] = React.useState<
+    newReview[]
+  >([]);
   const [
     reviewsForBurritoType,
     setReviewsForBurritoType,
-  ] = React.useState<reviewsForBurritoType>([]);
-  const [reviewSeen, setReviewSeen] = React.useState<reviewSeen>(false);
-  const [updateSeen, setUpdateSeen] = React.useState<updateSeen>(false);
+  ] = React.useState<reviewsForBurritoType>();
+  const [reviewSeen, setReviewSeen] = React.useState<boolean>(false);
+  const [updateSeen, setUpdateSeen] = React.useState<boolean>(false);
   const [
     burritoTypeDropdownItem,
     setBurritoTypeDropdownItem,
-  ] = React.useState<burritoTypeDropdownItem>(null);
+  ] = React.useState<string>(null);
   const [
     neighborhoodTypeDropdownItem,
     setNeighborhoodTypeDropdownItem,
-  ] = React.useState<neighborhoodTypeDropdownItem>(null);
-  const [currentUserId, setCurrentUserId] = React.useState<currentUserId>(-1);
-  const [currentUser, setCurrentUser] = React.useState<currentUser>("");
-  const [isLoggedIn, setIsLoggedIn] = React.useState<isLoggedIn>(false);
-  const [failedLogin, setFailedLogin] = React.useState<failedLogin>(false);
+  ] = React.useState<string>(null);
+  const [currentUserId, setCurrentUserId] = React.useState<number>(-1);
+  const [currentUser, setCurrentUser] = React.useState<string>("");
+  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+  const [failedLogin, setFailedLogin] = React.useState<boolean>(false);
 
   React.useEffect((): void => {
     fetch("/api")
@@ -64,8 +132,8 @@ const App: React.FC = () => {
   }, [reviews]);
 
   React.useEffect((): void => {
-    setTimeout(() => setUpdateSeen(true), 0.1);
-  }, [reviews]);
+    setReviews(reviews);
+  }, []);
   // event handler for when user hits log in button
   const handleLogin = (username: string, password: string): void => {
     console.log("these are the username and password", username, password);
@@ -116,7 +184,7 @@ const App: React.FC = () => {
       .catch((err) => console.log(err));
   };
 
-  const handleFormSubmit = (e: Event, newReview: newReview): void => {
+  const handleFormSubmit = (e, newReview: newReview): void => {
     e.preventDefault();
     if (currentUserId === -1) {
       alert("Please login to submit a review");
@@ -270,7 +338,7 @@ const App: React.FC = () => {
     setNewReview(updatedReviewList);
   };
 
-  const handleBoroughChange = (event: void) => {
+  const handleBoroughChange = (event): void => {
     let updatedReviewList = newReview;
     updatedReviewList.borough = event.target.value;
     setNewReview(updatedReviewList);

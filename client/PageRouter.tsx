@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 // import "./index.css";
 import App from "./App";
-import Restaurants from "./pages/Restaurants.js";
-import Neighborhoods from "./pages/Neighborhoods.js";
-import Blog from "./pages/Blog.js";
-import About from "./pages/About.js";
+import Restaurants from "./pages/Restaurants";
+import Neighborhoods from "./pages/Neighborhoods";
+import Blog from "./pages/Blog";
+import About from "./pages/About";
 import LoginBox from "./components/Nav/LoginBox";
 
 class PageRouter extends Component {

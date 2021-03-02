@@ -8,12 +8,12 @@ const LoginBox = ({
   googleLogin,
   failedLogin,
   loginClicked,
-}: LoginProps): JSX.Element => {
-  const [userName, setUserName] = useState<userName>("username");
-  const [password, setPassword] = useState<password>("password");
-  const [showingSignUp, setSignUpVisible] = useState<showingSignUp>(false);
-  const [clicked, setClick] = useState<clicked>(false);
-  const [closed, setClose] = useState<closed>(false);
+}): JSX.Element => {
+  const [userName, setUserName] = useState<string>("username");
+  const [password, setPassword] = useState<string>("password");
+  const [showingSignUp, setSignUpVisible] = useState<boolean>(false);
+  const [clicked, setClick] = useState<boolean>(false);
+  const [closed, setClose] = useState<boolean>(false);
 
   if (
     clicked &&

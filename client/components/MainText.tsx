@@ -1,6 +1,6 @@
 import React from "react";
 
-const MainText = (props) => {
+const MainText = ({}): JSX.Element => {
   return (
     <div className='main-text'>
       <h2>NYC Burritos</h2>

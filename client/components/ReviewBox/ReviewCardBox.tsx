@@ -23,7 +23,7 @@ const ReviewCardBox = ({
   newReview,
   handleRatingChange,
   reviewsForNeighborhood,
-}) => {
+}): JSX.Element => {
   return (
     <div className='burrito-rankings-box'>
       <ReviewCard

@@ -8,14 +8,15 @@
     // "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    // "declaration": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "typeRoots": ["types", "./types/index.d.ts", "node_modules/@types"],
+    // "typeRoots": ["types", "./types/index.d.ts", "node_modules/@types"],
     "outDir": "./build/", // path to output directory
     "jsx": "react"
   },
-  "include": ["client", "types"]
+  "include": ["client"]
 }
 
 // { "compilerOptions": {

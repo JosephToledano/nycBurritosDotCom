@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "./Carousel";
+import Carousel from "../Carousel";
 
 const Top10CardList = ({
   reviews,
@@ -20,7 +20,7 @@ const Top10CardList = ({
   handleRestaurantNameChange,
   handleNeighborhoodChange,
   handlePriceChange,
-}) => {
+}): JSX.Element => {
   const getTopReviews = (reviews) => {
     let sortedReviews = reviews.sort((a, b) => {
       Number(a.rating) > Number(b.rating) ? 1 : -1;

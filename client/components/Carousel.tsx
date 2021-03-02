@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReviewCardList from "./ReviewCardList";
+import ReviewCardList from "./Feeds/ReviewCardList";
 
 const Carousel = ({
   reviews,
@@ -19,9 +19,9 @@ const Carousel = ({
   handleNeighborhoodChange,
   handlePriceChange,
 }) => {
-  const [currentImageIndex, setImageIndex] = useState(0);
+  const [currentImageIndex, setImageIndex] = useState<number>(0);
 
-  const previousSlide = () => {
+  const previousSlide = (): void => {
     const lastIndex = reviews.length - 1;
     const shouldResetIndex = currentImageIndex === 0;
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
@@ -38,13 +38,13 @@ const Carousel = ({
     setImageIndex(index);
   };
 
-  const Arrow = ({ direction, clickFunction, glyph }) => (
+  const Arrow = ({ direction, clickFunction, glyph }): JSX.Element => (
     <div className={`slide-arrow ${direction}`} onClick={clickFunction}>
       {glyph}
     </div>
   );
 
-  const ImageSlide = ({ url }) => {
+  const ImageSlide = ({ url }): JSX.Element => {
     return <div className='image-slide'> </div>;
   };
   return (

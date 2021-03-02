@@ -12,7 +12,7 @@ const ReviewButton = ({
   handleBurritoTypeChange,
   reviewSeen,
   handleBoroughChange,
-}) => {
+}): JSX.Element => {
   const clickedReview = reviewSeen;
   let form;
   if (clickedReview) {

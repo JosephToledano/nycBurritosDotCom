@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Neighborhoods from "../pages/Neighborhoods";
-import CarouselBurritoDropdown from "./dropdown-filters/Carousels/CarouselBurritoDropdown";
-import CarouselNeighborhoodDropdown from "./dropdown-filters/Carousels/CarouselNeighborhoodDropdown";
-import Carousel from "./Carousel";
+import CarouselBurritoDropdown from "../dropdown-filters/Carousels/CarouselBurritoDropdown";
+import CarouselNeighborhoodDropdown from "../dropdown-filters/Carousels/CarouselNeighborhoodDropdown";
+import Carousel from "../Carousel";
 
 const BoroughFeed = ({
   reviews,
@@ -23,7 +22,7 @@ const BoroughFeed = ({
   handleRestaurantNameChange,
   handleNeighborhoodChange,
   handlePriceChange,
-}) => {
+}): JSX.Element => {
   let boroughs: any = {
     Manhatten: [],
     Brooklyn: [],

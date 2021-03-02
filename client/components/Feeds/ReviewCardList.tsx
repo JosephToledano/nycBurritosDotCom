@@ -1,5 +1,5 @@
 import React from "react";
-import ReviewCardBox from "./ReviewCardBox";
+import ReviewCardBox from "../ReviewBox/ReviewCardBox";
 
 const ReviewCardList = ({
   reviews,
@@ -18,8 +18,7 @@ const ReviewCardList = ({
   handleRestaurantNameChange,
   handleNeighborhoodChange,
   handlePriceChange,
-}) => {
-  console.log("reviews in ReviewCardList", reviews);
+}): JSX.Element => {
   if (reviews.length) {
     return (
       <div className='rankings-box-feed'>
