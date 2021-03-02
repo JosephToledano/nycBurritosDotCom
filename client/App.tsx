@@ -6,13 +6,16 @@ import ReviewCardList from "./components/Feeds/ReviewCardList";
 import ReviewButton from "./components/ReviewButton";
 import LoginBox from "./components/Nav/LoginBox";
 import ReviewCardCarousel from "./components/Carousel";
-// import fetch from "isomorphic-fetch";
 import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown";
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown";
 import BoroughFeed from "./components/Feeds/BoroughFeed";
 import Carousel from "./components/Carousel";
 import Top10CardList from "./components/Feeds/Top10CardList";
 import FeedContainer from "./components/Feeds/FeedContainer";
+
+import { reviews, newReview } from "./recoil/atoms/reviewAtoms";
+import { getReviews, submitReviews } from "./recoil/selectors/reviewsSelectors";
+import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 
 //Types and interfaces used
 interface newReview {
@@ -70,19 +73,6 @@ type reviews = {
   reviews: newReview[];
 };
 
-let reviews: Array<newReview> = [
-  {
-    id: 0,
-    burrito_type: "cheese",
-    restaurant_name: "Chipotle",
-    restaurant_image_url: "string",
-    neighborhood: "string",
-    borough: "string",
-    price: 10,
-    rating: 10,
-  },
-];
-
 const App: React.FC = () => {
   const [newReview, setNewReview] = React.useState<newReview>({
     id: 0,
@@ -94,7 +84,7 @@ const App: React.FC = () => {
     price: 0,
     rating: 0,
   });
-  const [reviews, setReviews] = React.useState<newReview[]>([]);
+  // const [reviews, setReviews] =
   const [reviewsForNeighborhood, setReviewsForNeighbohood] = React.useState<
     newReview[]
   >([]);
@@ -117,23 +107,25 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
   const [failedLogin, setFailedLogin] = React.useState<boolean>(false);
 
-  React.useEffect((): void => {
-    fetch("/api")
-      .then((data) => {
-        return data.json();
-      })
-      .then((response) => {
-        console.log("this is the response", response);
-        let currentReviews = reviews;
-        response.forEach((review) => currentReviews.push(review));
-        setReviews(currentReviews);
-      })
-      .catch((err) => console.log(err));
-  }, [reviews]);
+  // React.useEffect((): void => {
+  //   fetch("/api")
+  //     .then((data) => {
+  //       return data.json();
+  //     })
+  //     .then((response) => {
+  //       console.log("this is the response", response);
+  //       let currentReviews = reviews;
+  //       response.forEach((review) => currentReviews.push(review));
+  //       setReviews(currentReviews);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [reviews]);
 
   React.useEffect((): void => {
-    setReviews(reviews);
-  }, []);
+    const [];
+    let Reviews = useRecoilValue(reviews);
+  });
+
   // event handler for when user hits log in button
   const handleLogin = (username: string, password: string): void => {
     console.log("these are the username and password", username, password);
@@ -190,47 +182,48 @@ const App: React.FC = () => {
       alert("Please login to submit a review");
       return;
     }
-    fetch("api/addReview", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/JSON",
-      },
-      body: JSON.stringify({
-        user_id: currentUserId,
-        id: newReview.id,
-        burrito_type: newReview.burrito_type,
-        restaurant_name: newReview.restaurant_name,
-        borough: newReview.borough,
-        neighborhood: newReview.neighborhood,
-        price: newReview.price,
-        rating: newReview.rating,
-      }),
-    })
-      .then((res) => {
-        console.log("this is the res", res);
-        let newRatingToAdd = newReview;
-        let newReviewsArr = reviews;
-        newReviewsArr.unshift(newRatingToAdd);
-        let topReview = 0;
-        newReviewsArr.sort((a, b) =>
-          Number(a.rating) > Number(b.rating) ? 1 : -1
-        );
-        setReviews(newReviewsArr);
-        console.log("this is the res" + res);
-        setNewReview({
-          id: 0,
-          restaurant_name: "",
-          restaurant_image_url: "",
-          burrito_type: "",
-          price: 0,
-          neighborhood: "",
-          borough: "",
-          rating: 0,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // useSetRecoilState(submitReviews)
+    // fetch("api/addReview", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "Application/JSON",
+    //   },
+    //   body: JSON.stringify({
+    //     user_id: currentUserId,
+    //     id: newReview.id,
+    //     burrito_type: newReview.burrito_type,
+    //     restaurant_name: newReview.restaurant_name,
+    //     borough: newReview.borough,
+    //     neighborhood: newReview.neighborhood,
+    //     price: newReview.price,
+    //     rating: newReview.rating,
+    //   }),
+    // })
+    //   .then((res) => {
+    //     console.log("this is the res", res);
+    //     let newRatingToAdd = newReview;
+    //     let newReviewsArr = reviews;
+    //     newReviewsArr.unshift(newRatingToAdd);
+    //     let topReview = 0;
+    //     newReviewsArr.sort((a, b) =>
+    //       Number(a.rating) > Number(b.rating) ? 1 : -1
+    //     );
+    //     setReviews(newReviewsArr);
+    //     console.log("this is the res" + res);
+    //     setNewReview({
+    //       id: 0,
+    //       restaurant_name: "",
+    //       restaurant_image_url: "",
+    //       burrito_type: "",
+    //       price: 0,
+    //       neighborhood: "",
+    //       borough: "",
+    //       rating: 0,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const handleReviewUpdate = (event): void => {
