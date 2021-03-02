@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginBox from "./LoginBox.js";
+import LoginBox from "./LoginBox";
 import SignupBox from "./SignupBox.js";
 
 const Nav = ({
@@ -8,10 +8,10 @@ const Nav = ({
   handleSignUp,
   currentUser,
   googleLogin,
-  failedLogin
-} = props) => {
-  const [loginClicked, setLoginClick] = useState(false);
-  const [signUpClicked, setSignUpClick] = useState(false);
+  failedLogin,
+}): JSX.Element => {
+  const [loginClicked, setLoginClick] = useState<boolean>(false);
+  const [signUpClicked, setSignUpClick] = useState<boolean>(false);
 
   if (
     currentUser.length === 0 &&
@@ -19,27 +19,26 @@ const Nav = ({
     signUpClicked === false
   ) {
     return (
-      <nav className="NavBar">
-        <div className="main-header">
+      <nav className='NavBar'>
+        <div className='main-header'>
           <Link to={"/"}>
-            <h3 className="NavLink">Home</h3>
+            <h3 className='NavLink'>Home</h3>
           </Link>
           <Link to={"./Blog"}>
-              <h3 className="NavLink">Blog</h3>
-            </Link>
-         
+            <h3 className='NavLink'>Blog</h3>
+          </Link>
 
           <Link to={"/"}>
             <img
-              id="main-logo"
-              src="https://cdn4.iconfinder.com/data/icons/fast-food-menu-1/64/147_fast-food-menu-roll-burrito-512.png"
+              id='main-logo'
+              src='https://cdn4.iconfinder.com/data/icons/fast-food-menu-1/64/147_fast-food-menu-roll-burrito-512.png'
             />
           </Link>
 
-            <Link to={"./About"}>
-              <h3 className="NavLink">About</h3>
-            </Link>
-            <div className="Login">
+          <Link to={"./About"}>
+            <h3 className='NavLink'>About</h3>
+          </Link>
+          <div className='Login'>
             <LoginBox
               loginClicked={setLoginClick}
               handleSignUp={handleSignUp}
@@ -48,12 +47,10 @@ const Nav = ({
               failedLogin={failedLogin}
             />
           </div>
-           
 
-            {/* <Link to={"./Login"}>
+          {/* <Link to={"./Login"}>
             <h3 className="NavLink">Login</h3>
           </Link> */}
-        
 
           {/* <div className="Signup">
               <SignupBox
@@ -66,27 +63,27 @@ const Nav = ({
     );
   } else if (currentUser.length > 0) {
     return (
-      <nav className="NavBar">
-        <div className="main-header">
+      <nav className='NavBar'>
+        <div className='main-header'>
           <Link to={"/"}>
-            <h3 className="NavLink">Home</h3>
+            <h3 className='NavLink'>Home</h3>
           </Link>
 
           <Link to={"/"}>
             <img
-              id="main-logo"
-              src="https://cdn4.iconfinder.com/data/icons/fast-food-menu-1/64/147_fast-food-menu-roll-burrito-512.png"
+              id='main-logo'
+              src='https://cdn4.iconfinder.com/data/icons/fast-food-menu-1/64/147_fast-food-menu-roll-burrito-512.png'
             />
           </Link>
-          <div className="headerLinks">
+          <div className='headerLinks'>
             <Link to={"./About"}>
-              <h3 className="NavLink">About</h3>
+              <h3 className='NavLink'>About</h3>
             </Link>
             <Link to={"./Blog"}>
-              <h3 className="NavLink">Blog</h3>
+              <h3 className='NavLink'>Blog</h3>
             </Link>
 
-            <p className="loggedInUser">{currentUser}</p>
+            <p className='loggedInUser'>{currentUser}</p>
           </div>
         </div>
       </nav>

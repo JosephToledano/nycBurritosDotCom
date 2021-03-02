@@ -83,7 +83,7 @@
   margin-left: 30px;
 }
 .main-text {
-  margin-top: 4%;
+  margin-top: 5%;
   font-family: "open sans", sans-serif;
   line-height: 0px;
   display: flex;
@@ -94,7 +94,11 @@
   position: absolute;
   padding-top: 2%;
   padding-bottom: 2%;
+<<<<<<< HEAD
   margin-left: 33%;
+=======
+  margin-left: 32%;
+>>>>>>> 97405d9407526fec98474143f7f6897edde75574
 }
 .top10BurritosText {
   font-size: 2rem;
@@ -197,7 +201,28 @@
   color: red;
   // margin-bottom: 5%;
 }
+#close:hover {
+  cursor: pointer;
+}
+#close {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
+.signUpTextBox:hover {
+  cursor: pointer;
+}
+
+.signUpTextBox {
+  font-family: "open sans", sans-serif;
+  font-weight: bolder;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+}
 .submitButton {
   align-items: center;
   border-radius: 20px;
