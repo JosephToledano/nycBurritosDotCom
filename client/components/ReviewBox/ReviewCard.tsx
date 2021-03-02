@@ -1,21 +1,43 @@
 import React from "react";
-import UpdatePopUpForm from "./UpdatePopUpForm";
+import UpdatePopUpForm from "../UpdatePopUpForm";
 import { Link } from "react-router-dom";
 
-const ReviewCard = (props) => {
-  const clickedUpdate = props.updateSeen;
+const ReviewCard = ({
+  rating,
+  restaurant_image_url,
+  restaurant_name,
+  price,
+  neighborhood,
+  borough,
+  handleRestaurantNameChange,
+  handleNeighborhoodChange,
+  handleRatingChange,
+  reviewsForNeighborhood,
+  handleDelete,
+  handleUpdatePopUpClick,
+  burrito_type,
+  handleNeighborhoodClick,
+  handleBurritoTypeChange,
+  updateSeen,
+  handlePriceChange,
+  handleFormSubmit,
+  handlePopUpClick,
+  newReview,
+  id,
+}): JSX.Element => {
+  const clickedUpdate = updateSeen;
   let form;
   if (clickedUpdate) {
     form = (
       <UpdatePopUpForm
-        handleBurritoTypeChange={props.handleBurritoTypeChange}
-        handleRatingChange={props.handleRatingChange}
-        handleRestaurantNameChange={props.handleRestaurantNameChange}
-        handlePriceChange={props.handlePriceChange}
-        handleNeighborhoodChange={props.handleNeighborhoodChange}
-        handleFormSubmit={props.handleFormSubmit}
-        handlePopUpClick={props.handlePopUpClick}
-        newReview={props.newReview}
+        handleBurritoTypeChange={handleBurritoTypeChange}
+        handleRatingChange={handleRatingChange}
+        handleRestaurantNameChange={handleRestaurantNameChange}
+        handlePriceChange={handlePriceChange}
+        handleNeighborhoodChange={handleNeighborhoodChange}
+        handleFormSubmit={handleFormSubmit}
+        handlePopUpClick={handlePopUpClick}
+        newReview={newReview}
       />
     );
   } else {
@@ -25,23 +47,18 @@ const ReviewCard = (props) => {
   return (
     <div className='burrito-card'>
       <div className='burrito-card-ratingAndReviews'>
-        <p className='burrito-card-text'>Rating: {props.rating}</p>
-        <p className='burrito-card-text'>Reviews: {props.reviews}</p>
+        <p className='burrito-card-text'>Rating: {rating}</p>
+        <p className='burrito-card-text'>Reviews: </p>
       </div>
       <div className='burrito-card-image-container'>
-        <img className='burrito-card-pic' src={props.restaurant_image_url} />
+        <img className='burrito-card-pic' src={restaurant_image_url} />
         <div className='burrito_type-card-image-text'>
-          <p className='burrito-card-restaurant-text'>
-            {" "}
-            {props.restaurant_name}
-          </p>
+          <p className='burrito-card-restaurant-text'> {restaurant_name}</p>
         </div>
       </div>
-      <p className='burrito-card-type-text'>
-        Burrito Type: {props.burrito_type}
-      </p>
-      <p className='burrito-card-text'>Neighborhood: {props.neighborhood}</p>
-      <p className='burrito-card-text'>Borough: {props.borough}</p>
+      <p className='burrito-card-type-text'>Burrito Type: {burrito_type}</p>
+      <p className='burrito-card-text'>Neighborhood: {neighborhood}</p>
+      <p className='burrito-card-text'>Borough: {borough}</p>
 
       <button className='burrito-card-button'>Contact</button>
     </div>
@@ -54,7 +71,7 @@ const ReviewCard = (props) => {
     //           <h3>Burrito type</h3>
     //         </div>
     //         <div className="burrito-profile">
-    //           <p className="burrito-profile-text"> {props.burrito_type}</p>
+    //           <p className="burrito-profile-text"> {burrito_type}</p>
     //         </div>
     //       </div>
 
@@ -63,7 +80,7 @@ const ReviewCard = (props) => {
     //           <h3>Restaurant</h3>
     //         </div>
     //         <div className="burrito-profile">
-    //           <p className="burrito-profile-text"> {props.restaurant_name}</p>
+    //           <p className="burrito-profile-text"> {restaurant_name}</p>
     //         </div>
     //       </div>
 

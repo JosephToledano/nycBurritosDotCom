@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Neighborhoods from "../pages/Neighborhoods";
-import CarouselBurritoDropdown from "./dropdown-filters/Carousels/CarouselBurritoDropdown";
-import CarouselNeighborhoodDropdown from "./dropdown-filters/Carousels/CarouselNeighborhoodDropdown";
-import Carousel from "./Carousel";
+import CarouselBurritoDropdown from "../dropdown-filters/Carousels/CarouselBurritoDropdown";
+import CarouselNeighborhoodDropdown from "../dropdown-filters/Carousels/CarouselNeighborhoodDropdown";
+import Carousel from "../Carousel";
 
 const BoroughFeed = ({
   reviews,
@@ -16,14 +15,22 @@ const BoroughFeed = ({
   handleUpdatePopUpClick,
   updateSeen,
   newReview,
-} = props) => {
-  const boroughs = {
+  handleRatingChange,
+  handlePopUpClick,
+  handleFormSubmit,
+  handleBurritoTypeChange,
+  handleRestaurantNameChange,
+  handleNeighborhoodChange,
+  handlePriceChange,
+}): JSX.Element => {
+  let boroughs: any = {
     Manhatten: [],
     Brooklyn: [],
     The_Bronx: [],
     Queens: [],
     Staten_Island: [],
   };
+  console.log("reviews from BoroughFeed", reviews);
   const getReviews = (reviews) => {
     reviews.forEach((review) => {
       if (review.borough === "Manhatten") {
@@ -46,7 +53,7 @@ const BoroughFeed = ({
   };
   boroughs = getReviews(reviews);
 
-  if (reviews.length === 0) {
+  if (boroughs.Manhatten === undefined) {
     return <p>Loading...</p>;
   } else {
     for (let borough in boroughs) {
@@ -77,14 +84,21 @@ const BoroughFeed = ({
             <Carousel
               key={"Brooklyn"}
               handleDelete={handleDelete}
+              reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              reviewsForNeighborhood={reviewsForNeighborhood}
               handleNeighborhoodClick={handleNeighborhoodClick}
               handleUpdatePopUpClick={handleUpdatePopUpClick}
               updateSeen={updateSeen}
-              reviews={boroughs[borough]}
               newReview={newReview}
+              handleRatingChange={handleRatingChange}
+              handlePopUpClick={handlePopUpClick}
+              handleFormSubmit={handleFormSubmit}
+              handleBurritoTypeChange={handleBurritoTypeChange}
+              handleRestaurantNameChange={handleRestaurantNameChange}
+              handleNeighborhoodChange={handleNeighborhoodChange}
+              handlePriceChange={handlePriceChange}
+              reviews={boroughs[borough]}
             />
           </div>
         );
@@ -117,14 +131,21 @@ const BoroughFeed = ({
             <Carousel
               key={"Manhatten"}
               handleDelete={handleDelete}
+              reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              reviewsForNeighborhood={reviewsForNeighborhood}
               handleNeighborhoodClick={handleNeighborhoodClick}
               handleUpdatePopUpClick={handleUpdatePopUpClick}
               updateSeen={updateSeen}
-              reviews={boroughs[borough]}
               newReview={newReview}
+              handleRatingChange={handleRatingChange}
+              handlePopUpClick={handlePopUpClick}
+              handleFormSubmit={handleFormSubmit}
+              handleBurritoTypeChange={handleBurritoTypeChange}
+              handleRestaurantNameChange={handleRestaurantNameChange}
+              handleNeighborhoodChange={handleNeighborhoodChange}
+              handlePriceChange={handlePriceChange}
+              reviews={boroughs[borough]}
             />
           </div>
         );
@@ -155,14 +176,21 @@ const BoroughFeed = ({
             <Carousel
               key={"The_Bronx"}
               handleDelete={handleDelete}
+              reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              reviewsForNeighborhood={reviewsForNeighborhood}
               handleNeighborhoodClick={handleNeighborhoodClick}
               handleUpdatePopUpClick={handleUpdatePopUpClick}
               updateSeen={updateSeen}
-              reviews={boroughs[borough]}
               newReview={newReview}
+              handleRatingChange={handleRatingChange}
+              handlePopUpClick={handlePopUpClick}
+              handleFormSubmit={handleFormSubmit}
+              handleBurritoTypeChange={handleBurritoTypeChange}
+              handleRestaurantNameChange={handleRestaurantNameChange}
+              handleNeighborhoodChange={handleNeighborhoodChange}
+              handlePriceChange={handlePriceChange}
+              reviews={boroughs[borough]}
             />
           </div>
         );
@@ -193,14 +221,21 @@ const BoroughFeed = ({
             <Carousel
               key={"Queens"}
               handleDelete={handleDelete}
+              reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              reviewsForNeighborhood={reviewsForNeighborhood}
               handleNeighborhoodClick={handleNeighborhoodClick}
               handleUpdatePopUpClick={handleUpdatePopUpClick}
               updateSeen={updateSeen}
-              reviews={boroughs[borough]}
               newReview={newReview}
+              handleRatingChange={handleRatingChange}
+              handlePopUpClick={handlePopUpClick}
+              handleFormSubmit={handleFormSubmit}
+              handleBurritoTypeChange={handleBurritoTypeChange}
+              handleRestaurantNameChange={handleRestaurantNameChange}
+              handleNeighborhoodChange={handleNeighborhoodChange}
+              handlePriceChange={handlePriceChange}
+              reviews={boroughs[borough]}
             />
           </div>
         );
@@ -231,14 +266,21 @@ const BoroughFeed = ({
             <Carousel
               key={"Staten Island"}
               handleDelete={handleDelete}
+              reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              reviewsForNeighborhood={reviewsForNeighborhood}
               handleNeighborhoodClick={handleNeighborhoodClick}
               handleUpdatePopUpClick={handleUpdatePopUpClick}
               updateSeen={updateSeen}
-              reviews={boroughs[borough]}
               newReview={newReview}
+              handleRatingChange={handleRatingChange}
+              handlePopUpClick={handlePopUpClick}
+              handleFormSubmit={handleFormSubmit}
+              handleBurritoTypeChange={handleBurritoTypeChange}
+              handleRestaurantNameChange={handleRestaurantNameChange}
+              handleNeighborhoodChange={handleNeighborhoodChange}
+              handlePriceChange={handlePriceChange}
+              reviews={boroughs[borough]}
             />
           </div>
         );
