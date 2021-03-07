@@ -123,10 +123,9 @@ const App: React.FC = () => {
         return data.json();
       })
       .then((response) => {
-        console.log("this is the response", response);
         let currentReviews = reviews;
         response.forEach((review) => currentReviews.push(review));
-        setReviews(currentReviews);
+        setReviews(response);
       })
       .catch((err) => console.log(err));
   }, [reviews]);

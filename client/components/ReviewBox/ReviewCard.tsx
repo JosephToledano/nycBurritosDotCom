@@ -3,42 +3,6 @@ import UpdatePopUpForm from "../UpdatePopUpForm";
 import { Link } from "react-router-dom";
 
 const ReviewCard = ({
-<<<<<<< HEAD:client/components/ReviewCard.js
-  handleBurritoTypeChange,
-  handleRatingChange,
-  handleRestaurantNameChange,
-  handlePriceChange,
-  handleNeighborhoodChange,
-  handleFormSubmit,
-  handlePopUpClick,
-  newReview,
-  rating,
-  reviews,
-  restaurant_image_url,
-  restaurant_name,
-  burrito_type,
-  neighborhood,
-  borough,
-} = props) => {
-  // const clickedUpdate = updateSeen;
-  // let form;
-  // if (clickedUpdate) {
-  //   form = (
-  //     <UpdatePopUpForm
-  //       handleBurritoTypeChange={handleBurritoTypeChange}
-  //       handleRatingChange={handleRatingChange}
-  //       handleRestaurantNameChange={handleRestaurantNameChange}
-  //       handlePriceChange={handlePriceChange}
-  //       handleNeighborhoodChange={handleNeighborhoodChange}
-  //       handleFormSubmit={handleFormSubmit}
-  //       handlePopUpClick={handlePopUpClick}
-  //       newReview={newReview}
-  //     />
-  //   );
-  // } else {
-  //   form = null;
-  // }
-=======
   rating,
   restaurant_image_url,
   restaurant_name,
@@ -79,17 +43,12 @@ const ReviewCard = ({
   } else {
     form = null;
   }
->>>>>>> 97405d9407526fec98474143f7f6897edde75574:client/components/ReviewBox/ReviewCard.tsx
 
   return (
     <div className='burrito-card'>
       <div className='burrito-card-ratingAndReviews'>
         <p className='burrito-card-text'>Rating: {rating}</p>
-<<<<<<< HEAD:client/components/ReviewCard.js
-        <p className='burrito-card-text'>Reviews: {reviews}</p>
-=======
         <p className='burrito-card-text'>Reviews: </p>
->>>>>>> 97405d9407526fec98474143f7f6897edde75574:client/components/ReviewBox/ReviewCard.tsx
       </div>
       <div className='burrito-card-image-container'>
         <img className='burrito-card-pic' src={restaurant_image_url} />

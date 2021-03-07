@@ -15,11 +15,9 @@ import {
 // uncomment so that webpack can bundle styles
 // import styles from './scss/Index.css';
 ReactDOM.render(
-  <RecoilRoot>
-    <BrowserRouter>
-      <PageRouter />
-    </BrowserRouter>
-  </RecoilRoot>,
+  <BrowserRouter>
+    <PageRouter />
+  </BrowserRouter>,
   // <App />,
 
   document.getElementById("root")

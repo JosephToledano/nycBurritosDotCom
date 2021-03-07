@@ -61,7 +61,7 @@ const Nav = ({
         </div>
       </nav>
     );
-  } else if (currentUser.length > 0) {
+  } else if (currentUser && currentUser.length > 0) {
     return (
       <nav className='NavBar'>
         <div className='main-header'>
