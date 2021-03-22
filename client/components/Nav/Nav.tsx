@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginBox from "./LoginBox";
 import SignupBox from "./SignupBox.js";
+import { useSelector, useDispatch } from "react-redux";
 
 const Nav = ({
   handleLogin,
@@ -13,8 +14,9 @@ const Nav = ({
   const [loginClicked, setLoginClick] = useState<boolean>(false);
   const [signUpClicked, setSignUpClick] = useState<boolean>(false);
 
+  const loggedinUser = useSelector((state: any) => state.users.currentUser);
   if (
-    currentUser.length === 0 &&
+    loggedinUser.length === 0 &&
     loginClicked === false &&
     signUpClicked === false
   ) {
@@ -83,7 +85,7 @@ const Nav = ({
               <h3 className='NavLink'>Blog</h3>
             </Link>
 
-            <p className='loggedInUser'>{currentUser}</p>
+            <p className='loggedInUser'>{loggedinUser}</p>
           </div>
         </div>
       </nav>

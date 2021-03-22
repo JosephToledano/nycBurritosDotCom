@@ -13,6 +13,7 @@ import BoroughFeed from "./components/Feeds/BoroughFeed";
 import Carousel from "./components/Carousel";
 import Top10CardList from "./components/Feeds/Top10CardList";
 import FeedContainer from "./components/Feeds/FeedContainer";
+import { useSelector, useDispatch } from "react-redux";
 
 //Types and interfaces used
 interface newReview {
@@ -117,22 +118,19 @@ const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
   const [failedLogin, setFailedLogin] = React.useState<boolean>(false);
 
-  React.useEffect((): void => {
-    fetch("/api")
-      .then((data) => {
-        return data.json();
-      })
-      .then((response) => {
-        let currentReviews = reviews;
-        response.forEach((review) => currentReviews.push(review));
-        setReviews(response);
-      })
-      .catch((err) => console.log(err));
-  }, [reviews]);
+  // React.useEffect((): void => {
+  //   fetch("/api")
+  //     .then((data) => {
+  //       return data.json();
+  //     })
+  //     .then((response) => {
+  //       let currentReviews = reviews;
+  //       response.forEach((review) => currentReviews.push(review));
+  //       setReviews(response);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [reviews]);
 
-  React.useEffect((): void => {
-    setReviews(reviews);
-  }, []);
   // event handler for when user hits log in button
   const handleLogin = (username: string, password: string): void => {
     console.log("these are the username and password", username, password);

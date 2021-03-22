@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import SignupBox from "./SignupBox";
+import { useSelector, useDispatch } from "react-redux";
+import login from "../../slices/Users";
 const LoginBox = ({
   handleSignUp,
   handleLogin,
@@ -14,6 +16,8 @@ const LoginBox = ({
   const [showingSignUp, setSignUpVisible] = useState<boolean>(false);
   const [clicked, setClick] = useState<boolean>(false);
   const [closed, setClose] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
 
   if (
     clicked &&
@@ -65,7 +69,7 @@ const LoginBox = ({
           <input
             type='submit'
             className='loginButton'
-            onClick={() => handleLogin(userName, password)}
+            onClick={() => dispatch(login(userName, password))}
           />
         </div>
       </React.Fragment>
@@ -124,7 +128,7 @@ const LoginBox = ({
           <input
             type='submit'
             className='loginButton'
-            onClick={() => handleLogin(userName, password)}
+            onClick={() => dispatch(login(userName, password))}
           />
         </div>
       </React.Fragment>
