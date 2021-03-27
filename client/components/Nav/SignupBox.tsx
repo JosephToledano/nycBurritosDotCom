@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import { useSelector, useDispatch } from "react-redux";
-import { signUp, userSelector } from "../../slices/Users";
+import { useAppSelector } from "../../reduxHooks";
 
-const SignupBox = ({ handleSignUp: handleSignUp }): JSX.Element => {
+import { signUp, login } from "../../slices/UsersSlice";
+
+const SignupBox = (): JSX.Element => {
   const [userName, setUserName] = useState<string>("username");
   const [password, setPassword] = useState<string>("password");
   const [clicked, setClick] = useState<boolean>(false);
   const [closed, setClose] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  const { isLoggedIn, loading, isError, errorMessage } = useSelector(
-    userSelector
-  );
+  const { isLoggedIn, failedLogin } = useAppSelector((state) => state.users);
 
   return (
     <React.Fragment>
@@ -42,7 +42,11 @@ const SignupBox = ({ handleSignUp: handleSignUp }): JSX.Element => {
             type='submit'
             className='signUpButton'
             onClick={() => {
-              dispatch(signUp(userName, password));
+              let credentials = {
+                username: userName,
+                password: password,
+              };
+              dispatch(credentials);
             }}
           />
         </form>

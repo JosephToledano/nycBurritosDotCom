@@ -1,16 +1,72 @@
 import React, { useState } from "react";
+import {
+  handleBurritoTypeChange,
+  handleBoroughChange,
+  handleNeigborhoodChange,
+  handlePriceChange,
+  handleRatingChange,
+  handleRestaurantChange,
+} from "../slices/ReviewsSlice";
+
+import { useAppDispatch, useAppSelector } from "../reduxHooks";
+import { useSelector, useDispatch } from "react-redux";
 
 const PopUpReviewForm = ({
   handleReviewPopUpClick,
   newReview,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
-  handleFormSubmit,
-  handleNeighborhoodChange,
-  handleBoroughChange,
-  handlePriceChange,
-  handleRatingChange,
+  // handleBurritoTypeChange,
+  // handleRestaurantNameChange,
+  // handleFormSubmit,
+  // handleNeighborhoodChange,
+  // handleBoroughChange,
+  // handlePriceChange,
+  // handleRatingChange,
 }): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const handleBurrito = (event): void => {
+    console.log("this is the new burrito", event.target.value);
+    // let updatedReviewList = newReview;
+    // updatedReviewList["burrito_type"] = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleBoroughChange(event.target.value));
+  };
+
+  const handleRestaurantName = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.restaurant_name = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleRestaurantChange(event.target.value));
+  };
+
+  const handleNeighborhood = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.neighborhood = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleNeigborhoodChange(event.target.value));
+  };
+
+  const handleBorough = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.borough = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleBoroughChange(event.target.value));
+  };
+
+  const handlePrice = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.price = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handlePriceChange(event.target.value));
+  };
+
+  const handleRatings = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.rating = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleRatingChange(event.target.value));
+  };
+
   return (
     <div>
       <div>

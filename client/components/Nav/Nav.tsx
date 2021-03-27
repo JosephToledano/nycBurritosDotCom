@@ -4,19 +4,13 @@ import LoginBox from "./LoginBox";
 import SignupBox from "./SignupBox.js";
 import { useSelector, useDispatch } from "react-redux";
 
-const Nav = ({
-  handleLogin,
-  handleSignUp,
-  currentUser,
-  googleLogin,
-  failedLogin,
-}): JSX.Element => {
+const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
   const [loginClicked, setLoginClick] = useState<boolean>(false);
   const [signUpClicked, setSignUpClick] = useState<boolean>(false);
 
-  const loggedinUser = useSelector((state: any) => state.users.currentUser);
+  // const loggedinUser = useSelector((state: any) => state.users.currentUser);
   if (
-    loggedinUser.length === 0 &&
+    // loggedinUser.length === 0 &&
     loginClicked === false &&
     signUpClicked === false
   ) {
@@ -43,8 +37,6 @@ const Nav = ({
           <div className='Login'>
             <LoginBox
               loginClicked={setLoginClick}
-              handleSignUp={handleSignUp}
-              handleLogin={handleLogin}
               googleLogin={googleLogin}
               failedLogin={failedLogin}
             />
@@ -85,7 +77,7 @@ const Nav = ({
               <h3 className='NavLink'>Blog</h3>
             </Link>
 
-            <p className='loggedInUser'>{loggedinUser}</p>
+            {/* <p className='loggedInUser'>{loggedinUser}</p> */}
           </div>
         </div>
       </nav>

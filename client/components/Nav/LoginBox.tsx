@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import SignupBox from "./SignupBox";
 import { useSelector, useDispatch } from "react-redux";
-import login from "../../slices/Users";
+import {login} from "../../slices/UsersSlice";
+
 const LoginBox = ({
-  handleSignUp,
-  handleLogin,
+
   googleLogin,
   failedLogin,
   loginClicked,
@@ -69,7 +69,12 @@ const LoginBox = ({
           <input
             type='submit'
             className='loginButton'
-            onClick={() => dispatch(login(userName, password))}
+            onClick={() => {
+              let credentials = {
+                username: userName,
+                password: password
+              }
+              dispatch(login(credentials))}
           />
         </div>
       </React.Fragment>
@@ -128,7 +133,7 @@ const LoginBox = ({
           <input
             type='submit'
             className='loginButton'
-            onClick={() => dispatch(login(userName, password))}
+            // onClick={() => dispatch(login(userName, password))}
           />
         </div>
       </React.Fragment>
@@ -147,7 +152,7 @@ const LoginBox = ({
           <p className='loginText'>X</p>
         </div>
         <div className='login'>
-          <SignupBox handleSignUp={handleSignUp} />;
+          <SignupBox  />;
         </div>
       </React.Fragment>
     );
