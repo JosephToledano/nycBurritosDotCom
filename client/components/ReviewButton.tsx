@@ -5,26 +5,14 @@ const ReviewButton = ({
   newReview,
   handleReviewPopUpClick,
   handleFormSubmit,
-  handleNeighborhoodChange,
-  handlePriceChange,
-  handleRestaurantNameChange,
-  handleRatingChange,
-  handleBurritoTypeChange,
   reviewSeen,
-  handleBoroughChange,
 }): JSX.Element => {
   const clickedReview = reviewSeen;
   let form;
   if (clickedReview) {
     form = (
       <PopUpReviewForm
-        handleBurritoTypeChange={handleBurritoTypeChange}
-        handleRatingChange={handleRatingChange}
-        handleRestaurantNameChange={handleRestaurantNameChange}
-        handlePriceChange={handlePriceChange}
-        handleNeighborhoodChange={handleNeighborhoodChange}
         handleFormSubmit={handleFormSubmit}
-        handleBoroughChange={handleBoroughChange}
         handleReviewPopUpClick={handleReviewPopUpClick}
         newReview={newReview}
       />

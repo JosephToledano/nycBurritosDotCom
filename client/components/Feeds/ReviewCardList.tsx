@@ -5,19 +5,10 @@ const ReviewCardList = ({
   reviews,
   neighborhoodTypeDropdownItem,
   burritoTypeDropdownItem,
-  handleDelete,
   handleNeighborhoodClick,
   reviewsForNeighborhood,
-  handleUpdatePopUpClick,
-  updateSeen,
   newReview,
-  handleRatingChange,
-  handlePopUpClick,
   handleFormSubmit,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
-  handleNeighborhoodChange,
-  handlePriceChange,
 }): JSX.Element => {
   if (reviews.length) {
     return (
@@ -42,19 +33,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           } else if (
@@ -74,19 +56,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           } else if (
@@ -106,19 +79,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           } else if (
@@ -139,19 +103,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           }

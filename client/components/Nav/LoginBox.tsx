@@ -3,14 +3,9 @@ import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import SignupBox from "./SignupBox";
 import { useSelector, useDispatch } from "react-redux";
-import {login} from "../../slices/UsersSlice";
+import { login } from "../../slices/UsersSlice";
 
-const LoginBox = ({
-
-  googleLogin,
-  failedLogin,
-  loginClicked,
-}): JSX.Element => {
+const LoginBox = ({ googleLogin, failedLogin, loginClicked }): JSX.Element => {
   const [userName, setUserName] = useState<string>("username");
   const [password, setPassword] = useState<string>("password");
   const [showingSignUp, setSignUpVisible] = useState<boolean>(false);
@@ -72,9 +67,10 @@ const LoginBox = ({
             onClick={() => {
               let credentials = {
                 username: userName,
-                password: password
-              }
-              dispatch(login(credentials))}
+                password: password,
+              };
+              dispatch(login(credentials));
+            }}
           />
         </div>
       </React.Fragment>
@@ -152,7 +148,7 @@ const LoginBox = ({
           <p className='loginText'>X</p>
         </div>
         <div className='login'>
-          <SignupBox  />;
+          <SignupBox />;
         </div>
       </React.Fragment>
     );

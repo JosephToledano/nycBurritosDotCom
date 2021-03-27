@@ -5,23 +5,14 @@ import Carousel from "../Carousel";
 
 const BoroughFeed = ({
   reviews,
-  handleDelete,
   burritoTypeDropdownItem,
   reviewsForNeighborhood,
   neighborhoodTypeDropdownItem,
   handleBurritoTypeDropdownChange,
   handleNeighborhoodTypeDropdownChange,
   handleNeighborhoodClick,
-  handleUpdatePopUpClick,
-  updateSeen,
   newReview,
-  handleRatingChange,
-  handlePopUpClick,
   handleFormSubmit,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
-  handleNeighborhoodChange,
-  handlePriceChange,
 }): JSX.Element => {
   let boroughs: any = {
     Manhatten: [],
@@ -83,21 +74,12 @@ const BoroughFeed = ({
             </div>
             <Carousel
               key={"Brooklyn"}
-              handleDelete={handleDelete}
               reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
               newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
               handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
               reviews={boroughs[borough]}
             />
           </div>
@@ -130,21 +112,12 @@ const BoroughFeed = ({
             </div>
             <Carousel
               key={"Manhatten"}
-              handleDelete={handleDelete}
               reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
               newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
               handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
               reviews={boroughs[borough]}
             />
           </div>
@@ -175,21 +148,12 @@ const BoroughFeed = ({
             </div>
             <Carousel
               key={"The_Bronx"}
-              handleDelete={handleDelete}
               reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
               newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
               handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
               reviews={boroughs[borough]}
             />
           </div>
@@ -220,21 +184,12 @@ const BoroughFeed = ({
             </div>
             <Carousel
               key={"Queens"}
-              handleDelete={handleDelete}
               reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
               newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
               handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
               reviews={boroughs[borough]}
             />
           </div>
@@ -265,21 +220,12 @@ const BoroughFeed = ({
             </div>
             <Carousel
               key={"Staten Island"}
-              handleDelete={handleDelete}
               reviewsForNeighborhood={reviewsForNeighborhood}
               burritoTypeDropdownItem={burritoTypeDropdownItem}
               neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
               newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
               handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
               reviews={boroughs[borough]}
             />
           </div>

@@ -113,9 +113,10 @@ const App: React.FC = () => {
   let currentUserId = useAppSelector((state) => state.users.currentUserId);
   let failedLogin = useAppSelector((state) => state.users.failedLogin);
 
+  // dispatch(fetchReviews());
+
   React.useEffect((): void => {
     console.log(reviews);
-    dispatch(fetchReviews());
     console.log("these are the reviews", reviews);
   }, [reviews]);
 
@@ -211,8 +212,6 @@ const App: React.FC = () => {
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
-        handleUpdatePopUpClick={handleUpdatePopUpClick}
-        updateSeen={updateSeen}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
         handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
@@ -220,7 +219,6 @@ const App: React.FC = () => {
           handleNeighborhoodTypeDropdownChange
         }
         reviews={reviews}
-        handlePopUpClick={handlePriceChange}
       />
       <p className='homepageCarouselHeader'>All Reviews</p>
       <Carousel
@@ -228,20 +226,15 @@ const App: React.FC = () => {
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
-        handleUpdatePopUpClick={handleUpdatePopUpClick}
-        updateSeen={updateSeen}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
         reviews={reviews}
-        handlePopUpClick={handlePopUpClick}
       />
       <FeedContainer
         reviewsForNeighborhood={reviewsForNeighborhood}
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
-        handleUpdatePopUpClick={handleUpdatePopUpClick}
-        updateSeen={updateSeen}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
         handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
@@ -249,7 +242,6 @@ const App: React.FC = () => {
           handleNeighborhoodTypeDropdownChange
         }
         reviews={reviews}
-        handlePopUpClick={handlePriceChange}
       />
     </>
   );

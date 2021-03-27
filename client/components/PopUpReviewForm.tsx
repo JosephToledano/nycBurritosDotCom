@@ -16,7 +16,7 @@ const PopUpReviewForm = ({
   newReview,
   // handleBurritoTypeChange,
   // handleRestaurantNameChange,
-  // handleFormSubmit,
+  handleFormSubmit,
   // handleNeighborhoodChange,
   // handleBoroughChange,
   // handlePriceChange,
@@ -96,7 +96,7 @@ const PopUpReviewForm = ({
                   type='text'
                   // value={newReview.}
                   placeholder='The Cantina'
-                  onChange={handleRestaurantNameChange}
+                  onChange={handleRestaurantName}
                 />
               </label>
               <label className='burrito-form-label'>
@@ -106,7 +106,7 @@ const PopUpReviewForm = ({
                   type='text'
                   // value={newReview.neighborhood}
                   placeholder='Mos Eisley'
-                  onChange={handleNeighborhoodChange}
+                  onChange={handleNeigborhoodChange}
                 />
               </label>
               <label className='burrito-form-label'>

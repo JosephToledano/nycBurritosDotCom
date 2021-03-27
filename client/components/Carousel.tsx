@@ -5,19 +5,10 @@ const Carousel = ({
   reviews,
   neighborhoodTypeDropdownItem,
   burritoTypeDropdownItem,
-  handleDelete,
   handleNeighborhoodClick,
   reviewsForNeighborhood,
-  handleUpdatePopUpClick,
-  updateSeen,
   newReview,
-  handleRatingChange,
-  handlePopUpClick,
   handleFormSubmit,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
-  handleNeighborhoodChange,
-  handlePriceChange,
 }) => {
   const [currentImageIndex, setImageIndex] = useState<number>(0);
 
@@ -52,21 +43,12 @@ const Carousel = ({
       <Arrow direction='left' clickFunction={previousSlide} glyph='&#9664;' />
       <ReviewCardList
         reviews={reviews.slice(currentImageIndex, currentImageIndex + 4)}
-        handleDelete={handleDelete}
         reviewsForNeighborhood={reviewsForNeighborhood}
         burritoTypeDropdownItem={burritoTypeDropdownItem}
         neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
-        handleUpdatePopUpClick={handleUpdatePopUpClick}
-        updateSeen={updateSeen}
         newReview={newReview}
-        handleRatingChange={handleRatingChange}
-        handlePopUpClick={handlePopUpClick}
         handleFormSubmit={handleFormSubmit}
-        handleBurritoTypeChange={handleBurritoTypeChange}
-        handleRestaurantNameChange={handleRestaurantNameChange}
-        handleNeighborhoodChange={handleNeighborhoodChange}
-        handlePriceChange={handlePriceChange}
       />
       <Arrow
         // className={Arrow}
