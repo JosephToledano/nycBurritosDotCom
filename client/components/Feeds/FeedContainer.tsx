@@ -3,11 +3,7 @@ import BoroughFeed from "./BoroughFeed";
 
 const FeedContainer = ({
   reviews,
-  burritoTypeDropdownItem,
   reviewsForNeighborhood,
-  neighborhoodTypeDropdownItem,
-  handleBurritoTypeDropdownChange,
-  handleNeighborhoodTypeDropdownChange,
   handleNeighborhoodClick,
   newReview,
   handleFormSubmit,
@@ -17,16 +13,10 @@ const FeedContainer = ({
       <h2 className='FeedContainerText'>Rankings by Borough</h2>
       <BoroughFeed
         reviewsForNeighborhood={reviewsForNeighborhood}
-        burritoTypeDropdownItem={burritoTypeDropdownItem}
-        neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
         reviews={reviews}
-        handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
-        handleNeighborhoodTypeDropdownChange={
-          handleNeighborhoodTypeDropdownChange
-        }
       />
     </>
   );

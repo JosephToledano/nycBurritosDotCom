@@ -1,11 +1,20 @@
 import React from "react";
+import { useAppSelector } from "../../../reduxHooks";
+import { useDispatch } from "react-redux";
+import { handleNeighborhoodTypeDropdownChangeMain } from "../../../slices/DropdownsSlice";
 
-export default function NeighborhoodTypeDropdown(props) {
+export default function NeighborhoodTypeDropdown() {
   let allChoices = (
     <option key='0' value='All'>
       All
     </option>
   );
+
+  let neighborhoodDropdownItem = useAppSelector(
+    (state) => state.dropdowns.neighborhood_main
+  );
+  let reviews = useAppSelector((state) => state.reviews.reviews);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -14,13 +23,18 @@ export default function NeighborhoodTypeDropdown(props) {
           Filter by neighborhood:
           <select
             className='dropdown-select'
-            value={props.neighborhoodTypeDropdownItem}
-            onChange={props.handleNeighborhoodTypeDropdownChange}
+            value={neighborhoodDropdownItem}
+            onChange={(e) =>
+              dispatch(handleNeighborhoodTypeDropdownChangeMain(e))
+            }
           >
             {allChoices}
-            {props.reviews.map((review) => (
+            {reviews.map((review) => (
               // console.log(review)
-              <option key={review.id} value={review.neighborhood}>
+              <option
+                key={`neighborhoodMain ${review._id}`}
+                value={review.neighborhood}
+              >
                 {review.neighborhood}
               </option>
             ))}

@@ -3,11 +3,7 @@ import Carousel from "../Carousel";
 
 const Top10CardList = ({
   reviews,
-  burritoTypeDropdownItem,
   reviewsForNeighborhood,
-  neighborhoodTypeDropdownItem,
-  handleBurritoTypeDropdownChange,
-  handleNeighborhoodTypeDropdownChange,
   handleNeighborhoodClick,
   newReview,
   handleFormSubmit,
@@ -29,8 +25,6 @@ const Top10CardList = ({
       <p className='top10BurritosText'>Top 10 Burritos in NYC</p>
       <Carousel
         reviewsForNeighborhood={reviewsForNeighborhood}
-        burritoTypeDropdownItem={burritoTypeDropdownItem}
-        neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}

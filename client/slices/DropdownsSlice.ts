@@ -2,58 +2,46 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "../reduxHooks";
 import type { RootState } from "../store";
 
-let reviews = useAppSelector((state) => state.reviews.reviews);
+// let reviews = useAppSelector((state) => state.reviews.reviews);
 
 const initialState: any = {
-  reviewsForBurritoType: [],
-  reviewsForNeighborhood: [],
-  burritoTypeDropdownItem: {},
-  neighborhoodTypeDropdownItem: {},
+  // reviewsForBurritoType: reviews,
+  // reviewsForNeighborhood: reviews,
+  burrito_main: "All",
+  burrito_carousel: "All",
+  neighborhood_main: "All",
+  neighborhood_carousel: "All",
 };
 
 const dropdownsSlice = createSlice({
   name: "dropdowns",
   initialState,
   reducers: {
-    handleBurritoTypeDropdownChange(state, action: PayloadAction<any>) {
-      state.burritoTypeDropdownItem = action.payload;
+    handleBurritoTypeDropdownChangeMain(state, action: PayloadAction<any>) {
+      state.burrito_main = action.payload;
     },
-    handleNeighborhoodTypeDropdownChange(state, action: PayloadAction<any>) {
-      state.neighborhoodTypeDropdownItem = action.payload;
+    handleBurritoTypeDropdownChangeCarousel(state, action: PayloadAction<any>) {
+      state.burrito_carousel = action.payload;
+    },
+    handleNeighborhoodTypeDropdownChangeMain(
+      state,
+      action: PayloadAction<any>
+    ) {
+      state.neighborhood_main = action.payload;
+    },
+    handleNeighborhoodTypeDropdownChangeCarousel(
+      state,
+      action: PayloadAction<any>
+    ) {
+      state.neighborhood_carousel = action.payload;
     },
   },
 });
 
-const [reviewsForNeighborhood, setReviewsForNeighbohood] = React.useState<
-  newReview[]
->([]);
-const [
-  reviewsForBurritoType,
-  setReviewsForBurritoType,
-] = React.useState<reviewsForBurritoType>();
-
-const [
-  burritoTypeDropdownItem,
-  setBurritoTypeDropdownItem,
-] = React.useState<string>(null);
-const [
-  neighborhoodTypeDropdownItem,
-  setNeighborhoodTypeDropdownItem,
-] = React.useState<string>(null);
-
-const handleNeighborhoodClick = (event): void => {
-  let neighborhoodReviews = reviews;
-  neighborhoodReviews = neighborhoodReviews.filter(
-    (review) => review.neighborhood == event.target.id
-  );
-  setReviewsForNeighbohood(reviewsForNeighborhood.concat(neighborhoodReviews));
-};
-
-//handlers for dropdown filters
-const handleBurritoTypeDropdownChange = (event): void => {
-  setBurritoTypeDropdownItem(event.target.value);
-};
-
-const handleNeighborhoodTypeDropdownChange = (event): void => {
-  setNeighborhoodTypeDropdownItem(event.target.value);
-};
+export const {
+  handleBurritoTypeDropdownChangeMain,
+  handleBurritoTypeDropdownChangeCarousel,
+  handleNeighborhoodTypeDropdownChangeMain,
+  handleNeighborhoodTypeDropdownChangeCarousel,
+} = dropdownsSlice.actions;
+export default dropdownsSlice.reducer;

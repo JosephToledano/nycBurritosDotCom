@@ -2,14 +2,9 @@ import * as React from "react";
 // import "./index.css";
 import MainText from "./components/MainText";
 import Nav from "./components/Nav/Nav";
-import ReviewCardList from "./components/Feeds/ReviewCardList";
 import ReviewButton from "./components/ReviewButton";
-import LoginBox from "./components/Nav/LoginBox";
-import ReviewCardCarousel from "./components/Carousel";
-// import fetch from "isomorphic-fetch";
 import BurritoTypeDropdown from "./components/dropdown-filters/Main/BurritoTypeDropdown";
 import NeighborhoodTypeDropdown from "./components/dropdown-filters/Main/NeighborhoodTypeDropdown";
-import BoroughFeed from "./components/Feeds/BoroughFeed";
 import Carousel from "./components/Carousel";
 import Top10CardList from "./components/Feeds/Top10CardList";
 import FeedContainer from "./components/Feeds/FeedContainer";
@@ -94,7 +89,6 @@ const App: React.FC = () => {
     setReviewsForBurritoType,
   ] = React.useState<reviewsForBurritoType>();
   const [reviewSeen, setReviewSeen] = React.useState<boolean>(false);
-  const [updateSeen, setUpdateSeen] = React.useState<boolean>(false);
   const [
     burritoTypeDropdownItem,
     setBurritoTypeDropdownItem,
@@ -105,20 +99,21 @@ const App: React.FC = () => {
   ] = React.useState<string>(null);
 
   const dispatch = useDispatch();
+  // setTimeout(() => dispatch(fetchReviews()), 10);
 
   // let reviews = useAppSelector((state) => state.reviews.reviews);
   let reviews = useAppSelector((state) => state.reviews.reviews);
+  let newReviewz = useAppSelector((state) => state.reviews.newReview);
+
   let currentUser = useAppSelector((state) => state.users.currentUser);
   let isLoggedIn = useAppSelector((state) => state.users.isLoggedIn);
   let currentUserId = useAppSelector((state) => state.users.currentUserId);
   let failedLogin = useAppSelector((state) => state.users.failedLogin);
 
-  // dispatch(fetchReviews());
-
-  React.useEffect((): void => {
+  React.useEffect(() => {
+    dispatch(fetchReviews());
     console.log(reviews);
-    console.log("these are the reviews", reviews);
-  }, [reviews]);
+  }, []);
 
   // let reviews = useAppSelector((state) => state.reviews.reviews);
 
@@ -142,9 +137,6 @@ const App: React.FC = () => {
   const handleReviewPopUpClick = (): void => {
     reviewSeen === false ? setReviewSeen(true) : setReviewSeen(false);
   };
-  const handleUpdatePopUpClick = (): void => {
-    updateSeen === false ? setUpdateSeen(true) : setUpdateSeen(false);
-  };
 
   const handleNeighborhoodClick = (event): void => {
     let neighborhoodReviews = reviews;
@@ -154,15 +146,6 @@ const App: React.FC = () => {
     setReviewsForNeighbohood(
       reviewsForNeighborhood.concat(neighborhoodReviews)
     );
-  };
-
-  //handlers for dropdown filters
-  const handleBurritoTypeDropdownChange = (event): void => {
-    setBurritoTypeDropdownItem(event.target.value);
-  };
-
-  const handleNeighborhoodTypeDropdownChange = (event): void => {
-    setNeighborhoodTypeDropdownItem(event.target.value);
   };
 
   const googleLogin = () => {
@@ -190,41 +173,20 @@ const App: React.FC = () => {
           newReview={newReview}
         />
         <div className='dropdown-menus'>
-          <BurritoTypeDropdown
-            reviews={reviews}
-            handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
-            burritoTypeDropdownItem={burritoTypeDropdownItem}
-            neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-          />
-          {/* <BurritoTypeDropdown/> */}
-          <NeighborhoodTypeDropdown
-            reviews={reviews}
-            handleNeighborhoodTypeDropdownChange={
-              handleNeighborhoodTypeDropdownChange
-            }
-            neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-            burritoTypeDropdownItem={burritoTypeDropdownItem}
-          />
+          <BurritoTypeDropdown />
+          <NeighborhoodTypeDropdown />
         </div>
       </React.Fragment>
       <Top10CardList
         reviewsForNeighborhood={reviewsForNeighborhood}
-        burritoTypeDropdownItem={burritoTypeDropdownItem}
-        neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
-        handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
-        handleNeighborhoodTypeDropdownChange={
-          handleNeighborhoodTypeDropdownChange
-        }
         reviews={reviews}
       />
       <p className='homepageCarouselHeader'>All Reviews</p>
       <Carousel
         reviewsForNeighborhood={reviewsForNeighborhood}
-        burritoTypeDropdownItem={burritoTypeDropdownItem}
-        neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
@@ -232,15 +194,9 @@ const App: React.FC = () => {
       />
       <FeedContainer
         reviewsForNeighborhood={reviewsForNeighborhood}
-        burritoTypeDropdownItem={burritoTypeDropdownItem}
-        neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
-        handleBurritoTypeDropdownChange={handleBurritoTypeDropdownChange}
-        handleNeighborhoodTypeDropdownChange={
-          handleNeighborhoodTypeDropdownChange
-        }
         reviews={reviews}
       />
     </>

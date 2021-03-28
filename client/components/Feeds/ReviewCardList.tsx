@@ -1,30 +1,37 @@
 import React from "react";
 import ReviewCardBox from "../ReviewBox/ReviewCardBox";
+import { useAppSelector } from "../../reduxHooks";
 
 const ReviewCardList = ({
   reviews,
-  neighborhoodTypeDropdownItem,
-  burritoTypeDropdownItem,
   handleNeighborhoodClick,
   reviewsForNeighborhood,
   newReview,
   handleFormSubmit,
 }): JSX.Element => {
+  let neighborhoodTypeDropdownItem = useAppSelector(
+    (state) => state.dropdowns.neighborhoodTypeDropdownItem
+  );
+  let burritoTypeDropdownItem = useAppSelector(
+    (state) => state.dropdowns.burritoTypeDropdownItem
+  );
+
   if (reviews.length) {
     return (
       <div className='rankings-box-feed'>
         {reviews.map((review) => {
-          console.log(review.neighborhood);
-          console.log(neighborhoodTypeDropdownItem);
+          console.log("this is a review from reviewCardlist", review);
+          console.log(neighborhoodTypeDropdownItem, burritoTypeDropdownItem);
 
           if (
-            review.neighborhood === neighborhoodTypeDropdownItem &&
-            review.burrito_type === burritoTypeDropdownItem
+            // review.neighborhood === neighborhoodTypeDropdownItem &&
+            // review.burrito_type === burritoTypeDropdownItem
+            1 === 1
           ) {
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -47,7 +54,7 @@ const ReviewCardList = ({
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -70,7 +77,7 @@ const ReviewCardList = ({
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -94,7 +101,7 @@ const ReviewCardList = ({
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}

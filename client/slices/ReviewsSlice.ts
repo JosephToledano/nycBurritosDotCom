@@ -40,7 +40,9 @@ const submitNewReview = createAsyncThunk(
         price: newReview.price,
         rating: newReview.rating,
       }),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .then((data) => data);
   }
 );
 
@@ -84,14 +86,15 @@ const reviewsSlice = createSlice({
   },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(
-      fetchReviews.fulfilled,
-      (state, action: PayloadAction<any>) => {
+    builder
+      .addCase(fetchReviews.fulfilled, (state, action: PayloadAction<any>) => {
         // Add user to the state array
-        state.reviews.push(action.payload);
-      }
-    ),
-      builder.addCase(
+        action.payload.forEach((review) => {
+          if (state.reviews.includes(review) === false)
+            state.reviews.push(review);
+        });
+      })
+      .addCase(
         submitNewReview.fulfilled,
         (state, action: PayloadAction<any>) => {
           // Add user to the state array

@@ -3,8 +3,6 @@ import ReviewCardList from "./Feeds/ReviewCardList";
 
 const Carousel = ({
   reviews,
-  neighborhoodTypeDropdownItem,
-  burritoTypeDropdownItem,
   handleNeighborhoodClick,
   reviewsForNeighborhood,
   newReview,
@@ -44,8 +42,6 @@ const Carousel = ({
       <ReviewCardList
         reviews={reviews.slice(currentImageIndex, currentImageIndex + 4)}
         reviewsForNeighborhood={reviewsForNeighborhood}
-        burritoTypeDropdownItem={burritoTypeDropdownItem}
-        neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}

@@ -5,11 +5,7 @@ import Carousel from "../Carousel";
 
 const BoroughFeed = ({
   reviews,
-  burritoTypeDropdownItem,
   reviewsForNeighborhood,
-  neighborhoodTypeDropdownItem,
-  handleBurritoTypeDropdownChange,
-  handleNeighborhoodTypeDropdownChange,
   handleNeighborhoodClick,
   newReview,
   handleFormSubmit,
@@ -54,29 +50,13 @@ const BoroughFeed = ({
           <div className='carousel-feed-section'>
             <p className='carousel-borough-name'>Brooklyn</p>
             <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
-                reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
+              <CarouselBurritoDropdown reviews={boroughs[borough]} />
               {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-              />
+              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
             </div>
             <Carousel
               key={"Brooklyn"}
               reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
               newReview={newReview}
               handleFormSubmit={handleFormSubmit}
@@ -92,29 +72,13 @@ const BoroughFeed = ({
           <div className='carousel-feed-section'>
             <p className='carousel-borough-name'>Manhatten</p>
             <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
-                reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
+              <CarouselBurritoDropdown reviews={boroughs[borough]} />
               {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-              />
+              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
             </div>
             <Carousel
               key={"Manhatten"}
               reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
               newReview={newReview}
               handleFormSubmit={handleFormSubmit}
@@ -128,29 +92,13 @@ const BoroughFeed = ({
           <div className='carousel-feed-section'>
             <p className='carousel-borough-name'>The Bronx</p>
             <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
-                reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
+              <CarouselBurritoDropdown reviews={boroughs[borough]} />
               {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-              />
+              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
             </div>
             <Carousel
               key={"The_Bronx"}
               reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
               newReview={newReview}
               handleFormSubmit={handleFormSubmit}
@@ -164,29 +112,13 @@ const BoroughFeed = ({
           <div className='carousel-feed-section'>
             <p className='carousel-borough-name'>Queens</p>
             <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
-                reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
+              <CarouselBurritoDropdown reviews={boroughs[borough]} />
               {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-              />
+              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
             </div>
             <Carousel
               key={"Queens"}
               reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
               newReview={newReview}
               handleFormSubmit={handleFormSubmit}
@@ -200,29 +132,13 @@ const BoroughFeed = ({
           <div className='carousel-feed-section'>
             <p className='carousel-borough-name'>Staten Island</p>
             <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
-                reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
+              <CarouselBurritoDropdown reviews={boroughs[borough]} />
               {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-              />
+              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
             </div>
             <Carousel
               key={"Staten Island"}
               reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
               handleNeighborhoodClick={handleNeighborhoodClick}
               newReview={newReview}
               handleFormSubmit={handleFormSubmit}
