@@ -18,8 +18,6 @@ const Carousel = ({
     setImageIndex(index);
   };
 
-  console.log("these are the reviews from Carousel", reviews);
-
   const nextSlide = () => {
     const lastIndex = reviews.length - 1;
     const shouldResetIndex = currentImageIndex === lastIndex;

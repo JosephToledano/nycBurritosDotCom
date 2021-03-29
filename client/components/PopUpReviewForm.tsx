@@ -25,7 +25,6 @@ const PopUpReviewForm = ({
   const dispatch = useDispatch();
 
   const handleBurrito = (event): void => {
-    console.log("this is the new burrito", event.target.value);
     // let updatedReviewList = newReview;
     // updatedReviewList["burrito_type"] = event.target.value;
     // setNewReview(updatedReviewList);

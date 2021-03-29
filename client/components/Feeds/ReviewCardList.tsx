@@ -1,6 +1,7 @@
 import React from "react";
 import ReviewCardBox from "../ReviewBox/ReviewCardBox";
 import { useAppSelector } from "../../reduxHooks";
+import { useEffect } from "react";
 
 const ReviewCardList = ({
   reviews,
@@ -10,23 +11,23 @@ const ReviewCardList = ({
   handleFormSubmit,
 }): JSX.Element => {
   let neighborhoodTypeDropdownItem = useAppSelector(
-    (state) => state.dropdowns.neighborhoodTypeDropdownItem
+    (state) => state.dropdowns.neighborhood_main
   );
   let burritoTypeDropdownItem = useAppSelector(
-    (state) => state.dropdowns.burritoTypeDropdownItem
+    (state) => state.dropdowns.burrito_main
   );
+
+  // neighborhoodTypeDropdownItem = null;
+  // burritoTypeDropdownItem = null;
 
   if (reviews.length) {
     return (
       <div className='rankings-box-feed'>
         {reviews.map((review) => {
-          console.log("this is a review from reviewCardlist", review);
-          console.log(neighborhoodTypeDropdownItem, burritoTypeDropdownItem);
-
           if (
-            // review.neighborhood === neighborhoodTypeDropdownItem &&
-            // review.burrito_type === burritoTypeDropdownItem
-            1 === 1
+            review.neighborhood === neighborhoodTypeDropdownItem &&
+            review.burrito_type === burritoTypeDropdownItem
+            // 1 === 1
           ) {
             return (
               <ReviewCardBox

@@ -7,10 +7,10 @@ import type { RootState } from "../store";
 const initialState: any = {
   // reviewsForBurritoType: reviews,
   // reviewsForNeighborhood: reviews,
-  burrito_main: "All",
-  burrito_carousel: "All",
-  neighborhood_main: "All",
-  neighborhood_carousel: "All",
+  burrito_main: null,
+  burrito_carousel: null,
+  neighborhood_main: null,
+  neighborhood_carousel: null,
 };
 
 const dropdownsSlice = createSlice({

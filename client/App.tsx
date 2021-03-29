@@ -112,7 +112,6 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(fetchReviews());
-    console.log(reviews);
   }, []);
 
   // let reviews = useAppSelector((state) => state.reviews.reviews);

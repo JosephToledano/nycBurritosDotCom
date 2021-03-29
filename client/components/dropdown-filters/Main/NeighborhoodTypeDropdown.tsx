@@ -25,7 +25,7 @@ export default function NeighborhoodTypeDropdown() {
             className='dropdown-select'
             value={neighborhoodDropdownItem}
             onChange={(e) =>
-              dispatch(handleNeighborhoodTypeDropdownChangeMain(e))
+              dispatch(handleNeighborhoodTypeDropdownChangeMain(e.target.value))
             }
           >
             {allChoices}

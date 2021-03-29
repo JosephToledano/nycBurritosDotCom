@@ -44,7 +44,6 @@ const BoroughFeed = ({
     return <p>Loading...</p>;
   } else {
     for (let borough in boroughs) {
-      console.log("these are boroughs", boroughs);
       if (borough === "Brooklyn") {
         return (
           <div className='carousel-feed-section'>
