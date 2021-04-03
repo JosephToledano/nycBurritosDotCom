@@ -8,11 +8,21 @@ const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
   const [loginClicked, setLoginClick] = useState<boolean>(false);
   const [signUpClicked, setSignUpClick] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    if (currentUser.length >= 0) {
+      fetch("/logout");
+      // .then(() => dispatch())
+    }
+  };
+
   // const loggedinUser = useSelector((state: any) => state.users.currentUser);
   if (
     // loggedinUser.length === 0 &&
     loginClicked === false &&
-    signUpClicked === false
+    signUpClicked === false &&
+    currentUser.length <= 0
   ) {
     return (
       <nav className='NavBar'>
@@ -77,7 +87,7 @@ const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
               <h3 className='NavLink'>Blog</h3>
             </Link>
 
-            {/* <p className='loggedInUser'>{loggedinUser}</p> */}
+            <button onClick={handleLogout}>Log out</button>
           </div>
         </div>
       </nav>

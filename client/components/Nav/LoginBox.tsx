@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import SignupBox from "./SignupBox";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../slices/UsersSlice";
+import { useAppSelector } from "../../reduxHooks";
 
 const LoginBox = ({ googleLogin, failedLogin, loginClicked }): JSX.Element => {
   const [userName, setUserName] = useState<string>("username");
@@ -11,6 +12,8 @@ const LoginBox = ({ googleLogin, failedLogin, loginClicked }): JSX.Element => {
   const [showingSignUp, setSignUpVisible] = useState<boolean>(false);
   const [clicked, setClick] = useState<boolean>(false);
   const [closed, setClose] = useState<boolean>(false);
+
+  const signedInuser = useAppSelector((state) => state.users.currentUser);
 
   const dispatch = useDispatch();
 
@@ -70,6 +73,7 @@ const LoginBox = ({ googleLogin, failedLogin, loginClicked }): JSX.Element => {
                 password: password,
               };
               dispatch(login(credentials));
+              signedInuser.length > 0 ? setClose(false) : null;
             }}
           />
         </div>
