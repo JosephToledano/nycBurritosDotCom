@@ -15,6 +15,13 @@ const CarouselNeighborhoodDropdown = ({ reviews }) => {
     </option>
   );
 
+  let filteredReviews = reviews.reduce((acc, curr) => {
+    if (acc.includes(curr.neighborhood.toLowerCase()) === false) {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
+
   return (
     <div className='carousel-dropdown-menu'>
       <form>
@@ -30,8 +37,7 @@ const CarouselNeighborhoodDropdown = ({ reviews }) => {
             }
           >
             {allChoices}
-            {reviews.map((review) => (
-              // console.log(review)
+            {filteredReviews.map((review) => (
               <option
                 key={`neighborhoodCarousel ${review._id}`}
                 value={review.neighborhood}

@@ -67,7 +67,7 @@ const PopUpReviewForm = ({
   };
 
   return (
-    <div>
+    <div id='popup-review-form-container'>
       <div>
         <div className='popup-review-form'>
           <span

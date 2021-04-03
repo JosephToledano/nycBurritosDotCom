@@ -28,7 +28,9 @@ const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
       <nav className='NavBar'>
         <div className='main-header'>
           <Link to={"/"}>
-            <h3 className='NavLink'>Home</h3>
+            <h3 className='NavLink' style={{ textDecoration: "none" }}>
+              Home
+            </h3>
           </Link>
           <Link to={"./Blog"}>
             <h3 className='NavLink'>Blog</h3>
@@ -70,7 +72,9 @@ const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
       <nav className='NavBar'>
         <div className='main-header'>
           <Link to={"/"}>
-            <h3 className='NavLink'>Home</h3>
+            <h3 className='NavLink' style={{ textDecoration: "none" }}>
+              Home
+            </h3>
           </Link>
 
           <Link to={"/"}>

@@ -16,6 +16,13 @@ export default function NeighborhoodTypeDropdown() {
   let reviews = useAppSelector((state) => state.reviews.reviews);
   const dispatch = useDispatch();
 
+  let filteredReviews = reviews.reduce((acc, curr) => {
+    if (acc.includes(curr.neighborhood.toLowerCase()) === false) {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
+
   return (
     <div>
       <form>
@@ -29,7 +36,7 @@ export default function NeighborhoodTypeDropdown() {
             }
           >
             {allChoices}
-            {reviews.map((review) => (
+            {filteredReviews.map((review) => (
               // console.log(review)
               <option
                 key={`neighborhoodMain ${review._id}`}

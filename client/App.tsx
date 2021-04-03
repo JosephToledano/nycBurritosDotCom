@@ -176,14 +176,21 @@ const App: React.FC = () => {
           <div id='top-container'>
             <MainText />
             <SearchBar />
-            <BoroughFilters />
           </div>
+        </div>
+        <div id='top-mid-banner'>
+          <p id='top-mid-banner-text'>
+            {" "}
+            Fun fact: it is more likely for the Jets to win a game than it is
+            for you to find a good burrito here
+          </p>
         </div>
         <div className='image-parallax-2'>
           <div className='dropdown-menus'>
             <BurritoTypeDropdown />
             <NeighborhoodTypeDropdown />
           </div>
+
           <Top10CardList
             reviewsForNeighborhood={reviewsForNeighborhood}
             handleNeighborhoodClick={handleNeighborhoodClick}
@@ -201,6 +208,13 @@ const App: React.FC = () => {
         handleFormSubmit={handleFormSubmit}
         reviews={reviews}
       /> */}
+      <div id='bottom-banner'>
+        <p id='bottom-banner-text'>
+          {" "}
+          Want to add a review? All you need to do is sign up and click the
+          submit a review button
+        </p>
+      </div>
 
       <FeedContainer
         reviewsForNeighborhood={reviewsForNeighborhood}

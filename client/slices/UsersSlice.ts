@@ -77,6 +77,7 @@ const usersSlice = createSlice({
       builder.addCase(login.fulfilled, (state, action: PayloadAction<any>) => {
         // Add user to the state array
         if (action.payload.username) {
+          console.log(action.payload);
           state.currentUser = action.payload.username;
           state.isLoggedIn = true;
           state.currentUserId = action.payload.user_id;

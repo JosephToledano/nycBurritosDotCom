@@ -10,6 +10,7 @@ const SearchBar = () => {
   return (
     <>
       <div id='search-section'>
+        <h4 id='search-section-text'>Search for a 🌯</h4>
         <input
           id='search-bar'
           type='text'

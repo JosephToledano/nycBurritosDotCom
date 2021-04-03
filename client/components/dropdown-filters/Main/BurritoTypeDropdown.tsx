@@ -16,6 +16,13 @@ const BurritoTypeDropdown = () => {
     </option>
   );
 
+  let filteredReviews = reviews.reduce((acc, curr) => {
+    if (acc.includes(curr.burrito_type.toLowerCase()) === false) {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
+
   return (
     <div>
       <form>
@@ -30,7 +37,7 @@ const BurritoTypeDropdown = () => {
             }}
           >
             {allChoices}
-            {reviews.map((review) => (
+            {filteredReviews.map((review) => (
               // console.log(review)
               <option
                 key={`burritoTypeMain ${review._id}`}

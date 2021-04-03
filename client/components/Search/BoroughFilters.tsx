@@ -5,9 +5,9 @@ import React from "react";
 const BoroughFilters = () => {
   const reviews = useAppSelector((state) => state.reviews.reviews);
   let boroughs = [
-    "Manhattan",
     "Brooklyn",
     "The Bronx",
+    "Manhattan",
     "Queens",
     "Staten Island",
   ];
