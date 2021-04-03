@@ -1,39 +1,38 @@
 import React from "react";
 import ReviewCardBox from "../ReviewBox/ReviewCardBox";
+import { useAppSelector } from "../../reduxHooks";
+import { useEffect } from "react";
 
 const ReviewCardList = ({
   reviews,
-  neighborhoodTypeDropdownItem,
-  burritoTypeDropdownItem,
-  handleDelete,
   handleNeighborhoodClick,
   reviewsForNeighborhood,
-  handleUpdatePopUpClick,
-  updateSeen,
   newReview,
-  handleRatingChange,
-  handlePopUpClick,
   handleFormSubmit,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
-  handleNeighborhoodChange,
-  handlePriceChange,
 }): JSX.Element => {
+  let neighborhoodTypeDropdownItem = useAppSelector(
+    (state) => state.dropdowns.neighborhood_main
+  );
+  let burritoTypeDropdownItem = useAppSelector(
+    (state) => state.dropdowns.burrito_main
+  );
+
+  // neighborhoodTypeDropdownItem = null;
+  // burritoTypeDropdownItem = null;
+
   if (reviews.length) {
     return (
       <div className='rankings-box-feed'>
         {reviews.map((review) => {
-          console.log(review.neighborhood);
-          console.log(neighborhoodTypeDropdownItem);
-
           if (
             review.neighborhood === neighborhoodTypeDropdownItem &&
             review.burrito_type === burritoTypeDropdownItem
+            // 1 === 1
           ) {
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -42,19 +41,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           } else if (
@@ -65,7 +55,7 @@ const ReviewCardList = ({
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -74,19 +64,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           } else if (
@@ -97,7 +78,7 @@ const ReviewCardList = ({
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -106,19 +87,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           } else if (
@@ -130,7 +102,7 @@ const ReviewCardList = ({
             return (
               <ReviewCardBox
                 // dropdownItem = {dropdownItem}
-                key={review._id}
+                key={`${review.restaurant_name}  ${review.burrito_type}  ${review._id}`}
                 id={review._id}
                 neighborhood={review.neighborhood}
                 rating={review.rating}
@@ -139,19 +111,10 @@ const ReviewCardList = ({
                 borough={review.borough}
                 restaurant_name={review.restaurant_name}
                 restaurant_image_url={review.restaurant_image_url}
-                updateSeen={updateSeen}
-                handleUpdatePopUpClick={handleUpdatePopUpClick}
-                handleDelete={handleDelete}
                 handleNeighborhoodClick={handleNeighborhoodClick}
                 reviewsForNeighborhood={reviewsForNeighborhood}
-                handleNeighborhoodChange={handleNeighborhoodChange}
-                handleRestaurantNameChange={handleRestaurantNameChange}
-                handleBurritoTypeChange={handleBurritoTypeChange}
-                handlePriceChange={handlePriceChange}
                 handleFormSubmit={handleFormSubmit}
-                handlePopUpClick={handlePopUpClick}
                 newReview={newReview}
-                handleRatingChange={handleRatingChange}
               />
             );
           }

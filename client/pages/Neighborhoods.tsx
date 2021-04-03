@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 // import ReviewCardBox from './components/ReviewCardBox'
 
 const Neighborhoods = (props): JSX.Element => {
-  console.log("this is the props on Neighborhoods", props);
   return (
     <div className='NeighborhoodPage'>
       <div className='NavBar'>

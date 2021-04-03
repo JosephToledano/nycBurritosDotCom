@@ -5,23 +5,10 @@ import Carousel from "../Carousel";
 
 const BoroughFeed = ({
   reviews,
-  handleDelete,
-  burritoTypeDropdownItem,
   reviewsForNeighborhood,
-  neighborhoodTypeDropdownItem,
-  handleBurritoTypeDropdownChange,
-  handleNeighborhoodTypeDropdownChange,
   handleNeighborhoodClick,
-  handleUpdatePopUpClick,
-  updateSeen,
   newReview,
-  handleRatingChange,
-  handlePopUpClick,
   handleFormSubmit,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
-  handleNeighborhoodChange,
-  handlePriceChange,
 }): JSX.Element => {
   let boroughs: any = {
     Manhatten: [],
@@ -30,7 +17,6 @@ const BoroughFeed = ({
     Queens: [],
     Staten_Island: [],
   };
-  console.log("reviews from BoroughFeed", reviews);
   const getReviews = (reviews) => {
     reviews.forEach((review) => {
       if (review.borough === "Manhatten") {
@@ -57,49 +43,25 @@ const BoroughFeed = ({
     return <p>Loading...</p>;
   } else {
     for (let borough in boroughs) {
-      console.log("these are boroughs", boroughs);
       if (borough === "Brooklyn") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Brooklyn</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
+          <div className='image-parallax-brooklyn'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Brooklyn</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Brooklyn"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
                 reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
               />
             </div>
-            <Carousel
-              key={"Brooklyn"}
-              handleDelete={handleDelete}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
-              newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
-              handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
@@ -107,181 +69,89 @@ const BoroughFeed = ({
         // return boroughs[borough].map((review, index) => {
         //   console.log('this is the review', review)
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Manhatten</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
+          <div className='image-parallax-manhattan'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Manhatten</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Manhatten"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
                 reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
               />
             </div>
-            <Carousel
-              key={"Manhatten"}
-              handleDelete={handleDelete}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
-              newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
-              handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
       if (borough === "The_Bronx") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>The Bronx</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
+          <div className='image-parallax-bronx'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>The Bronx</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"The_Bronx"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
                 reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
               />
             </div>
-            <Carousel
-              key={"The_Bronx"}
-              handleDelete={handleDelete}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
-              newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
-              handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
       if (borough === "Queens") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Queens</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
+          <div className='image-parallax-queens'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Queens</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Queens"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
                 reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
               />
             </div>
-            <Carousel
-              key={"Queens"}
-              handleDelete={handleDelete}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
-              newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
-              handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
       if (borough === "Staten Island") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Staten Island</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown
+          <div className='image-parallax-staten-island'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Staten Island</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Staten Island"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
                 reviews={boroughs[borough]}
-                handleBurritoTypeDropdownChange={
-                  handleBurritoTypeDropdownChange
-                }
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown
-                reviews={boroughs[borough]}
-                handleNeighborhoodTypeDropdownChange={
-                  handleNeighborhoodTypeDropdownChange
-                }
-                neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-                burritoTypeDropdownItem={burritoTypeDropdownItem}
               />
             </div>
-            <Carousel
-              key={"Staten Island"}
-              handleDelete={handleDelete}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              burritoTypeDropdownItem={burritoTypeDropdownItem}
-              neighborhoodTypeDropdownItem={neighborhoodTypeDropdownItem}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              handleUpdatePopUpClick={handleUpdatePopUpClick}
-              updateSeen={updateSeen}
-              newReview={newReview}
-              handleRatingChange={handleRatingChange}
-              handlePopUpClick={handlePopUpClick}
-              handleFormSubmit={handleFormSubmit}
-              handleBurritoTypeChange={handleBurritoTypeChange}
-              handleRestaurantNameChange={handleRestaurantNameChange}
-              handleNeighborhoodChange={handleNeighborhoodChange}
-              handlePriceChange={handlePriceChange}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }

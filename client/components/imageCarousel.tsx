@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import ReviewCardList from "./Feeds/ReviewCardList";
 
-const Carousel = ({
-  reviews,
-  handleNeighborhoodClick,
-  reviewsForNeighborhood,
-  newReview,
-  handleFormSubmit,
-}) => {
+const ImageCarousel = () => {
   const [currentImageIndex, setImageIndex] = useState<number>(0);
 
+  let reviews = [1, 2, 3];
   const previousSlide = (): void => {
     const lastIndex = reviews.length - 1;
     const shouldResetIndex = currentImageIndex === 0;
@@ -37,13 +31,7 @@ const Carousel = ({
   return (
     <div className='carousel'>
       <Arrow direction='left' clickFunction={previousSlide} glyph='&#9664;' />
-      <ReviewCardList
-        reviews={reviews.slice(currentImageIndex, currentImageIndex + 4)}
-        reviewsForNeighborhood={reviewsForNeighborhood}
-        handleNeighborhoodClick={handleNeighborhoodClick}
-        newReview={newReview}
-        handleFormSubmit={handleFormSubmit}
-      />
+
       <Arrow
         // className={Arrow}
         direction='right'
@@ -54,4 +42,4 @@ const Carousel = ({
   );
 };
 
-export default Carousel;
+export default ImageCarousel;

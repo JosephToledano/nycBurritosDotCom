@@ -1,18 +1,73 @@
 import React, { useState } from "react";
+import {
+  handleBurritoTypeChange,
+  handleBoroughChange,
+  handleNeigborhoodChange,
+  handlePriceChange,
+  handleRatingChange,
+  handleRestaurantChange,
+} from "../slices/ReviewsSlice";
+
+import { useAppDispatch, useAppSelector } from "../reduxHooks";
+import { useSelector, useDispatch } from "react-redux";
 
 const PopUpReviewForm = ({
   handleReviewPopUpClick,
   newReview,
-  handleBurritoTypeChange,
-  handleRestaurantNameChange,
+  // handleBurritoTypeChange,
+  // handleRestaurantNameChange,
   handleFormSubmit,
-  handleNeighborhoodChange,
-  handleBoroughChange,
-  handlePriceChange,
-  handleRatingChange,
+  // handleNeighborhoodChange,
+  // handleBoroughChange,
+  // handlePriceChange,
+  // handleRatingChange,
 }): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const handleBurrito = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList["burrito_type"] = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleBoroughChange(event.target.value));
+  };
+
+  const handleRestaurantName = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.restaurant_name = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleRestaurantChange(event.target.value));
+  };
+
+  const handleNeighborhood = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.neighborhood = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleNeigborhoodChange(event.target.value));
+  };
+
+  const handleBorough = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.borough = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleBoroughChange(event.target.value));
+  };
+
+  const handlePrice = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.price = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handlePriceChange(event.target.value));
+  };
+
+  const handleRatings = (event): void => {
+    // let updatedReviewList = newReview;
+    // updatedReviewList.rating = event.target.value;
+    // setNewReview(updatedReviewList);
+    dispatch(handleRatingChange(event.target.value));
+  };
+
   return (
-    <div>
+    <div id='popup-review-form-container'>
       <div>
         <div className='popup-review-form'>
           <span
@@ -40,7 +95,7 @@ const PopUpReviewForm = ({
                   type='text'
                   // value={newReview.}
                   placeholder='The Cantina'
-                  onChange={handleRestaurantNameChange}
+                  onChange={handleRestaurantName}
                 />
               </label>
               <label className='burrito-form-label'>
@@ -50,7 +105,7 @@ const PopUpReviewForm = ({
                   type='text'
                   // value={newReview.neighborhood}
                   placeholder='Mos Eisley'
-                  onChange={handleNeighborhoodChange}
+                  onChange={handleNeigborhoodChange}
                 />
               </label>
               <label className='burrito-form-label'>

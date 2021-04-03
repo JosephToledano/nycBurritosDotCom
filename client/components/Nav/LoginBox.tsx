@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import SignupBox from "./SignupBox";
-const LoginBox = ({
-  handleSignUp,
-  handleLogin,
-  googleLogin,
-  failedLogin,
-  loginClicked,
-}): JSX.Element => {
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../slices/UsersSlice";
+import { useAppSelector } from "../../reduxHooks";
+
+const LoginBox = ({ googleLogin, failedLogin, loginClicked }): JSX.Element => {
   const [userName, setUserName] = useState<string>("username");
   const [password, setPassword] = useState<string>("password");
   const [showingSignUp, setSignUpVisible] = useState<boolean>(false);
   const [clicked, setClick] = useState<boolean>(false);
   const [closed, setClose] = useState<boolean>(false);
+
+  const signedInuser = useAppSelector((state) => state.users.currentUser);
+
+  const dispatch = useDispatch();
 
   if (
     clicked &&
@@ -65,7 +67,14 @@ const LoginBox = ({
           <input
             type='submit'
             className='loginButton'
-            onClick={() => handleLogin(userName, password)}
+            onClick={() => {
+              let credentials = {
+                username: userName,
+                password: password,
+              };
+              dispatch(login(credentials));
+              signedInuser.length > 0 ? setClose(false) : null;
+            }}
           />
         </div>
       </React.Fragment>
@@ -124,7 +133,7 @@ const LoginBox = ({
           <input
             type='submit'
             className='loginButton'
-            onClick={() => handleLogin(userName, password)}
+            // onClick={() => dispatch(login(userName, password))}
           />
         </div>
       </React.Fragment>
@@ -143,7 +152,7 @@ const LoginBox = ({
           <p className='loginText'>X</p>
         </div>
         <div className='login'>
-          <SignupBox handleSignUp={handleSignUp} />;
+          <SignupBox />;
         </div>
       </React.Fragment>
     );

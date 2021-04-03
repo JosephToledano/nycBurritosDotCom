@@ -2,27 +2,35 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginBox from "./LoginBox";
 import SignupBox from "./SignupBox.js";
+import { useSelector, useDispatch } from "react-redux";
 
-const Nav = ({
-  handleLogin,
-  handleSignUp,
-  currentUser,
-  googleLogin,
-  failedLogin,
-}): JSX.Element => {
+const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
   const [loginClicked, setLoginClick] = useState<boolean>(false);
   const [signUpClicked, setSignUpClick] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    if (currentUser.length >= 0) {
+      fetch("/logout");
+      // .then(() => dispatch())
+    }
+  };
+
+  // const loggedinUser = useSelector((state: any) => state.users.currentUser);
   if (
-    currentUser.length === 0 &&
+    // loggedinUser.length === 0 &&
     loginClicked === false &&
-    signUpClicked === false
+    signUpClicked === false &&
+    currentUser.length <= 0
   ) {
     return (
       <nav className='NavBar'>
         <div className='main-header'>
           <Link to={"/"}>
-            <h3 className='NavLink'>Home</h3>
+            <h3 className='NavLink' style={{ textDecoration: "none" }}>
+              Home
+            </h3>
           </Link>
           <Link to={"./Blog"}>
             <h3 className='NavLink'>Blog</h3>
@@ -41,8 +49,6 @@ const Nav = ({
           <div className='Login'>
             <LoginBox
               loginClicked={setLoginClick}
-              handleSignUp={handleSignUp}
-              handleLogin={handleLogin}
               googleLogin={googleLogin}
               failedLogin={failedLogin}
             />
@@ -66,7 +72,9 @@ const Nav = ({
       <nav className='NavBar'>
         <div className='main-header'>
           <Link to={"/"}>
-            <h3 className='NavLink'>Home</h3>
+            <h3 className='NavLink' style={{ textDecoration: "none" }}>
+              Home
+            </h3>
           </Link>
 
           <Link to={"/"}>
@@ -83,7 +91,7 @@ const Nav = ({
               <h3 className='NavLink'>Blog</h3>
             </Link>
 
-            <p className='loggedInUser'>{currentUser}</p>
+            <button onClick={handleLogout}>Log out</button>
           </div>
         </div>
       </nav>

@@ -10,18 +10,9 @@ const ReviewCardBox = ({
   burrito_type,
   restaurant_name,
   restaurant_image_url,
-  updateSeen,
-  handleUpdatePopUpClick,
-  handleDelete,
   handleNeighborhoodClick,
-  handleNeighborhoodChange,
-  handleRestaurantNameChange,
-  handleBurritoTypeChange,
-  handlePriceChange,
   handleFormSubmit,
-  handlePopUpClick,
   newReview,
-  handleRatingChange,
   reviewsForNeighborhood,
 }): JSX.Element => {
   return (
@@ -35,19 +26,10 @@ const ReviewCardBox = ({
         burrito_type={burrito_type}
         restaurant_name={restaurant_name}
         restaurant_image_url={restaurant_image_url}
-        updateSeen={updateSeen}
-        handleUpdatePopUpClick={handleUpdatePopUpClick}
-        handleDelete={handleDelete}
         handleNeighborhoodClick={handleNeighborhoodClick}
         reviewsForNeighborhood={reviewsForNeighborhood}
-        handleNeighborhoodChange={handleNeighborhoodChange}
-        handleRestaurantNameChange={handleRestaurantNameChange}
-        handleBurritoTypeChange={handleBurritoTypeChange}
-        handlePriceChange={handlePriceChange}
         handleFormSubmit={handleFormSubmit}
-        handlePopUpClick={handlePopUpClick}
         newReview={newReview}
-        handleRatingChange={handleRatingChange}
       />
     </div>
   );
