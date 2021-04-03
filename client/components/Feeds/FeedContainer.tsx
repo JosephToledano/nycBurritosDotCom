@@ -10,7 +10,6 @@ const FeedContainer = ({
 }): JSX.Element => {
   return (
     <>
-      <h2 className='FeedContainerText'>Rankings by Borough</h2>
       <BoroughFeed
         reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}

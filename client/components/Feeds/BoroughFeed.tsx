@@ -17,7 +17,6 @@ const BoroughFeed = ({
     Queens: [],
     Staten_Island: [],
   };
-  console.log("reviews from BoroughFeed", reviews);
   const getReviews = (reviews) => {
     reviews.forEach((review) => {
       if (review.borough === "Manhatten") {
@@ -46,21 +45,23 @@ const BoroughFeed = ({
     for (let borough in boroughs) {
       if (borough === "Brooklyn") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Brooklyn</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown reviews={boroughs[borough]} />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+          <div className='image-parallax-brooklyn'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Brooklyn</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Brooklyn"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
+                reviews={boroughs[borough]}
+              />
             </div>
-            <Carousel
-              key={"Brooklyn"}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              newReview={newReview}
-              handleFormSubmit={handleFormSubmit}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
@@ -68,81 +69,89 @@ const BoroughFeed = ({
         // return boroughs[borough].map((review, index) => {
         //   console.log('this is the review', review)
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Manhatten</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown reviews={boroughs[borough]} />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+          <div className='image-parallax-manhattan'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Manhatten</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Manhatten"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
+                reviews={boroughs[borough]}
+              />
             </div>
-            <Carousel
-              key={"Manhatten"}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              newReview={newReview}
-              handleFormSubmit={handleFormSubmit}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
       if (borough === "The_Bronx") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>The Bronx</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown reviews={boroughs[borough]} />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+          <div className='image-parallax-bronx'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>The Bronx</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"The_Bronx"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
+                reviews={boroughs[borough]}
+              />
             </div>
-            <Carousel
-              key={"The_Bronx"}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              newReview={newReview}
-              handleFormSubmit={handleFormSubmit}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
       if (borough === "Queens") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Queens</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown reviews={boroughs[borough]} />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+          <div className='image-parallax-queens'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Queens</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Queens"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
+                reviews={boroughs[borough]}
+              />
             </div>
-            <Carousel
-              key={"Queens"}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              newReview={newReview}
-              handleFormSubmit={handleFormSubmit}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }
       if (borough === "Staten Island") {
         return (
-          <div className='carousel-feed-section'>
-            <p className='carousel-borough-name'>Staten Island</p>
-            <div className='dropdown-menus'>
-              <CarouselBurritoDropdown reviews={boroughs[borough]} />
-              {/* <BurritoTypeDropdown/> */}
-              <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+          <div className='image-parallax-staten-island'>
+            <div className='carousel-feed-section'>
+              <p className='carousel-borough-name'>Staten Island</p>
+              <div className='dropdown-menus'>
+                <CarouselBurritoDropdown reviews={boroughs[borough]} />
+                {/* <BurritoTypeDropdown/> */}
+                <CarouselNeighborhoodDropdown reviews={boroughs[borough]} />
+              </div>
+              <Carousel
+                key={"Staten Island"}
+                reviewsForNeighborhood={reviewsForNeighborhood}
+                handleNeighborhoodClick={handleNeighborhoodClick}
+                newReview={newReview}
+                handleFormSubmit={handleFormSubmit}
+                reviews={boroughs[borough]}
+              />
             </div>
-            <Carousel
-              key={"Staten Island"}
-              reviewsForNeighborhood={reviewsForNeighborhood}
-              handleNeighborhoodClick={handleNeighborhoodClick}
-              newReview={newReview}
-              handleFormSubmit={handleFormSubmit}
-              reviews={boroughs[borough]}
-            />
           </div>
         );
       }

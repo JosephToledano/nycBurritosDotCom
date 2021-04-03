@@ -4,15 +4,18 @@
 //   background-image: -webkit-linear-gradient(150deg, #dac5bc 65%, #0039a6 35%);
 // }
 .main-header {
-  background-color: #2e0c53;
   opacity: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   position: absolute;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
   width: 100%;
   align-items: center;
   top: 0;
+  // text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+  //   0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 #main-logo {
   width: 60px;
@@ -26,7 +29,7 @@
   align-items: center;
 }
 .aboutHeaderText {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Arial, Helvetica, sans-serif";
   font-size: 45px;
 }
 .AboutText {
@@ -69,6 +72,7 @@
 }
 .headerLinks {
   display: flex;
+
   flex-direction: row;
 }
 .NavBar {
@@ -78,27 +82,174 @@
 }
 .NavLink {
   color: whitesmoke;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-size: 2em;
+  text-decoration: none;
   // margin: 5%;
   margin-left: 30px;
 }
+
+#top-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#search-section {
+  display: flex;
+  position: relative;
+  margin-top: 20%;
+  align-items: center;
+  width: 20%;
+}
+
+#search-bar {
+  display: flex;
+  padding-right: 20%;
+  padding-left: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 100%;
+  border-radius: 2rem;
+  position: relative;
+  top: 20%;
+  text-emphasis: wrap;
+  word-break: keep-all;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 8px 15px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
+}
+
+#borough-filter-container {
+  margin-top: 3%;
+  display: flex;
+  flex: row;
+  justify-content: space-around;
+}
+
+.borough-search-filter {
+  padding-right: 5%;
+  padding-left: 5%;
+
+  border-radius: 2rem;
+  background-color: honeydew;
+  margin-left: 2%;
+}
+
+.borough-search-filter-text {
+  font-family: "Helvetica";
+  font-weight: bolder;
+  text-align: center;
+}
+
+.image-parallax {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1546436836-07a91091f160?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1506&q=80");
+
+  /* Full height */
+  height: 85%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.image-parallax-2 {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1502&q=80");
+  background-color: whitesmoke;
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-parallax-manhattan {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1541450228924-1ecb88feeaea?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1789&q=80");
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-parallax-brooklyn {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1545750975-f61878130237?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-parallax-bronx {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1616001944944-9aa3059177e0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2618&q=80");
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-parallax-queens {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1556612479-e98f714b9546?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image-parallax-staten-island {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1584977737241-1a648a3a1281?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1506&q=80");
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .main-text {
   margin-top: 5%;
-  font-family: "open sans", sans-serif;
-  line-height: 0px;
+  font-family: "Helvetica";
+  font-size: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  font-size: 30px;
+  flex-direction: row;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
   position: absolute;
   padding-top: 2%;
   padding-bottom: 2%;
-  margin-left: 32%;
+  // margin-left: 30%;
+  color: whitesmoke;
 }
 .top10BurritosText {
-  font-size: 2rem;
-  font-weight: bold;
+  font-family: "Helvetica";
+  color: whitesmoke;
+  font-weight: bolder;
+  font-size: 5rem;
+  margin-left: 10%;
 }
 
 .homepageCarouselHeader {
@@ -112,17 +263,18 @@
 }
 
 #review-button {
-  margin-top: 30%;
+  top: 12%;
   margin-left: 10%;
   border: none;
   border-radius: 20px;
-  padding: 10px;
+  padding: 15px;
   width: 10%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bold;
   background-color: #0c2340;
-  position: relative;
-
+  position: fixed;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
   color: white;
   cursor: pointer;
 }
@@ -131,8 +283,10 @@
   color: black;
   font-family: inherit;
   background-color: none;
-  font-size: 1.2rem;
+  font-size: 2em;
   font-weight: bold;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+
   // margin-bottom: 50%;
 }
 .loginBox {
@@ -141,7 +295,8 @@
 .loginHere {
   color: whitesmoke;
   margin-right: 10%;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-size: 2em;
 }
 #close {
   color: black;
@@ -157,7 +312,7 @@
   justify-content: center;
   // margin-top: 3%;
   text-align: center;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   padding: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
@@ -177,12 +332,12 @@
 }
 
 .loggedInUser {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   color: white;
 }
 
 .signUpText {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   font-weight: bolder;
   font-size: 1rem;
   text-align: center;
@@ -190,7 +345,7 @@
 }
 
 .signUpTextFail {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   font-weight: bolder;
   font-size: 1rem;
   text-align: center;
@@ -211,7 +366,7 @@
 }
 
 .signUpTextBox {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   font-weight: bolder;
   font-size: 1rem;
   display: flex;
@@ -225,7 +380,7 @@
   margin-top: 5%;
   background-color: lightblue;
   cursor: pointer;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   padding: 0.5rem;
 }
 .signUpButton {
@@ -236,7 +391,7 @@
   background-color: lightblue;
   cursor: pointer;
   margin-left: 25%;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   padding: 0.4rem 1rem 0.4rem 1rem;
 }
 .loginButton {
@@ -247,7 +402,7 @@
   background-color: lightblue;
   cursor: pointer;
   margin-left: 0%;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
   padding: 0.4rem 1rem 0.4rem 1rem;
 }
 
@@ -283,7 +438,8 @@
   color: #fccc0a;
   padding-left: 30px;
   font-weight: bold;
-  font-family: "open-sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
 }
 .burrito-card-type-text {
   text-align: center;
@@ -291,7 +447,8 @@
   font-size: 15px;
   color: #ff6319;
   padding-left: 30px;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
 }
 .burrito-card-restaurant-text {
   font-size: 25px;
@@ -299,7 +456,8 @@
   color: white;
   align-items: center;
   text-align: center;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
 }
 .burrito-card-button {
   align-items: center;
@@ -310,7 +468,9 @@
   border: none;
   background-color: whitesmoke;
   cursor: pointer;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
+
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -331,6 +491,8 @@
   border-radius: 2em;
   margin-right: 20%;
   margin-bottom: 9%;
+  font-weight: bolder;
+
   // padding-left: px;
   // padding-right: 20px;
 }
@@ -356,14 +518,16 @@
   width: 30%;
   border-radius: 10px;
   margin-bottom: 20px;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
 }
 .burrito-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -379,21 +543,39 @@
 }
 
 .FeedContainerText {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   margin-left: 10%;
 }
 .carousel-borough-name {
-  font-family: "open sans", sans-serif;
-  font-size: 1.5rem;
+  font-family: "Helvetica";
+  color: whitesmoke;
+  font-weight: bolder;
+  font-size: 5rem;
+  margin-left: 10%;
+}
+#borough-header-section {
+  background-color: gray;
+}
+.borough-header {
+  font-family: "Helvetica";
+  color: black;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bolder;
+  font-size: 2em;
   margin-left: 10%;
 }
 .top10BurritosText {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   margin-left: 10%;
 }
 
 .homepageCarouselHeader {
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   margin-left: 10%;
 }
 
@@ -411,7 +593,8 @@
   margin-top: 3%;
   padding: 5px;
   text-align: center;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
 }
 #form-submit-button {
   align-items: center;
@@ -421,7 +604,8 @@
   padding: 5px 35px 5px 35px;
   background-color: white;
   cursor: pointer;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   &:hover {
     align-items: center;
     border-radius: 20px;
@@ -432,13 +616,15 @@
     color: white;
     border: 1px solid white;
     cursor: pointer;
-    font-family: "open sans", sans-serif;
+    font-family: "Helvetica";
+    font-weight: bolder;
   }
 }
 .profile-contents {
   display: flex;
   flex-direction: row;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   justify-content: space-between;
 }
 .popup-review-form {
@@ -463,7 +649,8 @@
 }
 #dropdown-submit-button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   background-color: #add8e6;
   color: white;
 }
@@ -477,12 +664,15 @@
   flex-direction: row;
   margin-left: 50%;
   align-items: center;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
 }
+
 .dropdown-select {
   background-color: white;
   border: none;
-  font-family: "open sans", sans-serif;
+  font-family: "Helvetica";
+  font-weight: bolder;
   border-radius: 10%;
   margin-left: 5%;
   width: 80%;

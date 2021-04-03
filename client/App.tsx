@@ -1,5 +1,7 @@
 import * as React from "react";
 // import "./index.css";
+import SearchBar from "./components/Search/SearchBar";
+import BoroughFilters from "./components/Search/BoroughFilters";
 import MainText from "./components/MainText";
 import Nav from "./components/Nav/Nav";
 import ReviewButton from "./components/ReviewButton";
@@ -158,39 +160,48 @@ const App: React.FC = () => {
 
   return (
     <>
-      <React.Fragment>
-        <Nav
-          currentUser={currentUser}
-          googleLogin={googleLogin}
-          failedLogin={failedLogin}
-        />
-        <MainText />
-        <ReviewButton
-          reviewSeen={reviewSeen}
-          handleReviewPopUpClick={handleReviewPopUpClick}
-          handleFormSubmit={handleFormSubmit}
-          newReview={newReview}
-        />
-        <div className='dropdown-menus'>
-          <BurritoTypeDropdown />
-          <NeighborhoodTypeDropdown />
+      <>
+        <div className='image-parallax'>
+          <Nav
+            currentUser={currentUser}
+            googleLogin={googleLogin}
+            failedLogin={failedLogin}
+          />
+          <ReviewButton
+            reviewSeen={reviewSeen}
+            handleReviewPopUpClick={handleReviewPopUpClick}
+            handleFormSubmit={handleFormSubmit}
+            newReview={newReview}
+          />
+          <div id='top-container'>
+            <MainText />
+            <SearchBar />
+            <BoroughFilters />
+          </div>
         </div>
-      </React.Fragment>
-      <Top10CardList
+        <div className='image-parallax-2'>
+          <div className='dropdown-menus'>
+            <BurritoTypeDropdown />
+            <NeighborhoodTypeDropdown />
+          </div>
+          <Top10CardList
+            reviewsForNeighborhood={reviewsForNeighborhood}
+            handleNeighborhoodClick={handleNeighborhoodClick}
+            newReview={newReview}
+            handleFormSubmit={handleFormSubmit}
+            reviews={reviews}
+          />
+        </div>
+      </>
+      {/* <p className='homepageCarouselHeader'>All Reviews</p>
+      {/* <Carousel
         reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
         handleFormSubmit={handleFormSubmit}
         reviews={reviews}
-      />
-      <p className='homepageCarouselHeader'>All Reviews</p>
-      <Carousel
-        reviewsForNeighborhood={reviewsForNeighborhood}
-        handleNeighborhoodClick={handleNeighborhoodClick}
-        newReview={newReview}
-        handleFormSubmit={handleFormSubmit}
-        reviews={reviews}
-      />
+      /> */}
+
       <FeedContainer
         reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}
