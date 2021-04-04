@@ -114,8 +114,9 @@ const App: React.FC = () => {
     dispatch(login(info));
   };
 
-  const handleFormSubmit = (e, newReview: newReview): void => {
+  const handleFormSubmit = (e, newReview: any): void => {
     e.preventDefault();
+    console.log(newReview);
     if (currentUserId === -1) {
       alert("Please login to submit a review");
       return;
@@ -179,14 +180,15 @@ const App: React.FC = () => {
             <BurritoTypeDropdown />
             <NeighborhoodTypeDropdown />
           </div>
-
-          <Top10CardList
-            reviewsForNeighborhood={reviewsForNeighborhood}
-            handleNeighborhoodClick={handleNeighborhoodClick}
-            newReview={newReview}
-            handleFormSubmit={handleFormSubmit}
-            reviews={reviews}
-          />
+          <div>
+            <Top10CardList
+              reviewsForNeighborhood={reviewsForNeighborhood}
+              handleNeighborhoodClick={handleNeighborhoodClick}
+              newReview={newReview}
+              handleFormSubmit={handleFormSubmit}
+              reviews={reviews}
+            />
+          </div>
         </div>
       </>
       {/* <p className='homepageCarouselHeader'>All Reviews</p>
@@ -212,6 +214,9 @@ const App: React.FC = () => {
         handleFormSubmit={handleFormSubmit}
         reviews={reviews}
       />
+      <footer>
+        <p>Thanks for coming!</p>
+      </footer>
     </>
   );
 };

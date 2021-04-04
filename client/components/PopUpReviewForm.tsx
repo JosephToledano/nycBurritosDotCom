@@ -24,7 +24,7 @@ const PopUpReviewForm = ({
   // handleRatingChange,
 }): JSX.Element => {
   const dispatch = useDispatch();
-  let currentUserId = useAppSelector((state) => state.users.user_id);
+  let currentUserId = useAppSelector((state) => state.users.currentUserId);
   useEffect(() => {
     dispatch(setUserId(currentUserId));
   }, []);
@@ -35,6 +35,7 @@ const PopUpReviewForm = ({
     // updatedReviewList["burrito_type"] = event.target.value;
     // setNewReview(updatedReviewList);
     dispatch(handleBurritoTypeChange(event.target.value));
+    dispatch(setUserId(currentUserId));
   };
 
   const handleRestaurantName = (event): void => {

@@ -20,7 +20,7 @@ const ReviewCardList = ({
   // neighborhoodTypeDropdownItem = null;
   // burritoTypeDropdownItem = null;
 
-  if (reviews.length) {
+  if (reviews && reviews.length) {
     return (
       <div className='rankings-box-feed'>
         {reviews.map((review) => {

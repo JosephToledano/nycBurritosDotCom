@@ -9,12 +9,13 @@ const CarouselBurritoDropdown = ({ reviews }) => {
       All
     </option>
   );
-  let filteredReviews = reviews.reduce((acc, curr) => {
-    if (acc.includes(curr.burrito_type.toLowerCase()) === false) {
+  let filteredReviews = reviews?.reduce((acc, curr) => {
+    if (acc.includes(curr?.burrito_type?.toLowerCase()) === false) {
       acc.push(curr);
     }
     return acc;
   }, []);
+
   let burritoDropdownItem = useAppSelector(
     (state) => state.dropdowns.burrito_carousel
   );
@@ -33,7 +34,7 @@ const CarouselBurritoDropdown = ({ reviews }) => {
             }
           >
             {allChoices}
-            {filteredReviews.map((review) => (
+            {filteredReviews?.map((review) => (
               // console.log(review)
               <option
                 key={`burritoTypeCarousel ${review._id}`}

@@ -16,8 +16,8 @@ const BurritoTypeDropdown = () => {
     </option>
   );
 
-  let filteredReviews = reviews.reduce((acc, curr) => {
-    if (acc.includes(curr.burrito_type.toLowerCase()) === false) {
+  let filteredReviews = reviews?.reduce((acc, curr) => {
+    if (acc.includes(curr?.burrito_type?.toLowerCase()) === false) {
       acc.push(curr);
     }
     return acc;
@@ -37,7 +37,7 @@ const BurritoTypeDropdown = () => {
             }}
           >
             {allChoices}
-            {filteredReviews.map((review) => (
+            {filteredReviews?.map((review) => (
               // console.log(review)
               <option
                 key={`burritoTypeMain ${review._id}`}

@@ -38,7 +38,7 @@ const Carousel = ({
     <div className='carousel'>
       <Arrow direction='left' clickFunction={previousSlide} glyph='&#9664;' />
       <ReviewCardList
-        reviews={reviews.slice(currentImageIndex, currentImageIndex + 4)}
+        reviews={reviews?.slice(currentImageIndex, currentImageIndex + 4)}
         reviewsForNeighborhood={reviewsForNeighborhood}
         handleNeighborhoodClick={handleNeighborhoodClick}
         newReview={newReview}
