@@ -91,7 +91,9 @@ const Nav = ({ currentUser, googleLogin, failedLogin }): JSX.Element => {
               <h3 className='NavLink'>Blog</h3>
             </Link>
 
-            <button onClick={handleLogout}>Log out</button>
+            <h3 onClick={handleLogout} className='NavLink'>
+              Log out
+            </h3>
           </div>
         </div>
       </nav>

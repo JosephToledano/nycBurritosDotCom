@@ -89,6 +89,7 @@ const App: React.FC = () => {
     neighborhoodTypeDropdownItem,
     setNeighborhoodTypeDropdownItem,
   ] = React.useState<string>(null);
+  const [searches, setSerches] = React.useState<[]>([]);
 
   const dispatch = useDispatch();
   // setTimeout(() => dispatch(fetchReviews()), 10);
@@ -165,7 +166,7 @@ const App: React.FC = () => {
           />
           <div id='top-container'>
             <MainText />
-            <SearchBar />
+            {searches.length ? <SearchBar /> : null}
           </div>
         </div>
         <div id='top-mid-banner'>
