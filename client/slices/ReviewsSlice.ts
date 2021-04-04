@@ -57,6 +57,7 @@ const initialState: any = {
     borough: "",
     price: 0,
     rating: 0,
+    currentUserId: -1,
   },
 };
 
@@ -65,6 +66,9 @@ const reviewsSlice = createSlice({
   name: "reviews",
   initialState,
   reducers: {
+    setUserId(state, action: PayloadAction<any>) {
+      state.newReview.currentUserId = action.payload;
+    },
     handleBurritoTypeChange(state, action: PayloadAction<any>) {
       state.newReview.burrito_type = action.payload;
     },
@@ -123,6 +127,7 @@ export const {
   handlePriceChange,
   handleRatingChange,
   handleRestaurantChange,
+  setUserId,
 } = reviewsSlice.actions;
 export { fetchReviews, submitNewReview };
 export const selectReviews = (state: RootState) => state.reviews.reviews;

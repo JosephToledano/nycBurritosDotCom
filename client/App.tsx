@@ -73,16 +73,6 @@ type reviews = {
 };
 
 const App: React.FC = () => {
-  const [newReview, setNewReview] = React.useState<newReview>({
-    id: 0,
-    burrito_type: "",
-    restaurant_name: "",
-    restaurant_image_url: "",
-    neighborhood: "",
-    borough: "",
-    price: 0,
-    rating: 0,
-  });
   const [reviewsForNeighborhood, setReviewsForNeighbohood] = React.useState<
     newReview[]
   >([]);
@@ -105,7 +95,7 @@ const App: React.FC = () => {
 
   // let reviews = useAppSelector((state) => state.reviews.reviews);
   let reviews = useAppSelector((state) => state.reviews.reviews);
-  let newReviewz = useAppSelector((state) => state.reviews.newReview);
+  let newReview = useAppSelector((state) => state.reviews.newReview);
 
   let currentUser = useAppSelector((state) => state.users.currentUser);
   let isLoggedIn = useAppSelector((state) => state.users.isLoggedIn);
@@ -130,9 +120,8 @@ const App: React.FC = () => {
       alert("Please login to submit a review");
       return;
     }
-    let newReviewObj = newReview;
-    newReviewObj.currentUserId = currentUserId;
-    dispatch(submitNewReview(newReviewObj));
+
+    dispatch(submitNewReview(newReview));
   };
 
   const handleReviewPopUpClick = (): void => {

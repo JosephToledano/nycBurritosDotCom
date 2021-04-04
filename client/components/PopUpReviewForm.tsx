@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   handleBurritoTypeChange,
   handleBoroughChange,
@@ -6,6 +6,7 @@ import {
   handlePriceChange,
   handleRatingChange,
   handleRestaurantChange,
+  setUserId,
 } from "../slices/ReviewsSlice";
 
 import { useAppDispatch, useAppSelector } from "../reduxHooks";
@@ -23,12 +24,17 @@ const PopUpReviewForm = ({
   // handleRatingChange,
 }): JSX.Element => {
   const dispatch = useDispatch();
+  let currentUserId = useAppSelector((state) => state.users.user_id);
+  useEffect(() => {
+    dispatch(setUserId(currentUserId));
+  }, []);
+  newReview = useAppSelector((state) => state.reviews.newReview);
 
   const handleBurrito = (event): void => {
     // let updatedReviewList = newReview;
     // updatedReviewList["burrito_type"] = event.target.value;
     // setNewReview(updatedReviewList);
-    dispatch(handleBoroughChange(event.target.value));
+    dispatch(handleBurritoTypeChange(event.target.value));
   };
 
   const handleRestaurantName = (event): void => {
@@ -76,7 +82,7 @@ const PopUpReviewForm = ({
           >
             &times;{" "}
           </span>
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={(e) => handleFormSubmit(e, newReview)}>
             <div className='burrito-form'>
               <label className='burrito-form-label'>
                 Burrito Type:
@@ -85,7 +91,7 @@ const PopUpReviewForm = ({
                   type='text'
                   // value={}
                   placeholder='Super Carne Asada'
-                  onChange={(e) => handleBurritoTypeChange(e)}
+                  onChange={(e) => handleBurrito(e)}
                 />
               </label>
               <label className='burrito-form-label'>
@@ -93,7 +99,7 @@ const PopUpReviewForm = ({
                 <input
                   id='form-field'
                   type='text'
-                  // value={newReview.}
+                  value={newReview.restaurant}
                   placeholder='The Cantina'
                   onChange={handleRestaurantName}
                 />
@@ -103,9 +109,9 @@ const PopUpReviewForm = ({
                 <input
                   id='form-field'
                   type='text'
-                  // value={newReview.neighborhood}
+                  value={newReview.neighborhood}
                   placeholder='Mos Eisley'
-                  onChange={handleNeigborhoodChange}
+                  onChange={handleNeighborhood}
                 />
               </label>
               <label className='burrito-form-label'>
@@ -113,9 +119,9 @@ const PopUpReviewForm = ({
                 <input
                   id='form-field'
                   type='text'
-                  // value={newReview.borough}
+                  value={newReview.borough}
                   placeholder='Mos Eisley'
-                  onChange={handleBoroughChange}
+                  onChange={handleBorough}
                 />
               </label>
               <label className='burrito-form-label'>
@@ -123,9 +129,9 @@ const PopUpReviewForm = ({
                 <input
                   id='form-field'
                   type='text'
-                  // value={newReview.price}
+                  value={newReview.price}
                   placeholder='100 million dollars'
-                  onChange={handlePriceChange}
+                  onChange={handlePrice}
                 />
               </label>
               <label className='burrito-form-label'>
@@ -133,9 +139,9 @@ const PopUpReviewForm = ({
                 <input
                   id='form-field'
                   type='text'
-                  // value={newReview.rating}
+                  value={newReview.rating}
                   placeholder='up to 11'
-                  onChange={handleRatingChange}
+                  onChange={handleRatings}
                 />
               </label>
             </div>
